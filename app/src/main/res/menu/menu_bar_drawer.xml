@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+        <item android:title="Gestion" >
+            <menu>
+                <item
+                android:id="@+id/tableaudebord"
+                android:icon="@drawable/ic_baseline_dashboard_24"
+                android:title="Tableau de bord" />
+                <item
+                    android:id="@+id/vosoffres"
+                    android:icon="@drawable/ic_baseline_layers_24_black"
+                    android:title="Vos offres" />
+                <item
+                    android:id="@+id/candidatures"
+                    android:icon="@drawable/ic_baseline_groups_24"
+                    android:title="Gérer candidatures"
+                    />
+            </menu>
+        </item>
+
+    <item android:title="Compte" >
+        <menu>
+            <item
+                android:id="@+id/modifierprofil"
+                android:icon="@drawable/ic_baseline_edit_24"
+                android:title="Modifier votre compte" />
+            <item
+                android:id="@+id/sedeconnecterrec"
+                android:icon="@drawable/ic_baseline_exit_to_app_24_black"
+                android:title="Se Déconnecter" />
+
+        </menu>
+    </item>
+
+    <item android:title="Plus d'options" >
+        <menu>
+            <item
+                android:id="@+id/donneravis"
+                android:icon="@drawable/ic_baseline_comment_24_black"
+                android:title="Donner votre avis" />
+            <item
+                android:id="@+id/signalerprobleme"
+                android:icon="@drawable/ic_baseline_report_problem_24_black"
+                android:title="Signaler un problème" />
+
+
+
+        </menu>
+    </item>
+
+
+</menu>

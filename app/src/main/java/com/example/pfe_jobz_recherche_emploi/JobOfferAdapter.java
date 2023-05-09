@@ -1,0 +1,102 @@
+package com.example.pfe_jobz_recherche_emploi;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
+
+import java.io.ByteArrayOutputStream;
+import java.util.List;
+
+public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHolder> {
+    private String intent;
+    private List<JobOfferItem> jobOffers;
+
+    public JobOfferAdapter(List<JobOfferItem> jobOffers, String str) {
+        this.jobOffers = jobOffers;
+        this.intent = str;
+
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.job_offer, parent, false);
+
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        JobOfferItem jobOffer = jobOffers.get(position);
+
+        holder.textViewTitle.setText(jobOffer.getTitle());
+        holder.textViewCompany.setText(jobOffer.getCompany());
+        holder.textViewLocation.setText(jobOffer.getLocation());
+        holder.textViewType.setText(jobOffer.getContract());
+        holder.textViewDate.setText(jobOffer.getDate());
+        holder.imageViewLogo.setImageBitmap(jobOffer.getLogo());
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+
+                Intent intent = new Intent(view.getContext(), JobDetails.class);
+                intent.putExtra("ID_Offre",jobOffer.getID());
+                intent.putExtra("ID_Candidat",JobOfferAdapter.this.intent);
+                Bitmap bitmap = jobOffer.getLogo();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                intent.putExtra("company_logo", byteArray);
+                intent.putExtra("company_name", jobOffer.getCompany());
+                intent.putExtra("job_title", jobOffer.getTitle());
+                intent.putExtra("company_location", jobOffer.getLocation());
+                intent.putExtra("type_contrat", jobOffer.getContract());
+                intent.putExtra("date_publication", jobOffer.getDate());
+                intent.putExtra("company_desc",jobOffer.getCompanyDesc());
+                view.getContext().startActivity(intent);
+            }
+
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return jobOffers.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView textViewCompany;
+        public TextView textViewLocation;
+        public TextView textViewTitle;
+        public TextView textViewType;
+        public TextView textViewDate;
+        public ImageView imageViewLogo;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textViewTitle = itemView.findViewById(R.id.jobTitle);
+            textViewCompany = itemView.findViewById(R.id.companyName);
+            textViewLocation = itemView.findViewById(R.id.companyLocation);
+            textViewType = itemView.findViewById(R.id.typeContrat);
+            textViewDate = itemView.findViewById(R.id.datePublication);
+            imageViewLogo = itemView.findViewById(R.id.companyLogoo);
+        }
+    }
+}
+
+
+

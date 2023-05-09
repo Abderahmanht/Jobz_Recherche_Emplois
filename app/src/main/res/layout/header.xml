@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="175dp"
+    android:background="@color/light_blue"
+    android:gravity="bottom"
+    android:padding="15dp"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recruteur"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="recruteur@gmail.com"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        />
+
+
+</LinearLayout>

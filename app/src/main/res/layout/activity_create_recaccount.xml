@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateCANDAccount"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarrec"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/dark_green"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Inscription"
+        app:subtitle="Jobz pour les employeurs"
+        app:subtitleTextColor="@color/white"
+        app:titleTextColor="@color/white" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/state_progress_bar_rec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_checkStateCompleted="true"
+        app:spb_currentStateDescriptionColor="@color/light_green"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="@color/light_green"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/layout_informations_rec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        >
+
+        <TextView
+            android:id="@+id/create_rec_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Nom"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nameRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_nom"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre nom"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/create_rec_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Prenom"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/prenomRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_prenom"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre prenom"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/create_rec_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro de téléphone"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/prenomRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/numRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_num"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:drawableStart="@drawable/ic_baseline_local_phone_24"
+            android:drawablePadding="10dp"
+            android:hint="XX XX XX XX XX"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/create_rec_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_email"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:completionThreshold="1"
+            android:drawableStart="@drawable/icon_email"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre adresse électronique"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/create_rec_mdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Mot de passe"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/mdpRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_mdp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:completionThreshold="1"
+            android:drawableStart="@drawable/icon_lock"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:hint="Entrez votre mot de passe"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+
+    <!-- 2eme etape !-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/layout_compte_rec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        >
+
+
+        <TextView
+            android:id="@+id/create_rec_company_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Nom de l'entreprise"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/entrepriseRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_company_name"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Entrez le nom de votre entreprise"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/create_rec_secteur_activite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/entrepriseRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Secteur d'activité"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/secactiviteRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_secteur_activite"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Entrez le secteur d'activité de votre entreprise"
+            android:padding="10dp"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/create_rec_lieu_activite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/secactiviteRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Lieu d'activité"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/lieuactiviteRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_rec_lieu_activite"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:completionThreshold="1"
+            android:hint="Entrez la wilaya d'activité de votre entreprise"
+            android:padding="10dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/create_rec_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lieuactiviteRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:text="Logo entreprise"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/uploadlogoREC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lieuactiviteRECedittext"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/create_rec_logo"
+            android:drawableEnd="@drawable/ic_baseline_file_upload_24"
+            android:drawablePadding="10dp"
+            android:src="@drawable/ic_baseline_file_upload_24"
+            android:text="Charger"
+            android:textAllCaps="false"
+            android:textSize="13sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/companyLogoRec"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_image_24"
+            android:layout_toEndOf="@id/uploadlogoREC"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_below="@id/lieuactiviteRECedittext"
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/create_rec_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lieuactiviteRECedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="5dp"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/descriptionRECedittext"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/create_rec_description"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:gravity="top"
+            android:hint="Entrez une descriptions pour votre entreprise"
+            android:padding="10dp"
+            android:textSize="14sp" />
+
+
+
+
+    </RelativeLayout>
+
+<ScrollView
+    android:visibility="gone"
+    android:id="@+id/layout_finalisation_rec"
+    android:layout_width="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_height="400dp"
+    android:layout_marginTop="200dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        android:layout_marginHorizontal="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:paddingHorizontal="40dp"
+        android:paddingBottom="40dp"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/aperçu_nom_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_nom_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Nom" />
+
+
+        <TextView
+            android:id="@+id/aperçu_prenom_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_nom_rec"
+            android:layout_marginTop="20dp"
+            android:text="Prenom"
+
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aperçu_prenom_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_prenom_t"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Prenom"/>
+
+
+
+
+        <TextView
+            android:id="@+id/aperçu_mdp_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_alignBaseline="@id/aperçu_mdp_t_rec"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Mdp" />
+
+
+
+        <TextView
+            android:id="@+id/aperçu_num_t_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_prenom_rec"
+            android:text="Numéro de tel"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_num_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_num_t_rec"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@+id/aperçu_num_t_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Num" />
+
+
+        <TextView
+            android:id="@+id/aperçu_email_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_num_rec"
+            android:text="Email"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_email_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_email_t"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Email" />
+
+
+        <TextView
+            android:id="@+id/aperçu_mdp_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_email_rec"
+            android:text="Mot de passe"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_mdp_t_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_mdp_t"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:background="@color/gray"
+            android:inputType="textPassword"
+            android:padding="2dp"
+            android:text="Mot de passe" />
+
+        <ImageButton
+            android:id="@+id/view_mdp_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/aperçu_mdp_t_rec"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/aperçu_mdp_rec"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_remove_red_eye_24" />
+
+        <TextView
+            android:id="@+id/aperçu_nom_entreprise_t_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_mdp_rec"
+            android:layout_marginTop="20dp"
+            android:text="Nom entreprise"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aperçu_nom_entreprise_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_nom_entreprise_t_rec"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="entreprise"/>
+
+
+        <TextView
+            android:id="@+id/aperçu_sect_entreprise_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_nom_entreprise_t_rec"
+            android:layout_marginTop="20dp"
+            android:text="Secteur"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aperçu_secteur_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_sect_entreprise_rec"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="sect"/>
+
+
+        <TextView
+            android:id="@+id/aperçu_wilaya_entreprise_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_sect_entreprise_rec"
+            android:layout_marginTop="20dp"
+            android:text="Wilaya"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aperçu_wilaya_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_wilaya_entreprise_rec"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="wilaya"/>
+
+
+        <TextView
+            android:id="@+id/aperçu_description_entreprise_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_wilaya_entreprise_rec"
+            android:layout_marginTop="20dp"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aperçu_description_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/aperçu_description_entreprise_rec"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="description"/>
+
+        <TextView
+            android:id="@+id/aperçu_logo_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_description_rec"
+            android:layout_marginTop="20dp"
+            android:text="Logo"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/aperçu_logo"
+            android:layout_below="@id/aperçu_description_rec"
+            android:layout_marginTop="15dp"
+            android:layout_alignEnd="@id/aperçu_num_rec"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_baseline_image_24"
+            />
+
+
+
+    </RelativeLayout>
+</ScrollView>
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continueButtonREC"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/sign_button_background"
+        android:backgroundTint="@color/light_green"
+        android:text="Continuer"
+        android:textColor="@color/white" />
+
+
+
+
+
+</RelativeLayout>

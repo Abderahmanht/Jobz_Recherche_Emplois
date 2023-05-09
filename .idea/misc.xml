@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable-v24/ic_baseline_layers_24_black.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable-v24/shape.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/button_background.xml" value="0.3651041666666667" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/details_bottom.xml" value="0.3416666666666667" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/edit_text_background.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/edit_text_background_green.xml" value="0.3351851851851852" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/filter_border.xml" value="0.3435185185185185" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/layout_under_top_blue_bar.xml" value="0.3651041666666667" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/select_account_type_container.xml" value="0.3594871794871795" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/sign_button_background.xml" value="0.3435185185185185" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/step.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/top_blue_bar_login_background.xml" value="0.3651041666666667" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/drawable/top_login_shape.xml" value="0.3651041666666667" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_ajouter_offre.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_create_account.xml" value="0.3489583333333333" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_create_candaccount.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_create_recaccount.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_home_cand.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_home_rec.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_job_details.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_postuler.xml" value="0.3489583333333333" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_select_account_type.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_step2_ajout_offre.xml" value="0.3489583333333333" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/activity_step2_cand_account.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/details_bottom_background.xml" value="0.3489583333333333" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/fragment_emplois_cand.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/fragment_mes_offres_cand.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/fragment_profile_cand.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/fragment_rechercher_cand.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/header.xml" value="0.3435897435897436" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/inputrec_list_item.xml" value="0.18" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/item_placeholder.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/job_offer.xml" value="0.5" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/layout/step_2_rec_account.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/menu/contract_type.xml" value="0.3489583333333333" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/menu/menu_bar_bottom_navbar.xml" value="0.3489583333333333" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/menu/menu_bar_drawer.xml" value="0.3489583333333333" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/menu/popup.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/menu/tool_bar_menu.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/PFE_Jobz_Recherche_Emploi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2078125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Postuler">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/postuler_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Postuler"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:id="@+id/postuler_cv_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="200dp"
+        android:text="CV"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/postuler_cv_t"
+        android:layout_marginStart="40dp"
+        android:text="( Le document doit être au format PDF, JPEG ou PNG )" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/postuler_charger_cv"
+        android:layout_marginStart="40dp"
+        android:layout_toEndOf="@id/postuler_charger_cv"
+        android:id="@+id/cv_file_name"
+        android:textColor="@color/light_green" />
+
+    <Button
+        android:id="@+id/postuler_charger_cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postuler_cv_t"
+        android:layout_alignStart="@id/postuler_cv_t"
+        android:layout_marginTop="40dp"
+        android:drawableEnd="@drawable/ic_baseline_file_upload_24"
+        android:text="Charger"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/postuler_lettre_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/postuler_charger_cv"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="Lettre de motivation"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/postuler_lettre_t"
+        android:layout_marginStart="40dp"
+        android:text="( Le document doit être au format PDF, JPEG ou PNG )" />
+
+    <Button
+        android:id="@+id/postuler_charger_lettre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postuler_lettre_t"
+        android:layout_alignStart="@id/postuler_cv_t"
+        android:layout_marginTop="40dp"
+        android:drawableEnd="@drawable/ic_baseline_file_upload_24"
+        android:text="Charger"
+        android:textAllCaps="false" />
+
+
+    <TextView
+        android:id="@+id/lettre_file_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/postuler_charger_lettre"
+        android:layout_marginStart="40dp"
+        android:layout_toEndOf="@id/postuler_charger_lettre"
+        android:textColor="@color/light_green" />
+
+    <Button
+        android:id="@+id/postuler_valider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postuler_charger_lettre"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/dark_green"
+        android:text="Valider"
+        android:textColor="@color/white" />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Jobz"
+        app:titleTextColor="@color/white"
+        />
+
+    <ImageView
+        android:layout_width="160dp"
+        android:paddingStart="-50dp"
+        android:paddingEnd="-50dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="80dp"
+        android:layout_toEndOf="@+id/welcomeLoginText"
+        android:src="@mipmap/login" />
+
+    <TextView
+        android:id="@+id/textt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcomeLoginText"
+        android:layout_marginLeft="30dp"
+        android:text="Connectez-vous à votre \ncompte Jobz maintenant !"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/welcomeLoginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/welcome_back"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:id="@+id/topHorLine"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/textt"
+        android:layout_marginTop="40dp"
+        android:background="@color/dark_blue"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/emailtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@+id/emailEditText"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/topHorLine"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/emailtext"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/icon_email"
+        android:drawablePadding="5dp"
+        android:hint="@string/enter_email"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/passtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mot de passe"
+        android:layout_alignStart="@+id/emailEditText"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/emailEditText"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/passtext"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/icon_lock"
+        android:drawablePadding="5dp"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textSize="15sp" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="38dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/sign_button_background"
+        android:padding="15dp"
+        android:text="@string/sign_in"
+        android:textColor="@color/white" />
+
+
+    <TextView
+        android:id="@+id/dont_have_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="80dp"
+        android:text="Vous n'avez pas de compte?" />
+
+    <Button
+        android:id="@+id/sign_up"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-10dp"
+        android:layout_marginBottom="30dp"
+        android:layout_toEndOf="@+id/dont_have_account"
+        android:includeFontPadding="false"
+        android:text="S'inscrire"
+        android:textAllCaps="false"
+        android:textColor="@color/dark_blue" />
+
+
+    <LinearLayout
+        android:id="@+id/hor"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/login_btn"
+        android:layout_marginTop="100dp"
+        android:background="@color/dark_blue"
+        android:orientation="horizontal" />
+
+    <TextView
+        android:id="@+id/textEmployeur"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/login_btn"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="5dp"
+        android:text="Vous avez un compte d'employeur ?"
+        android:textAllCaps="false" />
+    <TextView
+        android:id="@+id/logrec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/textEmployeur"
+        android:layout_alignBaseline="@id/textEmployeur"
+        android:text="Se connecter"
+        android:textColor="@color/dark_green"
+        />
+
+
+
+
+</RelativeLayout>

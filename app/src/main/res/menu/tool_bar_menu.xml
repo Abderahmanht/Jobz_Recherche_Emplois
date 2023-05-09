@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="More"
+        android:id="@+id/MoreVert"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        app:showAsAction="always">
+        <menu>
+        <item
+            android:title="Actualiser"
+            android:id="@+id/actualiser"
+            android:icon="@drawable/ic_baseline_refresh_24"
+            app:showAsAction="never"
+            />
+        <item
+            android:title="Donner mon avis"
+            android:id="@+id/avis"
+            android:icon="@drawable/ic_baseline_comment_24"
+            />
+        <item
+            android:title="Signaler un problème"
+            android:id="@+id/probleme"
+            android:icon="@drawable/ic_baseline_report_24"/>
+        <item
+            android:title="À Propos de nous"
+            android:id="@+id/apropos"
+            android:icon="@drawable/ic_baseline_info_24"/>
+            <item
+                android:title="Se Déconnecter"
+                android:id="@+id/sedeconnecter"
+                android:icon="@drawable/ic_baseline_exit_to_app_24"/>
+        </menu>
+    </item>
+
+
+
+
+</menu>

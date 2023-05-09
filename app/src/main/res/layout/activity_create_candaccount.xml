@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateCANDAccount"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarcand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Inscription"
+        app:titleTextColor="@color/white" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/state_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_checkStateCompleted="true"
+        app:spb_currentStateDescriptionColor="@color/light_green"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="@color/light_green"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/layout_informations_cand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/create_cand_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/nameCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_cand_nom"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre nom"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/create_cand_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prenom"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/nameCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/prenomCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_cand_prenom"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre prenom"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/create_cand_numID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prenomCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Numéro d'identité national"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/numIDCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_cand_numID"
+            android:layout_marginHorizontal="30dp"
+            android:drawableStart="@drawable/ic_baseline_numbers_24"
+            android:background="@drawable/edit_text_background"
+            android:completionThreshold="1"
+            android:drawablePadding="10dp"
+            android:inputType="number"
+            android:hint="Entrez votre numéro d'identité national"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/create_cand_ville"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numIDCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Wilaya actuelle"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/wilayaCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_cand_ville"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:completionThreshold="1"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre wilaya"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+
+        <TextView
+            android:id="@+id/create_cand_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de naissance"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/wilayaCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/datenaissanceCAND"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_cand_date"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableEnd="@drawable/ic_baseline_calendar_month_24"
+            android:drawablePadding="10dp"
+            android:hint="Sélectionnez votre date de naissance"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+
+
+    </RelativeLayout>
+    <!-- 2eme etape !-->
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/layout_compte_cand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/create_cand_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro de téléphone"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/numCANDedittext"
+            android:drawableStart="@drawable/ic_baseline_local_phone_24"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginHorizontal="30dp"
+            android:textSize="16sp"
+            android:drawablePadding="10dp"
+            android:inputType="phone"
+            android:layout_below="@+id/create_cand_num"
+            android:padding="10dp"
+            android:hint="XX XX XX XX XX"
+            />
+
+        <TextView
+            android:id="@+id/create_cand_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/numCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/emailCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_cand_email"
+            android:layout_marginHorizontal="30dp"
+            android:textSize="16sp"
+            android:background="@drawable/edit_text_background"
+            android:drawableStart="@drawable/icon_email"
+            android:drawablePadding="10dp"
+            android:inputType="textEmailAddress"
+            android:hint="Entrez votre adresse électronique"
+            android:padding="10dp" />
+
+
+        <TextView
+            android:id="@+id/create_cand_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Mot de passe"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/passCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/create_cand_pass"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:textSize="16sp"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/icon_lock"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre mot de passe"
+            android:padding="10dp" />
+
+
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/layout_finalisation"
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        android:layout_marginHorizontal="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/aperçu_nom_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/aperçu_num"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Nom" />
+
+
+        <TextView
+            android:id="@+id/aperçu_prenom_t"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_nom"
+            android:text="Prenom"
+
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_prenom_t"
+            android:layout_alignEnd="@id/aperçu_num"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Prenom"/>
+
+
+        <TextView
+            android:id="@+id/aperçu_numID_t"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_prenom"
+            android:text="Numéro d'ID"
+
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_numID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_numID_t"
+            android:layout_alignEnd="@id/aperçu_num"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Num"/>
+
+
+        <TextView
+            android:id="@+id/aperçu_date_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_numID_t"
+            android:text="Date de naissance"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aperçu_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_date_t"
+            android:layout_alignEnd="@id/aperçu_num"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Date"/>
+
+
+        <TextView
+            android:id="@+id/aperçu_ville_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_date"
+            android:text="Ville actuelle"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_ville"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_ville_t"
+            android:layout_alignEnd="@id/aperçu_num"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Ville"/>
+
+
+        <TextView
+            android:id="@+id/aperçu_num_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_ville"
+            android:text="Numéro de téléphone"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_num_t"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@+id/aperçu_num_t"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Num" />
+
+
+        <TextView
+            android:id="@+id/aperçu_email_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_num"
+            android:text="Email"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_email_t"
+            android:layout_alignEnd="@id/aperçu_num"
+            android:background="@color/gray"
+            android:padding="2dp"
+            android:text="Email" />
+
+
+        <TextView
+            android:id="@+id/aperçu_mdp_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aperçu_email"
+            android:text="Mot de passe"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/aperçu_mdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/aperçu_mdp_t"
+            android:layout_alignEnd="@id/aperçu_num"
+            android:background="@color/gray"
+            android:inputType="textPassword"
+            android:padding="2dp"
+            android:text="Mot de passe" />
+
+        <ImageButton
+            android:id="@+id/view_mdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_remove_red_eye_24"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="5dp"
+            android:layout_alignBottom="@id/aperçu_mdp"
+            android:layout_toEndOf="@id/aperçu_mdp"/>
+
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continueButtonCAND"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/sign_button_background"
+        android:backgroundTint="@color/light_green"
+        android:text="Continuer"
+        android:textColor="@color/white" />
+
+
+
+
+
+</RelativeLayout>

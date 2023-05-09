@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context="_EmploisFragmentCand"
+    android:paddingTop="60dp"
+    >
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/shimmerView">
+        <include layout="@layout/item_placeholder"/>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="-3dp"
+            android:layout_marginEnd="-3dp"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/filter_border"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/filter_icon"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_baseline_filter_alt_24" />
+
+                <TextView
+                    android:id="@+id/edittext1"
+                    android:layout_width="wrap_content"
+                    android:padding="2dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:text="Date de publication"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/filter_icon"
+                    android:background="@drawable/filter_border"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24" />
+
+                <TextView
+                    android:id="@+id/edittext2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:text="Discipline"
+                    android:padding="2dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/edittext1"
+                    android:background="@drawable/filter_border"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24" />
+
+                <TextView
+                    android:id="@+id/edittext3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:padding="2dp"
+                    android:text="Lieu"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/edittext2"
+                    android:background="@drawable/filter_border"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24" />
+
+                <TextView
+                    android:id="@+id/edittext4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:text="Type de contrat"
+                    android:padding="2dp"
+                    android:paddingStart="5dp"
+                    android:layout_toEndOf="@+id/edittext3"
+                    android:background="@drawable/filter_border"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:layout_marginEnd="20dp"
+                    />
+
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/recyclerViewJobs" />
+    </LinearLayout>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+
+</RelativeLayout>

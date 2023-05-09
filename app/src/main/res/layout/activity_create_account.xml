@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateAccount">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Inscription"
+        app:titleTextColor="@color/white" />
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/containerSingUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:paddingHorizontal="20dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="-50dp"
+            android:paddingEnd="-50dp"
+            android:src="@mipmap/next" />
+
+        <TextView
+            android:id="@+id/pret"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image"
+            android:text="Prêt pour la prochaine étape ?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/texte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pret"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="Pour continuer, veuillez choisir le type\nde compte Jobz que vous voulez créer"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnrecruteur"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/btncandidat"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/sign_button_background"
+            android:backgroundTint="@color/dark_green"
+            android:drawableStart="@drawable/ic_baseline_person_search_24"
+            android:padding="10dp"
+            android:paddingEnd="40dp"
+            android:text="Employeur"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btncandidat"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/texte"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/sign_button_background"
+            android:backgroundTint="@color/dark_blue"
+            android:drawableStart="@drawable/ic_baseline_workk_24"
+            android:padding="10dp"
+            android:paddingLeft="60dp"
+            android:text="Demandeur d'emploi"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    >
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:text="Vous avez déjà un compte ?" />
+    <TextView
+        android:id="@+id/already_have_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connectez-vous"
+        android:layout_toEndOf="@id/text"
+        android:layout_alignBaseline="@id/text"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/light_blue"/>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
