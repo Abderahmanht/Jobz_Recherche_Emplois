@@ -79,7 +79,7 @@ public class Step2AjoutOffre extends AppCompatActivity {
                        ex = exp.getText().toString();
                 String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
-                Connection connection = new ___ConnectionClass().connectionClass();
+                Connection connection = new ___ConnectionClass().SQLServerConnection();
                 if(connection != null) {
                     try {
                         String insertSQL = "INSERT INTO Offre (Discipline_Metier, Titre_Poste, Type_Contrat, Description_Offre, Competences, Niveau_Experience, Salaire, Date_Publication, Date_Limite, ID_Recruteur) VALUES ('"+discipline+"','" + titreposte + "','" + typecontrat + "','" + description + "','" + comp + "','" + ex.replace("'", "''") + "','" + salaire + "','" + currentDate + "','" + datelimite + "','"+extras.getString("ID_Recruteur")+"');";

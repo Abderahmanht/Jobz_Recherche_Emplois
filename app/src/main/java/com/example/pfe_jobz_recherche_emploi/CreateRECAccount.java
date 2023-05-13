@@ -164,7 +164,7 @@ public class CreateRECAccount extends AppCompatActivity {
                         break;
                     case 3:
                         stateProgressBarrec.setAllStatesCompleted(true);
-                        Connection connection = new ___ConnectionClass().connectionClass();
+                        Connection connection = new ___ConnectionClass().SQLServerConnection();
                         if (connection != null) {
                             try {
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();

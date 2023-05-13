@@ -15,5 +15,7 @@
     <color name="alt_dark_blue">#0A369D</color>
     <color name="dark_green">#FF008577</color>
     <color name="gray">#BDBDBD</color>
+    <color name="component_gray">#E4E4E4</color>
+    <color name="lighter_gray">#EFEFEF</color>
 
 </resources>

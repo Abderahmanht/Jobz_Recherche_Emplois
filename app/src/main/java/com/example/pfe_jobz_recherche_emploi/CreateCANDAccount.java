@@ -181,7 +181,7 @@ public class CreateCANDAccount extends AppCompatActivity {
                         break;
                     case 3:
                         stateProgressBar.setAllStatesCompleted(true);
-                        Connection connection = new ___ConnectionClass().connectionClass();
+                        Connection connection = new ___ConnectionClass().SQLServerConnection();
                         if (connection != null) {
                             try {
                                 System.out.println("---------------------------------------------------------------\n\n\n\n\n\n"+noma);

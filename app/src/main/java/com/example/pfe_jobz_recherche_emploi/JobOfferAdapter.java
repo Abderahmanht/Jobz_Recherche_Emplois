@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,15 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.Connection;
 import java.util.List;
 
 public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHolder> {
-    private String intent;
+    private String idc;
     private List<JobOfferItem> jobOffers;
 
-    public JobOfferAdapter(List<JobOfferItem> jobOffers, String str) {
+    public JobOfferAdapter(List<JobOfferItem> jobOffers, String idc) {
         this.jobOffers = jobOffers;
-        this.intent = str;
+        this.idc = idc;
 
     }
 
@@ -44,18 +46,38 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
         holder.textViewType.setText(jobOffer.getContract());
         holder.textViewDate.setText(jobOffer.getDate());
         holder.imageViewLogo.setImageBitmap(jobOffer.getLogo());
+        holder.bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                __OffreEnregistree OffreEnregistee = new __OffreEnregistree();
 
+                String IDOffre = jobOffer.getID();
+                String IDCandidat = JobOfferAdapter.this.idc;
+                // Step 2: Perform a database query to check if the job offer is already saved
+                boolean isJobOfferSaved = OffreEnregistee.isJobOfferSaved(IDOffre, IDCandidat);
+
+                // Step 3: Delete or insert a record based on the query result
+                if (isJobOfferSaved) {
+                    // Job offer is already saved, delete the corresponding record
+                    OffreEnregistee.deleteSavedJobOffer(IDOffre, IDCandidat);
+                    // Update the bookmark button's appearance (e.g., remove bookmark icon)
+                    holder.bookmark.setImageResource(R.drawable.ic_bookmark_empty);
+                } else {
+                    // Job offer is not saved, insert a new record
+                    OffreEnregistee.insertSavedJobOffer(IDOffre, IDCandidat);
+                    // Update the bookmark button's appearance (e.g., set bookmark icon)
+                    holder.bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+                }
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-
-
                 Intent intent = new Intent(view.getContext(), JobDetails.class);
                 intent.putExtra("ID_Offre",jobOffer.getID());
-                intent.putExtra("ID_Candidat",JobOfferAdapter.this.intent);
+                intent.putExtra("ID_Candidat",JobOfferAdapter.this.idc);
                 Bitmap bitmap = jobOffer.getLogo();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -85,6 +107,7 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
         public TextView textViewType;
         public TextView textViewDate;
         public ImageView imageViewLogo;
+        public ImageButton bookmark;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -94,7 +117,12 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
             textViewType = itemView.findViewById(R.id.typeContrat);
             textViewDate = itemView.findViewById(R.id.datePublication);
             imageViewLogo = itemView.findViewById(R.id.companyLogoo);
+            bookmark = itemView.findViewById(R.id.saveIconOffer);
         }
+    }
+    public void updateItems(List<JobOfferItem> items) {
+        this.jobOffers = items;
+        notifyDataSetChanged();
     }
 }
 

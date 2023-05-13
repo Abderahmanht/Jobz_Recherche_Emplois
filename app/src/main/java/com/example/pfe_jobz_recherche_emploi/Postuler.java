@@ -88,7 +88,7 @@ public class Postuler extends AppCompatActivity {
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Connection connection = new ___ConnectionClass().connectionClass();
+                Connection connection = new ___ConnectionClass().SQLServerConnection();
                 if(connection!=null){
                     try{
                         String insertSQL = "INSERT INTO Candidature VALUES ('"+getIntent().getStringExtra("ID_Candidat")+"','"+getIntent().getStringExtra("ID_Offre")+"',?,?);";

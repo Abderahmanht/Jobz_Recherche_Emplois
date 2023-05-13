@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PFE_Jobz_Recherche_Emploi.iml" filepath="$PROJECT_DIR$/.idea/modules/PFE_Jobz_Recherche_Emploi.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFE_Jobz_Recherche_Emploi.app.unitTest.iml" />
     </modules>
   </component>
 </project>

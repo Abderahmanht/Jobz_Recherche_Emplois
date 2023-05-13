@@ -1,12 +1,14 @@
 package com.example.pfe_jobz_recherche_emploi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,12 +17,13 @@ import android.widget.TextView;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class JobDetails extends AppCompatActivity {
 
     private TextView name;
     private TextView title;
-    private TextView salary;
+    private Toolbar toolbar;
     private TextView location;
     private TextView date;
     private TextView contract;
@@ -40,7 +43,6 @@ public class JobDetails extends AppCompatActivity {
 
         name = findViewById(R.id.details_company);
         title = findViewById(R.id.details_job_title);
-        salary = findViewById(R.id.details_salary);
         location = findViewById(R.id.details_location);
         date = findViewById(R.id.details_date);
         contract = findViewById(R.id.details_contract);
@@ -49,12 +51,12 @@ public class JobDetails extends AppCompatActivity {
         competences = findViewById(R.id.details_required_skills);
         experience = findViewById(R.id.details_experience);
         details_logo = findViewById(R.id.details_logo);
+        toolbar = findViewById(R.id.detailstoolbar);
 
         Bundle extras = getIntent().getExtras();
         postuler = findViewById(R.id.details_apply_button);
         name.setText(extras.getString("company_name"));
         title.setText(extras.getString("job_title"));
-        salary.setText(extras.getString("salary"));
         location.setText(extras.getString("company_location"));
         date.setText(extras.getString("date_publication"));
         contract.setText(extras.getString("type_contrat"));
@@ -65,7 +67,7 @@ public class JobDetails extends AppCompatActivity {
 
         // get data stored in table -Offre-
 
-        Connection connection = new ___ConnectionClass().connectionClass();
+        Connection connection = new ___ConnectionClass().SQLServerConnection();
 
         if(connection!=null){
             try {
@@ -97,6 +99,21 @@ public class JobDetails extends AppCompatActivity {
             }
         });
 
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
 
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(0,0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

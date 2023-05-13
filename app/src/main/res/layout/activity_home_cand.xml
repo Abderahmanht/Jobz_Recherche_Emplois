@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#EFEFEF"
     android:layout_height="match_parent"
     tools:context=".HomeCand">
 
@@ -11,11 +12,11 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mytoolbar"
+            android:id="@+id/maintoolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#007CFF"
-            app:title="Jobz"
+            android:background="@color/dark_blue"
+            app:title="Acceuil"
             app:titleTextColor="@color/white"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
@@ -25,6 +26,7 @@
 
     <FrameLayout
         android:id="@+id/fragment_container"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/navbar" />
@@ -36,9 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/shape"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
         app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:menu="@menu/menu_bar_bottom_navbar" />
 
 </RelativeLayout>

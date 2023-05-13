@@ -6,14 +6,23 @@ public class JobOfferItem {
     private String company;
     private String title;
     private String contract;
-    private String salary;
+    private String secteur;
     private String location;
     private String date;
     private Bitmap logo;
     private String companyDesc;
     private String ID;
+    private String experience;
 
-    public JobOfferItem(String ID, String company,String companyDesc, String title, String contract, String location, String date, Bitmap logo) {
+    public String getSecteur() {
+        return secteur;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public JobOfferItem(String ID, String company, String companyDesc, String title, String contract, String location, String date, Bitmap logo, String secteur, String experience) {
         this.company = company;
         this.title = title;
         this.contract = contract;
@@ -22,6 +31,8 @@ public class JobOfferItem {
         this.logo = logo;
         this.ID = ID;
         this.companyDesc = companyDesc;
+        this.secteur = secteur;
+        this.experience = experience;
     }
 
     public String getCompany() {

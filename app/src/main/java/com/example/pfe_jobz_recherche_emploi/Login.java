@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Connection connection = new ___ConnectionClass().connectionClass();
+                Connection connection = new ___ConnectionClass().SQLServerConnection();
                 if (connection != null) {
                     try {
 
@@ -96,7 +96,7 @@ public class Login extends AppCompatActivity {
         logrec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Connection connection = new ___ConnectionClass().connectionClass();
+                Connection connection = new ___ConnectionClass().SQLServerConnection();
                 if (connection != null) {
                     try {
 

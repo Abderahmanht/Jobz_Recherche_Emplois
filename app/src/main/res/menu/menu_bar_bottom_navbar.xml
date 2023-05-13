@@ -2,24 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/emplois"
-        android:icon="@drawable/ic_baseline_business_center_24"
-        android:title="Emplois"
+        android:id="@+id/acceuil"
+        android:icon="@drawable/home_selector"
+        android:title="Acceuil"
         />
+
     <item
-        android:id="@+id/rechercher"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="Rechercher"
+        android:id="@+id/mes_candidatures"
+        android:icon="@drawable/mescandidatures_selector"
+        android:title="Candidatures"/>
+
+    <item
+        android:id="@+id/alertes"
+        android:icon="@drawable/alertes_selector"
+        android:title="Alertes"
         />
     <item
         android:id="@+id/mes_offres"
-        android:icon="@drawable/ic_baseline_layers_24_black"
-        android:title="Mes Offres"
+        android:icon="@drawable/mesoffres_selector"
+        android:title="Enregistré"
         />
     <item
-        android:id="@+id/profile_cand"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="Profile"
+        android:id="@+id/profil_cand"
+        android:icon="@drawable/profil_selector"
+        android:title="Profil"
         />
 
 </menu>

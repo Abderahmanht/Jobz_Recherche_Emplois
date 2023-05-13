@@ -124,6 +124,7 @@
         android:layout_below="@id/passwordEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="38dp"
+        android:clickable="true"
         android:layout_marginTop="40dp"
         android:background="@drawable/sign_button_background"
         android:padding="15dp"

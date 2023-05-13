@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="._AcceuilFragmentCand"
+        android:paddingTop="50dp"
+        >
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_marginTop="140dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/shimmerView">
+            <include layout="@layout/item_placeholder"/>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                >
+
+
+
+                <LinearLayout
+                    android:id="@+id/search_filters_layout_emplois"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rounded_corners"
+                    >
+
+                    <EditText
+                        android:id="@+id/bar_recherche_offres"
+                        android:layout_width="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="30dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rounded_corners"
+                        android:backgroundTint="@color/component_gray"
+                        android:hint="Rechercher des offres"
+                        android:drawableStart="@drawable/ic_baseline_search_24"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:inputType="text"
+                        android:imeOptions="actionSearch"
+                        />
+
+                    <Button
+                        android:id="@+id/button_filtres_recherche"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_corners"
+                        android:backgroundTint="#038691"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:text="Filtres"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:textSize="14sp"
+                        android:layout_marginStart="10dp"
+                        android:drawableStart="@mipmap/setting_filters"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Offres récentes"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:background="@drawable/shape"
+                    android:backgroundTint="@color/lighter_gray"
+                    android:layout_height="match_parent"
+                    android:paddingTop="20dp"
+                    android:paddingHorizontal="5dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/recyclerViewJobs" />
+            </LinearLayout>
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+

@@ -9,6 +9,8 @@
     <string name="enter_email">Entrez votre Email</string>
     <string name="enter_password">Entrez votre mot de passe</string>
     <string name="sign_in">Se Connecter</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
