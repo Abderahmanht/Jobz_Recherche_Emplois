@@ -6,22 +6,22 @@
         android:icon="@drawable/home_selector"
         android:title="Acceuil"
         />
-
     <item
-        android:id="@+id/mes_candidatures"
-        android:icon="@drawable/mescandidatures_selector"
-        android:title="Candidatures"/>
+        android:id="@+id/mes_offres"
+        android:icon="@drawable/mesoffres_selector"
+        android:title="Enregistré"
+        />
 
     <item
         android:id="@+id/alertes"
         android:icon="@drawable/alertes_selector"
         android:title="Alertes"
         />
+
     <item
-        android:id="@+id/mes_offres"
-        android:icon="@drawable/mesoffres_selector"
-        android:title="Enregistré"
-        />
+        android:id="@+id/mes_candidatures"
+        android:icon="@drawable/mescandidatures_selector"
+        android:title="Candidatures"/>
     <item
         android:id="@+id/profil_cand"
         android:icon="@drawable/profil_selector"

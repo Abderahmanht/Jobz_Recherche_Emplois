@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_view_information"
+        android:title="Voir détails du candidat"
+        android:icon="@drawable/ic_baseline_remove_red_eye_24"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_delete_submission"
+        android:title="Supprimer candidature"
+        android:icon="@drawable/baseline_delete_24_gray"
+        app:showAsAction="never"
+        />
+</menu>

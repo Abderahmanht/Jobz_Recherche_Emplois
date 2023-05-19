@@ -64,6 +64,16 @@
             android:textSize="16sp" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_nom"
+            android:visibility="gone"
+            android:layout_below="@id/nameCANDedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
+        <TextView
             android:id="@+id/create_cand_prenom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,6 +98,17 @@
             android:inputType="textPersonName"
             android:padding="10dp"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_prenom"
+            android:layout_below="@id/prenomCANDedittext"
+            android:text="Ce champ est obligatoire*"
+            android:visibility="gone"
+
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
 
 
         <TextView
@@ -117,6 +138,17 @@
             android:padding="10dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_numID"
+            android:visibility="gone"
+
+            android:layout_below="@id/numIDCANDedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
 
         <TextView
             android:id="@+id/create_cand_ville"
@@ -142,6 +174,17 @@
             android:hint="Entrez votre wilaya"
             android:padding="10dp"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_wilaya"
+            android:layout_below="@id/wilayaCANDedittext"
+            android:visibility="gone"
+
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
 
 
 
@@ -169,6 +212,16 @@
             android:hint="Sélectionnez votre date de naissance"
             android:padding="10dp"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_date"
+            android:visibility="gone"
+            android:layout_below="@id/datenaissanceCAND"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
 
 
 
@@ -234,6 +287,34 @@
             android:hint="Entrez votre adresse électronique"
             android:padding="10dp" />
 
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_email"
+            android:layout_below="@id/emailCANDedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_email_incorrect"
+            android:layout_below="@id/emailCANDedittext"
+            android:text="E-mail incorrect, veuillez entrer un adresse valide"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_email_already"
+            android:layout_below="@id/emailCANDedittext"
+            android:text="Il existe déjà un compte avec cette adresse e-mail"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
 
         <TextView
             android:id="@+id/create_cand_pass"
@@ -260,6 +341,26 @@
             android:drawablePadding="10dp"
             android:hint="Entrez votre mot de passe"
             android:padding="10dp" />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_pass"
+            android:layout_below="@id/passCANDedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_pass_court"
+            android:layout_below="@id/passCANDedittext"
+            android:text="Votre mot de passe doit contenir au moins 8 caractères"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
 
 
 

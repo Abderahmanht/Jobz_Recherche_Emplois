@@ -8,50 +8,43 @@
     android:fitsSystemWindows="true"
     android:visibility="visible"
     tools:context=".HomeRec"
-    tools:openDrawer="start"
     tools:visibility="visible"
-    tools:showIn="navigation_view"
-    >
+    tools:showIn="navigation_view">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/light_blue"
-            app:title="Jobz pour les employeurs"
-            app:titleTextColor="@color/white" />
+            android:gravity="center"
+            android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/maintoolbarrec"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@color/white"
+                app:title="Jobz"
+                app:subtitle="pour les employeurs"
+                app:subtitleTextColor="@color/dark_green"
+                app:titleTextColor="@color/dark_green"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
-            android:id="@+id/frame"
+            android:id="@+id/fragment_container_rec"
+            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
 
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat= "@drawable/ic_baseline_add_24"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="20dp"
-                    android:clickable="true"
-                    />
-
-
-
-        </FrameLayout>
-
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view_rec"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/header"
@@ -59,9 +52,5 @@
         android:layout_gravity="start">
 
     </com.google.android.material.navigation.NavigationView>
-
-
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

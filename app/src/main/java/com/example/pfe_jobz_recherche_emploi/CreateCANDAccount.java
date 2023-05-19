@@ -21,14 +21,21 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.kofigyan.stateprogressbar.StateProgressBar;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Objects;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 public class CreateCANDAccount extends AppCompatActivity {
 
@@ -51,6 +58,17 @@ public class CreateCANDAccount extends AppCompatActivity {
     private TextView noma, prenoma,numIDa, datea, villea;
     private TextView numa, emaila, mdpa;
 
+    TextView error_nom;
+    TextView error_prenom;
+    TextView error_numID;
+    TextView error_wilaya;
+    TextView error_date;
+    TextView error_email;
+    TextView error_email_incorrect;
+    TextView error_email_already;
+    TextView error_pass;
+    TextView error_pass_court;
+
     private String[] stateProgressData = {"Informations", "Compte", "Finalisation"};
 
 
@@ -58,6 +76,17 @@ public class CreateCANDAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_candaccount);
+
+        error_nom = findViewById(R.id.error_nom);
+        error_prenom = findViewById(R.id.error_prenom);
+        error_numID = findViewById(R.id.error_numID);
+        error_wilaya = findViewById(R.id.error_wilaya);
+        error_date = findViewById(R.id.error_date);
+        error_email = findViewById(R.id.error_email);
+        error_email_incorrect = findViewById(R.id.error_email_incorrect);
+        error_email_already = findViewById(R.id.error_email_already);
+        error_pass = findViewById(R.id.error_pass);
+        error_pass_court = findViewById(R.id.error_pass_court);
 
         continuer = findViewById(R.id.continueButtonCAND);
         viewmdp = findViewById(R.id.view_mdp);
@@ -151,40 +180,107 @@ public class CreateCANDAccount extends AppCompatActivity {
             public void onClick(View view) {
                 switch (stateProgressBar.getCurrentStateNumber()) {
                     case 1:
-                        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
-                        info.setVisibility(View.INVISIBLE);
-                        compte.setVisibility(View.VISIBLE);
+                        boolean allCorrect = true;
 
-                        break;
+                        if(nom.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_nom.setVisibility(View.VISIBLE);
+                        }
+                        if(prenom.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_prenom.setVisibility(View.VISIBLE);
+                        }
+                        if(numIDNational.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_numID.setVisibility(View.VISIBLE);
+                        }
+                        if(wilaya.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_wilaya.setVisibility(View.VISIBLE);
+                        }
+                        if(dateN.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_date.setVisibility(View.VISIBLE);
+                        }
+
+                        if(allCorrect) {
+                            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                            info.setVisibility(View.INVISIBLE);
+                            compte.setVisibility(View.VISIBLE);
+                            break;
+                        }
+
+
                     case 2:
-                        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
-                        compte.setVisibility(View.INVISIBLE);
-                        aperçu.setVisibility(View.VISIBLE);
+                        boolean allCorrect2 = true;
 
-                        noma.setText(nom.getText().toString());
-                        prenoma.setText(prenom.getText().toString());
-                        numIDa.setText(numIDNational.getText().toString());
-                        datea.setText(dateN.getText().toString());
-                        villea.setText(wilaya.getText().toString());
-                        numa.setText(num.getText().toString());
-                        emaila.setText(email.getText().toString());
-                        mdpa.setText(motdepasse.getText().toString());
-                        viewmdp.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
+                        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+                        if (email.getText().toString().isEmpty()) {
+                            allCorrect2 = false;
+                        } else if (!email.getText().toString().matches(emailPattern)) {
+                            allCorrect2 = false;
+                        } else if (alreadyExists(email.getText().toString())) {
+                            allCorrect2 = false;
+                        }
+
+                        if (motdepasse.getText().toString().isEmpty()) {
+                            allCorrect2 = false;
+                        } else if (motdepasse.getText().toString().length() < 8) {
+                            allCorrect2 = false;
+                        }
+
+                        if (allCorrect2) {
+                            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+
+                            compte.setVisibility(View.INVISIBLE);
+                            aperçu.setVisibility(View.VISIBLE);
+
+                            noma.setText(nom.getText().toString());
+                            prenoma.setText(prenom.getText().toString());
+                            numIDa.setText(numIDNational.getText().toString());
+                            datea.setText(dateN.getText().toString());
+                            villea.setText(wilaya.getText().toString());
+                            numa.setText(num.getText().toString());
+                            emaila.setText(email.getText().toString());
+                            mdpa.setText(motdepasse.getText().toString());
+                            viewmdp.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
                                     mdpa.setInputType(InputType.TYPE_CLASS_TEXT);
-
-
+                                }
+                            });
+                            continuer.setText("Confirmer");
+                        } else {
+                            // Display email and password errors
+                            if (email.getText().toString().isEmpty()) {
+                                error_email.setVisibility(View.VISIBLE);
+                                error_email_incorrect.setVisibility(View.INVISIBLE);
+                                error_email_already.setVisibility(View.INVISIBLE);
+                            } else if (!email.getText().toString().matches(emailPattern)) {
+                                error_email.setVisibility(View.INVISIBLE);
+                                error_email_incorrect.setVisibility(View.VISIBLE);
+                                error_email_already.setVisibility(View.INVISIBLE);
+                            } else if (alreadyExists(email.getText().toString())) {
+                                error_email.setVisibility(View.INVISIBLE);
+                                error_email_incorrect.setVisibility(View.INVISIBLE);
+                                error_email_already.setVisibility(View.VISIBLE);
                             }
-                        });
-                        continuer.setText("Confirmer");
+
+                            if (motdepasse.getText().toString().isEmpty()) {
+                                error_pass.setVisibility(View.VISIBLE);
+                                error_pass_court.setVisibility(View.INVISIBLE);
+                            } else if (motdepasse.getText().toString().length() < 8) {
+                                error_pass.setVisibility(View.INVISIBLE);
+                                error_pass_court.setVisibility(View.VISIBLE);
+                            }
+                        }
                         break;
+
                     case 3:
-                        stateProgressBar.setAllStatesCompleted(true);
                         Connection connection = new ___ConnectionClass().SQLServerConnection();
                         if (connection != null) {
                             try {
-                                System.out.println("---------------------------------------------------------------\n\n\n\n\n\n"+noma);
                                 String SQLinsert = "INSERT INTO Candidat (Nom, Prenom, Num_ID_National, Date_Naissance, Ville, Num_Tel, Email, Mot_de_passe) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" +numIDa.getText()+"','"+ datea.getText() + "','" + villea.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "');";
                                 Statement statement = connection.createStatement();
                                 resultSet = statement.executeUpdate(SQLinsert);
@@ -194,6 +290,8 @@ public class CreateCANDAccount extends AppCompatActivity {
                             }
                         }
                         if (resultSet > 0) {
+                            stateProgressBar.setAllStatesCompleted(true);
+                            sendEmail(emaila.getText().toString().trim());
                             Snackbar snackbar = Snackbar.make(view, "Compte créé avec succès", Snackbar.LENGTH_INDEFINITE);
                             snackbar.setAction("SE CONNECTER", new View.OnClickListener() {
                                 @Override
@@ -223,5 +321,54 @@ public class CreateCANDAccount extends AppCompatActivity {
                     return super.onOptionsItemSelected(item);
             }
         }
+
+    private void sendEmail(String emailAddress) {
+        final String username = "jobzrechercheemplois@gmail.com";
+        final String password = "uynpnrhwrqzaekls";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress));
+            message.setSubject("Bienvenue sur Jobz!");
+            message.setText("Bonjour "+nom.getText()+" "+prenom.getText()+",\n\nVotre compte a été crée avec succès\nMerci d'avoir crée un compte Jobz, Vous pouvez desormais rechercher, enregistrer et candidater au postes qui vous conviennent parfaitement");
+            Transport.send(message);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
+
+    public boolean alreadyExists(String email){
+        Connection connection = new ___ConnectionClass().SQLServerConnection();
+        if(connection!=null){
+            try{
+                String query = "SELECT Email FROM Recruteur WHERE Email = '"+email+"'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet1 = statement.executeQuery(query);
+
+                if(resultSet1.next()){
+                    return true;
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+
+}
 

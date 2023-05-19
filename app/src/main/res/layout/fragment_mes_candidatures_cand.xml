@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="._MesCandidaturesFragmentCand">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/candidatures_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Candidatures envoyées"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/c_dsc"
+        android:layout_marginHorizontal="20dp"
+        android:layout_below="@id/candidatures_title"
+        android:text="Vos candidatures Jobz envoyées à l'aide de la fonctionnalité postuler sont répetoriées ici."/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/c_dsc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/recycler_view_candidatures"
+        android:background="@drawable/shape"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/lighter_gray"
+        android:padding="20dp"
+        />
 
-</FrameLayout>
+</RelativeLayout>

@@ -4,34 +4,33 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/notifications_title"
+        android:id="@+id/alertes_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alertes d'emplois"
+        android:text="Alertes d'emploi"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
-        android:textSize="16dp"
-        />
-    <ImageButton
-        android:id="@+id/alerte_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_settings_24"
-        android:background="@android:color/transparent"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="20dp"
+        android:textSize="18dp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alertes_title"
+        android:id="@+id/alertes_desc"
+        android:paddingHorizontal="20dp"
+        android:text="Les alertes de Jobz vous permettent d'être prévenu par email lors de la publication d'un nouveau poste correspondant à vos critères de sélection. Vous pouvez créer plusieurs alertres"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/notifications_title"
+        android:layout_below="@id/alertes_desc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/alerts_notifications"
+        android:id="@+id/recycler_view_alertes_cand"
         android:background="@drawable/shape"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/lighter_gray"
         android:padding="20dp"
         />
@@ -44,9 +43,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:drawableStart="@drawable/baseline_add_circle_outline_24"
-        android:text="Créer une alerte d'emploi"
-        android:backgroundTint="@color/dark_green"
-        android:padding="15dp"
+        android:text="Nouvelle alerte"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/dark_blue"
+        android:paddingHorizontal="30dp"
+        android:textSize="16sp"
         android:drawablePadding="10dp"
         android:layout_marginBottom="20dp"
         android:textColor="@color/white"

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModifierProfilCand">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/modifier_profil_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Modifier profil"
+        app:titleTextColor="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/layout_m_informations_cand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/modif_cand_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/mnameCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/modif_cand_nom"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre nom"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/modif_cand_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prenom"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/mnameCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/mprenomCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/modif_cand_prenom"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre prenom"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/modif_cand_numID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mprenomCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Numéro d'identité national"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/mnumIDCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/modif_cand_numID"
+            android:layout_marginHorizontal="30dp"
+            android:drawableStart="@drawable/ic_baseline_numbers_24"
+            android:background="@drawable/edit_text_background"
+            android:completionThreshold="1"
+            android:drawablePadding="10dp"
+            android:inputType="number"
+            android:hint="Entrez votre numéro d'identité national"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/modif_cand_ville"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mnumIDCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Wilaya actuelle"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/mwilayaCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/modif_cand_ville"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:completionThreshold="1"
+            android:drawablePadding="10dp"
+            android:hint="Entrez votre wilaya"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+
+        <TextView
+            android:id="@+id/modif_cand_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de naissance"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/mwilayaCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/mdatenaissanceCAND"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/modif_cand_date"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableEnd="@drawable/ic_baseline_calendar_month_24"
+            android:drawablePadding="10dp"
+            android:hint="Sélectionnez votre date de naissance"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/modif_cand_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro de téléphone"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/mdatenaissanceCAND"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/mnumCANDedittext"
+            android:drawableStart="@drawable/ic_baseline_local_phone_24"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginHorizontal="30dp"
+            android:textSize="16sp"
+            android:drawablePadding="10dp"
+            android:inputType="phone"
+            android:layout_below="@+id/modif_cand_num"
+            android:padding="10dp"
+            android:hint="XX XX XX XX XX"
+            />
+
+
+    </RelativeLayout>
+    <Button
+        android:id="@+id/appliquer_changements_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Appliquer changements"
+        android:textAllCaps="false"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/light_green"
+        android:textColor="@color/white"
+        android:paddingHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp"
+        />
+
+</RelativeLayout>

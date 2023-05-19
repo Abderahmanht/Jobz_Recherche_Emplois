@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Espace employeur"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="30dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+
+
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/publier_container"
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_height="220dp"
+            android:paddingHorizontal="30dp"
+            android:backgroundTint="@color/dark_green"
+            android:background="@drawable/edit_text_background_green"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="180dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publiez vos offres"
+                android:drawableEnd="@drawable/baseline_post_add_24"
+                android:drawablePadding="10dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="50dp"
+                android:text="Publiez dès maintenant votre offre d'emploi et trouvez les candidats \nidéaux pour rejoindre votre entreprise"
+                />
+            <Button
+                android:id="@+id/publier_offre_button"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_height="wrap_content"
+                android:text="Publier une offre d'emploi"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="@color/light_green"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_below="@id/publier_container"
+            android:text="Offres et candidatures"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
+            android:layout_below="@id/publier_container"
+            android:id="@+id/candidatures_recue_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="30dp"
+            android:clickable="true"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/component_gray"
+            android:layout_marginTop="60dp"
+            >
+            <TextView
+                android:id="@+id/stats_nombre_candidatures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:text="25"
+                android:drawableEnd="@drawable/baseline_groups_24_black"
+                android:drawablePadding="20dp"
+                android:layout_marginTop="15dp"
+                android:textSize="36sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/stats_nombre_candidatures"
+                android:layout_marginStart="60dp"
+                android:text="Candidatures reçues" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:drawableEnd="@drawable/ic_arrow_blue"
+                android:text="Voir tout"
+                android:textColor="@color/light_blue"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/offres_publiees_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="30dp"
+            android:backgroundTint="@color/component_gray"
+            android:background="@drawable/rounded_corners"
+            android:layout_below="@id/candidatures_recue_layout"
+            android:clickable="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:id="@+id/stats_nombre_offres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7"
+                android:drawableEnd="@drawable/baseline_article_24"
+                android:layout_marginStart="70dp"
+                android:drawablePadding="20dp"
+                android:layout_marginTop="15dp"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/stats_nombre_offres"
+                android:layout_marginStart="60dp"
+                android:text="Offres publiées" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:drawableEnd="@drawable/ic_arrow_blue"
+                android:text="Voir tout"
+                android:textColor="@color/light_blue"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/publier_offre_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/light_green"
+        android:src="@drawable/ic_baseline_add_24" />
+
+
+
+
+
+</RelativeLayout>

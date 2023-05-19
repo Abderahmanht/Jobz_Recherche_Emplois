@@ -6,16 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_blue"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:title="Jobz"
-        app:titleTextColor="@color/white"
-        />
+
 
     <ImageView
         android:layout_width="160dp"
@@ -138,11 +129,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:text="Vous n'avez pas de compte?" />
+        android:layout_marginStart="50dp"
+        android:text="Vous avez un compte d'employeur ?" />
 
-    <Button
-        android:id="@+id/sign_up"
+    <TextView
+        android:id="@+id/sign_in_rec"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,9 +142,9 @@
         android:layout_marginBottom="30dp"
         android:layout_toEndOf="@+id/dont_have_account"
         android:includeFontPadding="false"
-        android:text="S'inscrire"
+        android:text="Se connecter"
         android:textAllCaps="false"
-        android:textColor="@color/dark_blue" />
+        android:textColor="@color/dark_green" />
 
 
     <LinearLayout
@@ -170,19 +161,19 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_below="@id/login_btn"
-        android:layout_marginStart="37dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="30dp"
         android:paddingHorizontal="5dp"
-        android:text="Vous avez un compte d'employeur ?"
+        android:text="Vous n'avez pas de compte ?"
         android:textAllCaps="false" />
     <TextView
-        android:id="@+id/logrec"
+        android:id="@+id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/textEmployeur"
         android:layout_alignBaseline="@id/textEmployeur"
-        android:text="Se connecter"
-        android:textColor="@color/dark_green"
+        android:text="Créer un compte"
+        android:textColor="@color/light_blue"
         />
 
 

@@ -5,7 +5,7 @@
     <item
         android:title="More"
         android:id="@+id/MoreVert"
-        android:icon="@drawable/ic_baseline_more_vert_24"
+        android:icon="@drawable/baseline_more_vert_24_blue"
         app:showAsAction="always">
         <menu>
         <item

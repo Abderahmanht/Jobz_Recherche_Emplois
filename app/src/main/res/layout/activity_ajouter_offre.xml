@@ -7,115 +7,377 @@
     tools:context=".__AjouterOffre"
     >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ajout_offre_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_green"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Ajouter offre d'emploi"
+        app:titleTextColor="@color/white" />
 
-    <TextView
-        android:id="@+id/stepText"
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/state_progress_bar_ajout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter une nouvelle offre d'emploi"
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_marginTop="110dp"
+        android:padding="5dp"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_checkStateCompleted="true"
+        app:spb_currentStateDescriptionColor="@color/light_green"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="@color/light_green"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="@color/white" />
+
     <LinearLayout
-        android:id="@+id/greenStepContainer"
-        android:layout_width="wrap_content"
+        android:id="@+id/etape1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/stepText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
         >
-        <LinearLayout
-            android:id="@+id/step1rec"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:background="@drawable/step"
-            android:backgroundTint="@color/light_green"
-            android:orientation="horizontal" />
 
-        <LinearLayout
-            android:id="@+id/step2rec"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:background="@drawable/step"
-            android:orientation="horizontal"
-            android:layout_toEndOf="@+id/step1rec"
-            android:layout_marginStart="15dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginStart="40dp"
+            android:text="Secteur"
+            android:textColor="@color/black"/>
+        <AutoCompleteTextView
+            android:id="@+id/ajout_offre_secteur"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:hint="Secteur, discipline, catégorie"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:completionThreshold="1"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:text="Titre du poste"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/ajout_offre_titre_poste"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:hint="Titre du poste"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:completionThreshold="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:text="Type de contrat"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/ajout_offre_type_contrat"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:hint="Choisissez le type de contrat"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:text="Description du poste"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/ajout_offre_description_offre"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="top"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:hint="Résumé des informations pertinentes au poste vacant"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:completionThreshold="1"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/etape2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginStart="40dp"
+            android:text="Compétences requises"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/ajout_competences"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="top"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:hint="Compétences requises"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:completionThreshold="1"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:text="Niveau d'expérience requis"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/ajout_offre_experience_requis"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:hint="Choisissez le niveau d'expérience"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:completionThreshold="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:text="Date d'expiration"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/ajout_offre_date_expiration"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background_green"
+            android:hint="Date limite pour candidater"
+            android:drawableEnd="@drawable/ic_baseline_calendar_month_24"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:textSize="16sp"
             />
     </LinearLayout>
 
+    <ScrollView
+        android:visibility="gone"
+        android:id="@+id/layout_finalisation_ajout_offre"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true">
 
-    <AutoCompleteTextView
-        android:id="@+id/discipline"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/greenStepContainer"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/edit_text_background_green"
-        android:drawableStart="@drawable/ic_baseline_work_24"
-        android:drawablePadding="10dp"
-        android:hint="Discipline"
-        android:padding="10dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="30dp"
+            android:background="@color/gray"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:paddingHorizontal="40dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="40dp">
 
-    <EditText
-        android:id="@+id/jobTitle"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/discipline"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edit_text_background_green"
-        android:drawableStart="@drawable/ic_baseline_title_24"
-        android:drawablePadding="10dp"
-        android:hint="Titre du poste"
-        android:padding="10dp" />
+            <TextView
+                android:id="@+id/s_t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Secteur"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/type"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/jobTitle"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edit_text_background_green"
-        android:cursorVisible="false"
-        android:drawableStart="@drawable/ic_baseline_access_time_24"
-        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-        android:drawablePadding="10dp"
-        android:hint="Type de contrat"
-        android:padding="10dp"
-        android:textSize="18sp" />
+            <TextView
+                android:id="@+id/ajout_offre_apercu_secteur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/s_t"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:text="secteur" />
+
+            <TextView
+                android:id="@+id/t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/s_t"
+                android:layout_marginTop="15dp"
+                android:text="Titre"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ajout_offre_apercu_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/t"
+                android:text="titre" />
+
+            <TextView
+                android:id="@+id/tc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ajout_offre_apercu_titre"
+                android:layout_marginTop="15dp"
+                android:text="Type contrat"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ajout_offre_apercu_type_contrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tc"
+                android:layout_alignParentEnd="true"
+                android:text="type" />
+
+            <TextView
+                android:id="@+id/ds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tc"
+                android:layout_marginTop="15dp"
+                android:text="Description"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ajout_offre_apercu_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ds"
+                android:text="description" />
+
+            <TextView
+                android:id="@+id/cm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ajout_offre_apercu_description"
+                android:layout_marginTop="15dp"
+                android:text="Competences"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
-    <EditText
-        android:id="@+id/salaire"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/type"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edit_text_background_green"
-        android:drawableStart="@drawable/ic_baseline_attach_money_24"
-        android:drawablePadding="10dp"
-        android:hint="Salaire proposé"
-        android:padding="10dp" />
+            <TextView
+                android:id="@+id/ajout_offre_apercu_competences_requises"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cm"
+                android:text="comp" />
+
+            <TextView
+                android:id="@+id/e"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ajout_offre_apercu_competences_requises"
+                android:layout_marginTop="15dp"
+                android:text="Expérience"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/continueButtonOffre"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/salaire"
-        android:layout_alignEnd="@id/salaire"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/button_background"
+            <TextView
+                android:id="@+id/ajout_offre_apercu_experience_requise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/e"
+                android:layout_alignParentEnd="true"
+                android:text="exp" />
+
+            <TextView
+                android:id="@+id/dt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ajout_offre_apercu_experience_requise"
+                android:layout_marginTop="15dp"
+                android:text="Date d'expiration"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/ajout_offre_apercu_date_expriration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/dt"
+                android:layout_alignParentEnd="true"
+                android:text="date expriration" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+    <Button
+        android:id="@+id/button_ajouter_offre_emploi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/white"
+        android:text="Suivant"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         android:backgroundTint="@color/light_green"
-        android:text="Continuer"
+        android:background="@drawable/rounded_corners"
         android:textAllCaps="false"
-        android:textColor="@color/white" />
+        />
+
+
+
+
 
 
 

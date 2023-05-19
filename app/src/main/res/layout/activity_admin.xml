@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ADMIN">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/admin_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Administrateur Jobz"
+        app:titleTextColor="@color/white"
+        android:background="@color/dark_blue"/>
+
+    <LinearLayout
+        android:id="@+id/admin_top"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:padding="10dp"
+            android:background="@color/lighter_gray"
+            android:orientation="vertical"
+            android:layout_width="160dp"
+            android:layout_height="100dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Demandeurs d'emploi"
+                android:textColor="@color/dark_blue"
+                />
+            <TextView
+                android:id="@+id/count_dem"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/dark_blue"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="15"/>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/lighter_gray"
+            android:orientation="vertical"
+            android:layout_width="160dp"
+            android:layout_height="100dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Employeurs"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/dark_green"
+                />
+            <TextView
+                android:id="@+id/count_emp"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/dark_green"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="8"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/admin_bottom"
+        android:layout_below="@id/admin_top"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:padding="10dp"
+            android:background="@color/lighter_gray"
+            android:orientation="vertical"
+            android:layout_width="160dp"
+            android:layout_height="100dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Candidatures"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/light_blue"
+                />
+            <TextView
+                android:id="@+id/count_candidatures"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/light_blue"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="8"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/lighter_gray"
+            android:orientation="vertical"
+            android:layout_width="160dp"
+            android:layout_height="100dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offres publiées"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/light_green"
+                />
+            <TextView
+                android:id="@+id/count_offres"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/light_green"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="15"/>
+
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:paddingStart="-2dp"
+        android:paddingEnd="-2dp"
+        android:background="@drawable/container_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/admin_bottom"
+        android:layout_marginTop="50dp"
+        >
+        <Button
+            android:id="@+id/admin_gestion_recruteurs_btn"
+            android:layout_width="match_parent"
+            android:drawableStart="@drawable/ic_baseline_person_search_24"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@color/dark_green"
+            android:layout_height="wrap_content"
+            android:text="Gestion comptes employeurs"/>
+
+        <Button
+            android:id="@+id/admin_gestion_candidats_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:drawableStart="@drawable/ic_baseline_work_24_white"
+            android:background="@color/dark_blue"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/admin_gestion_recruteurs_btn"
+            android:text="Gestion comptes demandeurs d'emploi"/>
+        <Button
+            android:id="@+id/admin_envoie_emails_btn"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:drawableStart="@drawable/icon_email"
+            android:layout_below="@id/admin_gestion_candidats_btn"
+            android:text="Envoyer e-mails"/>
+
+    </RelativeLayout>
+    
+
+    
+</RelativeLayout>

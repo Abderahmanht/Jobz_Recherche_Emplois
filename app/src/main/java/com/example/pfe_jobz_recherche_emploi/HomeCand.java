@@ -15,7 +15,11 @@ import com.google.android.material.navigation.NavigationBarView;
 
 
 public class HomeCand extends AppCompatActivity {
-
+    _AcceuilFragmentCand acceuilFragment = new _AcceuilFragmentCand();
+    _MesCandidaturesFragmentCand mesCandidaturesFragment = new _MesCandidaturesFragmentCand();
+    _AlertesFragmentCand alertesFragment = new _AlertesFragmentCand();
+    _MesOffresFragmentCand mesoffresFragment = new _MesOffresFragmentCand();
+    _ProfileFragmentCand profileFragment = new _ProfileFragmentCand();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +29,6 @@ public class HomeCand extends AppCompatActivity {
 
         BottomNavigationView navbar = findViewById(R.id.navbar);
 
-
-        _AcceuilFragmentCand acceuilFragment = new _AcceuilFragmentCand();
-        _MesCandidaturesFragmentCand mesCandidaturesFragment = new _MesCandidaturesFragmentCand();
-        _AlertesFragmentCand alertesFragment = new _AlertesFragmentCand();
-        _MesOffresFragmentCand mesoffresFragment = new _MesOffresFragmentCand();
-        _ProfileFragmentCand profileFragment = new _ProfileFragmentCand();
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,acceuilFragment).commit();
 
         navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -40,23 +37,18 @@ public class HomeCand extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.acceuil:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,acceuilFragment).commit();
-                        toolbar.setTitle("Acceuil");
                         break;
                     case R.id.mes_candidatures:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mesCandidaturesFragment).commit();
-                        toolbar.setTitle("Candidatures");
                         break;
                     case R.id.alertes:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,alertesFragment).commit();
-                        toolbar.setTitle("Alertes");
                         break;
                     case R.id.mes_offres:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mesoffresFragment).commit();
-                        toolbar.setTitle("Enregistré");
                         break;
                     case R.id.profil_cand:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,profileFragment).commit();
-                        toolbar.setTitle("Profil");
                         break;
                 }
                 return true;

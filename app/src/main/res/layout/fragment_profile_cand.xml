@@ -32,37 +32,84 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/profil_email"
-            android:layout_marginTop="100dp"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="-2dp"
+            android:layout_marginTop="60dp"
+            android:padding="10dp"
+            android:background="@drawable/container_black"
             android:drawableStart="@drawable/baseline_notifications_24_gray"
-            android:text="Gérer alertes d'emplois"
+            android:text="Alertes"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/modifier_profil"
+            android:id="@+id/profil_candidatures"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/profil_alerte"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="-2dp"
+            android:padding="10dp"
+            android:layout_below="@id/profil_alerte"
+            android:layout_marginTop="-1dp"
+            android:background="@drawable/container_black"
+            android:drawableStart="@drawable/baseline_business_center_24"
+            android:text="Candidatures"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/profil_enregistrees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profil_candidatures"
+            android:drawableStart="@drawable/baseline_collections_bookmark_24"
+            android:text="Enregistré"
+            android:padding="10dp"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="-2dp"
+            android:layout_marginTop="-1dp"
+            android:background="@drawable/container_black"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/modifier_profil_cand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="-2dp"
+            android:layout_below="@+id/profil_enregistrees"
             android:drawableStart="@drawable/baseline_edit_24"
             android:text="Modifier profil"
+            android:padding="10dp"
+            android:background="@drawable/container_black"
             android:textAllCaps="false" />
 
         <Button
             android:id="@+id/a_propos_profil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/modifier_profil"
+            android:layout_below="@id/modifier_profil_cand"
             android:drawableStart="@drawable/baseline_info_24"
             android:text="À propos de nous"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="-2dp"
+            android:layout_marginTop="-1dp"
+            android:padding="10dp"
+            android:background="@drawable/container_black"
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/logout_button_cand"
             android:layout_width="match_parent"
+            android:background="@drawable/container_black"
             android:layout_height="wrap_content"
             android:layout_below="@+id/a_propos_profil"
-            android:layout_marginTop="20dp"
             android:drawableStart="@drawable/baseline_logout_24"
             android:text="Se déconnecter"
+            android:padding="10dp"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="-2dp"
             android:textAllCaps="false"
+            android:layout_marginTop="-1dp"
             android:textColor="#D11A1A" />
 
     </RelativeLayout>

@@ -27,6 +27,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Postuler extends AppCompatActivity {
@@ -91,7 +94,8 @@ public class Postuler extends AppCompatActivity {
                 Connection connection = new ___ConnectionClass().SQLServerConnection();
                 if(connection!=null){
                     try{
-                        String insertSQL = "INSERT INTO Candidature VALUES ('"+getIntent().getStringExtra("ID_Candidat")+"','"+getIntent().getStringExtra("ID_Offre")+"',?,?);";
+                        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                        String insertSQL = "INSERT INTO Candidature VALUES ('"+getIntent().getStringExtra("ID_Candidat")+"','"+getIntent().getStringExtra("ID_Offre")+"',?,?,'"+currentDate+"');";
                         PreparedStatement statement = connection.prepareStatement(insertSQL);
                         statement.setBytes(1, CVfileBytes);
                         statement.setBytes(2, LETTREfileBytes);

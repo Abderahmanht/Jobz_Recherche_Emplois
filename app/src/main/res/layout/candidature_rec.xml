@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/nom_complet_candidat_candidatures"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content"
+            android:text="John Doe"
+            android:layout_marginStart="30dp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/a_postulé_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@id/nom_complet_candidat_candidatures"
+            android:text="a postulé au poste de :" />
+        <TextView
+            android:id="@+id/titre_poste_candidatures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingénieur en génie civil"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/dark_blue"
+            android:layout_below="@id/a_postulé_a"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/more_candidatures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_more_horiz_24"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"/>
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

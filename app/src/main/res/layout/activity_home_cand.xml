@@ -15,9 +15,8 @@
             android:id="@+id/maintoolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/dark_blue"
-            app:title="Acceuil"
-            app:titleTextColor="@color/white"
+            app:title="Jobz"
+            app:titleTextColor="@color/dark_blue"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 

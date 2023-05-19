@@ -3,13 +3,17 @@ package com.example.pfe_jobz_recherche_emploi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +25,7 @@ import java.util.Objects;
 public class Login extends AppCompatActivity {
 
     Button loginBtn;
-    Button signUp;
+    TextView signUp;
     EditText emailEdt;
     EditText passwordEdt;
     TextView logrec;
@@ -36,9 +40,20 @@ public class Login extends AppCompatActivity {
 
         loginBtn = findViewById(R.id.login_btn);
         signUp = findViewById(R.id.sign_up);
-        logrec = findViewById(R.id.logrec);
+        logrec = findViewById(R.id.sign_in_rec);
         emailEdt = findViewById(R.id.emailEditText);
         passwordEdt = findViewById(R.id.passwordEditText);
+
+        SharedPreferences Preferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
+        String savedEmail = Preferences.getString("email", "");
+        String savedPassword = Preferences.getString("password", "");
+        String savedIDcandidat = Preferences.getString("ID_Candidat","");
+
+        if (!savedEmail.isEmpty() && !savedPassword.isEmpty()) {
+            // Credentials are available, proceed to the home activity
+            emailEdt.setText(savedEmail);
+            passwordEdt.setText(savedPassword);
+        }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,8 +62,13 @@ public class Login extends AppCompatActivity {
                 if (connection != null) {
                     try {
 
+
                         email = emailEdt.getText().toString();
                         password = passwordEdt.getText().toString();
+
+                        if(email.equals("admin@xyz.com")&&password.equals("admin")){
+                            startActivity(new Intent(Login.this, ADMIN.class));
+                        } else {
 
                         // Prepare the SQL query with placeholders for the email and password parameters
                         String loginQuery = "SELECT ID_Candidat FROM Candidat WHERE Email = '"+email+"'AND Mot_De_Passe = '"+password+"';";
@@ -63,12 +83,20 @@ public class Login extends AppCompatActivity {
                         ResultSet rs = statement.executeQuery(loginQuery);
 
                         if(rs.next()) {
-                            // Retrieve the ID_Recruteur value from the result set
-                            String idCandidat = rs.getString("ID_Candidat");
-                            Intent intent = new Intent(Login.this, HomeCand.class);
-                            intent.putExtra("ID_Candidat", idCandidat);
-                            startActivity(intent);
-                        }
+
+                                String idCandidat = rs.getString("ID_Candidat");
+
+                                SharedPreferences sharedPreferences2 = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences2.edit();
+                                editor.putString("email", email);
+                                editor.putString("password", password);
+                                editor.putString("ID_Candidat", idCandidat);
+                                editor.apply();
+                                Intent intent = new Intent(Login.this, HomeCand.class);
+                                intent.putExtra("ID_Candidat", idCandidat);
+                                startActivity(intent);
+
+                        }}
 
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
@@ -96,41 +124,8 @@ public class Login extends AppCompatActivity {
         logrec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Connection connection = new ___ConnectionClass().SQLServerConnection();
-                if (connection != null) {
-                    try {
+                startActivity(new Intent(Login.this, SignInRec.class));
 
-                        email = emailEdt.getText().toString();
-                        password = passwordEdt.getText().toString();
-
-                        // Prepare the SQL query with placeholders for the email and password parameters
-                        String loginQueryRec = "SELECT ID_Recruteur FROM Recruteur WHERE Email = '"+email+"' AND Mot_De_Passe = '"+password+"';";
-
-                        // Create a prepared statement for the login query
-                        Statement statement = connection.createStatement();
-
-                        // Set the parameter values for the email and password
-
-
-                        // Execute the query and retrieve the results
-                        ResultSet rs = statement.executeQuery(loginQueryRec);
-
-                        if(rs.next()) {
-                            // Retrieve the ID_Recruteur value from the result set
-                            String idRecruteur = rs.getString("ID_Recruteur");
-                            Intent intent = new Intent(Login.this, HomeRec.class);
-                            intent.putExtra("ID_Recruteur", idRecruteur);
-                            startActivity(intent);
-                        }
-
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
-                }
-                else{
-                    Exception exception = new Exception();
-                    exception.printStackTrace();
-                }
             }
         });
 

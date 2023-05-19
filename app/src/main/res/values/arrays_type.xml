@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recipient_types">
+        <item>Tous</item>
+        <item>Employeurs</item>
+        <item>Demandeurs demploi</item>
+    </string-array>
+</resources>

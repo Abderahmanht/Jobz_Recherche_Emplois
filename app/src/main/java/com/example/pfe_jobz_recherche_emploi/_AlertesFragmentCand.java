@@ -1,5 +1,6 @@
 package com.example.pfe_jobz_recherche_emploi;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import androidx.appcompat.widget.SwitchCompat;
 import android.widget.TextView;
@@ -17,11 +19,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+
 
 public class _AlertesFragmentCand extends Fragment {
 
@@ -33,11 +43,25 @@ public class _AlertesFragmentCand extends Fragment {
     private EditText titre, poste;
     private TextView experience;
     private AutoCompleteTextView lieu,discipline;
+    private ImageButton gerer_alertes;
+
+    private AlerteAdapter alerteAdapter;
+    private RecyclerView recyclerViewalertes;
+    private List<AlerteItem> alerteItemList;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_alertes_cand, container, false);
+
+
+
+        recyclerViewalertes = view.findViewById(R.id.recycler_view_alertes_cand);
+        recyclerViewalertes.setLayoutManager(new LinearLayoutManager(getActivity()));
+        alerteItemList = getAlertesFromDatabase();
+        alerteAdapter = new AlerteAdapter(alerteItemList, getActivity().getIntent().getStringExtra("ID_Candidat"));
+        recyclerViewalertes.setAdapter(alerteAdapter);
+
 
         alerte_dialog = new Dialog(getActivity());
         alerte_dialog.setContentView(R.layout.dialogue_alerte);
@@ -51,6 +75,7 @@ public class _AlertesFragmentCand extends Fragment {
         discipline = alerte_dialog.findViewById(R.id.discipline_alerte);
         lieu = alerte_dialog.findViewById(R.id.lieu_residence_alerte);
         alerteSwitch = alerte_dialog.findViewById(R.id.alerte_switch);
+
 
         //region disciciplines
         String[] disciplines = {"Informatique", "Droit", "Marketing", "Médecine", "Ingénierie", "Finance", "Design", "Éducation", "Communication", "Arts",
@@ -205,7 +230,7 @@ public class _AlertesFragmentCand extends Fragment {
                         if(alerteSwitch.isChecked()){
                             accepteEmails = 1;
                         }
-                        String insertSQL = "INSERT INTO Alerte_Emploi(ID_Candidat, Titre, Poste_Recherche, Lieu_Residence, Experience, Discipline, Accepte_Emails) VALUES ('"+getActivity().getIntent().getStringExtra("ID_Candidat")+"','"+titre.getText()+"','"+poste.getText()+"','"+lieu.getText()+"','"+experience.getText()+"','"+discipline.getText()+ "','"+accepteEmails+"');";
+                        String insertSQL = "INSERT INTO Alerte_Emploi(ID_Candidat, Titre, Poste_Recherche, Lieu_Residence, Experience, Discipline, Accepte_Emails) VALUES ('"+getActivity().getIntent().getStringExtra("ID_Candidat")+"','"+titre.getText()+"','"+poste.getText()+"','"+lieu.getText()+"','"+experience.getText()+"','"+discipline.getText()+ "','"+ String.valueOf(accepteEmails)+"');";
                         Statement statement = connection.createStatement();
                         resultSet = statement.executeUpdate(insertSQL);
 
@@ -225,8 +250,45 @@ public class _AlertesFragmentCand extends Fragment {
 
         return view;
     }
+
+    public List<AlerteItem> getAlertesFromDatabase() {
+        List<AlerteItem> alertes = new ArrayList<>();
+
+        Connection connection = new ___ConnectionClass().SQLServerConnection();
+        if(connection != null) {
+            try {
+                String selectSQL = "SELECT ID_Alerte, Titre, Poste_Recherche, Lieu_Residence FROM Alerte_Emploi WHERE ID_Candidat = "+getActivity().getIntent().getStringExtra("ID_Candidat");
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(selectSQL);
+
+                while (resultSet.next()) {
+                    String idAlerte = resultSet.getString("ID_Alerte");
+                    String titre = resultSet.getString("Titre");
+                    String poste = resultSet.getString("Poste_Recherche");
+                    String lieu = resultSet.getString("Lieu_Residence");
+
+                    AlerteItem alerteItem = new AlerteItem(idAlerte, titre, poste, lieu);
+                    alertes.add(alerteItem);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Exception exception = new Exception();
+            exception.printStackTrace();
+        }
+        Collections.reverse(alertes);
+        return alertes;
+    }
+
     public Dialog getAlerteDialog(){
         return alerte_dialog;
     }
 
+
+
+
 }
+

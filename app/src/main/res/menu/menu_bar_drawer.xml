@@ -9,11 +9,11 @@
                 <item
                 android:id="@+id/tableaudebord"
                 android:icon="@drawable/ic_baseline_dashboard_24"
-                android:title="Tableau de bord" />
+                android:title="Espace Employeur" />
                 <item
                     android:id="@+id/vosoffres"
                     android:icon="@drawable/ic_baseline_layers_24_black"
-                    android:title="Vos offres" />
+                    android:title="Gérer offres" />
                 <item
                     android:id="@+id/candidatures"
                     android:icon="@drawable/ic_baseline_groups_24"
@@ -31,7 +31,7 @@
             <item
                 android:id="@+id/sedeconnecterrec"
                 android:icon="@drawable/ic_baseline_exit_to_app_24_black"
-                android:title="Se Déconnecter" />
+                android:title="Se déconnecter" />
 
         </menu>
     </item>

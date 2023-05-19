@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VoirInformationsDuCandidat">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/voir_info_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_green"
+        app:title="Voir informations candidat"
+        app:titleTextColor="@color/white"
+        android:theme="?attr/actionBarTheme">
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_poste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Candidature au poste   "
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_poste_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingénieur en génie civil"
+        android:layout_toEndOf="@id/voir_info_candidature_poste"
+        android:layout_alignBaseline="@id/voir_info_candidature_poste"/>
+    <LinearLayout
+        android:id="@+id/voir_info_candidature_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_below="@id/voir_info_candidature_poste"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal" />
+
+    <TextView
+        android:id="@+id/voir_info_candidature_nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/voir_info_candidature_divider"
+        android:text="Nom  "/>
+
+
+    <TextView
+        android:id="@+id/voir_info_candidature_nom_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="El Hathout"
+        android:layout_toEndOf="@id/voir_info_candidature_nom"
+        android:layout_alignBaseline="@id/voir_info_candidature_nom"/>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/voir_info_candidature_nom"
+        android:text="Prenom  "/>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_prenom_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abderrahmane"
+        android:layout_toEndOf="@id/voir_info_candidature_prenom"
+        android:layout_alignBaseline="@id/voir_info_candidature_prenom"/>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_date_naissance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/voir_info_candidature_prenom"
+        android:text="Date de naissance  "/>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_daten_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18-01-2003"
+        android:layout_toEndOf="@id/voir_info_candidature_date_naissance"
+        android:layout_alignBaseline="@id/voir_info_candidature_date_naissance"/>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_date_candidature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/voir_info_candidature_date_naissance"
+        android:text="Date de soumise de candidature  "/>
+
+    <TextView
+        android:id="@+id/voir_info_candidature_date_candidature_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17-05-2023"
+        android:layout_toEndOf="@id/voir_info_candidature_date_candidature"
+        android:layout_alignBaseline="@id/voir_info_candidature_date_candidature"/>
+
+
+
+
+
+    <TextView
+        android:id="@+id/voir_info_candidature_cv_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CV"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_below="@id/voir_info_candidature_date_candidature_v"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <Button
+        android:id="@+id/voir_info_telecharger_cv_button"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="50dp"
+        android:drawableEnd="@drawable/baseline_download_24"
+        android:text="Télécharger CV"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="@color/dark_green"
+        android:background="@drawable/edit_text_background_green"
+        android:padding="10dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/voir_info_candidature_cv_t"
+        />
+
+    <LinearLayout
+        android:id="@+id/voir_info_candidature_divider_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_below="@id/voir_info_telecharger_cv_button"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/voir_info_candidature_divider_3"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:text="Contact"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/voir_info_envoyer_email_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Envoyer e-mail"
+        android:layout_below="@id/voir_info_candidature_divider_3"
+        android:background="@drawable/envoyer_email"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="#EA4335"
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="50dp"
+        android:padding="10dp"
+        android:drawableEnd="@drawable/outline_email_24"
+        />
+    <Button
+        android:id="@+id/voir_info_envoyer_sms_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Envoyer SMS"
+        android:layout_below="@id/voir_info_envoyer_email_btn"
+        android:background="@drawable/envoyer_sms"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="#218aff"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="50dp"
+        android:padding="10dp"
+        android:drawableEnd="@drawable/outline_sms_24"
+        />
+
+
+
+</RelativeLayout>

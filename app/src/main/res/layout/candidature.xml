@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginHorizontal="10dp"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titre_candidature_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Titre poste"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue" />
+        <TextView
+            android:id="@+id/entreprise_candidature_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entreprise"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="10dp"
+
+            />
+        <TextView
+            android:id="@+id/lieu_candidature_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lieu"
+            android:drawableStart="@drawable/baseline_location_on_24_gray"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="10dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/delete_candidature_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_delete_24_gray"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"/>
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item android:id="@+id/modifier_offre"
+            android:title="Modifier offre"
+            android:icon="@drawable/baseline_edit_24"
+        />
+    <item android:id="@+id/supprimer_offre"
+        android:title="Supprimer offre"
+        android:icon="@drawable/baseline_delete_24_gray"
+        />
+
+</menu>

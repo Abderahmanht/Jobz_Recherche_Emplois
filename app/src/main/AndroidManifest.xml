@@ -15,6 +15,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".SignInRec"
+            android:exported="false" />
+        <activity
+            android:name=".ADMIN_EMAILS"
+            android:exported="false" />
+        <activity
+            android:name=".ADMIN_COMPTES_CAND"
+            android:exported="false" />
+        <activity
+            android:name=".ADMIN_COMPTES_REC"
+            android:exported="false" />
+        <activity
+            android:name=".ADMIN"
+            android:exported="false" />
+        <activity
+            android:name=".ModifierProfilCand"
+            android:exported="false" />
+        <activity
+            android:name=".__ModifierOffre"
+            android:exported="false" />
+        <activity
+            android:name=".VoirInformationsDuCandidat"
+            android:exported="false" />
+        <activity
             android:name=".GestionAlertesCand"
             android:exported="false" />
         <activity
@@ -22,9 +46,6 @@
             android:exported="false" />
         <activity
             android:name=".JobDetails"
-            android:exported="false" />
-        <activity
-            android:name=".Step2AjoutOffre"
             android:exported="false" />
         <activity
             android:name=".__AjouterOffre"

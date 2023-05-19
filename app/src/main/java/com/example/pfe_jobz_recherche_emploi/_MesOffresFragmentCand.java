@@ -42,8 +42,6 @@ public class _MesOffresFragmentCand extends Fragment {
     private RecyclerView recyclerViewSavedJobOffers;
     private SavedJobOfferAdapter savedJobOfferAdapter;
     private List<JobOfferItem> savedJobOffers;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private ShimmerFrameLayout shimmerFrameLayout;
 
     @Nullable
     @Override
@@ -103,7 +101,6 @@ public class _MesOffresFragmentCand extends Fragment {
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
-                // Step 8: Close the database connection
                 try {
                     connection.close();
                 } catch (SQLException e) {
