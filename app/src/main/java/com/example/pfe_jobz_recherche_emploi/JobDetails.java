@@ -94,6 +94,9 @@ public class JobDetails extends AppCompatActivity {
                 Intent intent = new Intent(JobDetails.this, Postuler.class);
                 intent.putExtra("ID_Offre",extras.getString("ID_Offre"));
                 intent.putExtra("ID_Candidat",extras.getString("ID_Candidat"));
+                intent.putExtra("Titre",title.getText().toString());
+                intent.putExtra("Entreprise",extras.getString("company_name"));
+                intent.putExtra("Lieu",extras.getString("company_location"));
                 startActivity(intent);
                 overridePendingTransition(0,0);
             }

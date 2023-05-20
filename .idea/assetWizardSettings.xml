@@ -318,7 +318,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/business_center/baseline_business_center_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/download_done/baseline_download_done_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -328,8 +328,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="7d7b7b" />
-                            <entry key="outputName" value="baseline_business_center_24" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="baseline_download_done_24" />
                             <entry key="sourceFile" value="D:\AndroidProjects\PFE_Jobz_Recherche_Emploi" />
                           </map>
                         </option>

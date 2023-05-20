@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -35,7 +37,7 @@ import java.util.Objects;
 public class Postuler extends AppCompatActivity {
 
     private Button chargerCV, chargerLettre, valider;
-    private TextView cvFileName, lettreFileName;
+    private TextView cvFileName, lettreFileName, poste, entreprise, lieu;
     private Toolbar toolbar;
     private static final int PICKFILE_CV_RESULT_CODE= 1, PICKFILE_LETTRE_RESULT_CODE = 2;
     private int resultSet;
@@ -57,11 +59,16 @@ public class Postuler extends AppCompatActivity {
 
 
         chargerCV = findViewById(R.id.postuler_charger_cv);
-        chargerLettre = findViewById(R.id.postuler_charger_lettre);
         valider = findViewById(R.id.postuler_valider);
 
-        cvFileName = findViewById(R.id.cv_file_name);
-        lettreFileName = findViewById(R.id.lettre_file_name);
+        poste = findViewById(R.id.postuler_nom_poste);
+        entreprise = findViewById(R.id.postuler_entreprise);
+        lieu = findViewById(R.id.postuler_localisation);
+
+        poste.setText(getIntent().getStringExtra("Titre"));
+        entreprise.setText(getIntent().getStringExtra("Entreprise"));
+        lieu.setText(getIntent().getStringExtra("Lieu"));
+
 
         toolbar = findViewById(R.id.postuler_toolbar);
         setSupportActionBar(toolbar);
@@ -79,14 +86,7 @@ public class Postuler extends AppCompatActivity {
             }
         });
 
-        chargerLettre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(intent, PICKFILE_LETTRE_RESULT_CODE);
-            }
-        });
+
 
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +95,9 @@ public class Postuler extends AppCompatActivity {
                 if(connection!=null){
                     try{
                         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                        String insertSQL = "INSERT INTO Candidature VALUES ('"+getIntent().getStringExtra("ID_Candidat")+"','"+getIntent().getStringExtra("ID_Offre")+"',?,?,'"+currentDate+"');";
+                        String insertSQL = "INSERT INTO Candidature VALUES ('"+getIntent().getStringExtra("ID_Candidat")+"','"+getIntent().getStringExtra("ID_Offre")+"',?,'"+currentDate+"');";
                         PreparedStatement statement = connection.prepareStatement(insertSQL);
                         statement.setBytes(1, CVfileBytes);
-                        statement.setBytes(2, LETTREfileBytes);
                         resultSet = statement.executeUpdate();
                     }catch (Exception e){
                         e.printStackTrace();
@@ -134,6 +133,7 @@ public class Postuler extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -146,7 +146,8 @@ public class Postuler extends AppCompatActivity {
                 if (cursor != null && cursor.moveToFirst()) {
                     int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
                     fileName = cursor.getString(nameIndex);
-                    cvFileName.setText(fileName);
+                    chargerCV.setText(fileName);
+                    chargerCV.setTextColor(Color.parseColor("#0CAA41"));
                     cursor.close();
                 }
 
@@ -169,38 +170,6 @@ public class Postuler extends AppCompatActivity {
             }
         }
 
-
-
-        if(requestCode == PICKFILE_LETTRE_RESULT_CODE && resultCode == RESULT_OK){
-            Uri uri = data.getData();
-            try {
-                // Get the file name from the content URI
-                String fileName = null;
-                Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-                if (cursor != null && cursor.moveToFirst()) {
-                    int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-                    fileName = cursor.getString(nameIndex);
-                    lettreFileName.setText(fileName);
-                    cursor.close();
-                }
-
-
-                // Get the file data as a byte array
-                InputStream inputStream = getContentResolver().openInputStream(uri);
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                int length;
-                while ((length = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, length);
-                }
-                LETTREfileBytes = outputStream.toByteArray();
-                inputStream.close();
-                outputStream.close();
-
-                // You now have the file name and data as a byte array (fileName, fileBytes)
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+                // Get the file data as a byte arr
         }
     }

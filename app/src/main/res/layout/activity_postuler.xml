@@ -17,12 +17,46 @@
         app:titleTextColor="@color/white" />
 
     <TextView
+        android:id="@+id/postuler_nom_poste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom du poste"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/dark_blue"
+        android:layout_marginStart="40dp"
+        />
+
+    <TextView
+        android:id="@+id/postuler_entreprise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/postuler_nom_poste"
+        android:text="Entreprise"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/postuler_localisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/postuler_entreprise"
+        android:text="Oran"
+        android:drawableStart="@drawable/baseline_location_on_24_gray"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        />
+
+
+    <TextView
         android:id="@+id/postuler_cv_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="200dp"
-        android:text="CV"
+        android:layout_marginTop="250dp"
+        android:text="Votre CV *"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -31,76 +65,35 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/postuler_cv_t"
         android:layout_marginStart="40dp"
-        android:text="( Le document doit être au format PDF, JPEG ou PNG )" />
+        android:text="( Le document doit être au format .DOC, .DOCX ou .PDF )" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/postuler_charger_cv"
-        android:layout_marginStart="40dp"
-        android:layout_toEndOf="@id/postuler_charger_cv"
-        android:id="@+id/cv_file_name"
-        android:textColor="@color/light_green" />
+
 
     <Button
         android:id="@+id/postuler_charger_cv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/postuler_cv_t"
-        android:layout_alignStart="@id/postuler_cv_t"
-        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="60dp"
         android:drawableEnd="@drawable/ic_baseline_file_upload_24"
-        android:text="Charger"
+        android:text="Télécharger le fichier\n (.doc, .docx, .pdf.)"
+        android:background="@drawable/edit_text_background"
+        android:padding="10dp"
         android:textAllCaps="false" />
 
-    <TextView
-        android:id="@+id/postuler_lettre_t"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/postuler_charger_cv"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:text="Lettre de motivation"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/postuler_lettre_t"
-        android:layout_marginStart="40dp"
-        android:text="( Le document doit être au format PDF, JPEG ou PNG )" />
-
-    <Button
-        android:id="@+id/postuler_charger_lettre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/postuler_lettre_t"
-        android:layout_alignStart="@id/postuler_cv_t"
-        android:layout_marginTop="40dp"
-        android:drawableEnd="@drawable/ic_baseline_file_upload_24"
-        android:text="Charger"
-        android:textAllCaps="false" />
-
-
-    <TextView
-        android:id="@+id/lettre_file_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/postuler_charger_lettre"
-        android:layout_marginStart="40dp"
-        android:layout_toEndOf="@id/postuler_charger_lettre"
-        android:textColor="@color/light_green" />
 
     <Button
         android:id="@+id/postuler_valider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/postuler_charger_lettre"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@color/dark_green"
-        android:text="Valider"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/light_blue"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:text="Envoyer candidature"
         android:textColor="@color/white" />
 
 

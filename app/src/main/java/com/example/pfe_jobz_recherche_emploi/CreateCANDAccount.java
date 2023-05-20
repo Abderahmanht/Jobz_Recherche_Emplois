@@ -281,7 +281,7 @@ public class CreateCANDAccount extends AppCompatActivity {
                         Connection connection = new ___ConnectionClass().SQLServerConnection();
                         if (connection != null) {
                             try {
-                                String SQLinsert = "INSERT INTO Candidat (Nom, Prenom, Num_ID_National, Date_Naissance, Ville, Num_Tel, Email, Mot_de_passe) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" +numIDa.getText()+"','"+ datea.getText() + "','" + villea.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "');";
+                                String SQLinsert = "INSERT INTO Candidat (Nom, Prenom, Num_ID_National, Date_Naissance, Ville, Num_Tel, Email, Mot_de_passe, Statut_Compte) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" +numIDa.getText()+"','"+ datea.getText() + "','" + villea.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "',1"+ ");";
                                 Statement statement = connection.createStatement();
                                 resultSet = statement.executeUpdate(SQLinsert);
 
@@ -355,7 +355,7 @@ public class CreateCANDAccount extends AppCompatActivity {
         Connection connection = new ___ConnectionClass().SQLServerConnection();
         if(connection!=null){
             try{
-                String query = "SELECT Email FROM Recruteur WHERE Email = '"+email+"'";
+                String query = "SELECT Email FROM Candidat WHERE Email = '"+email+"'";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet1 = statement.executeQuery(query);
 

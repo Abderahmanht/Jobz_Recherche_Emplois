@@ -52,6 +52,16 @@ public class CreateRECAccount extends AppCompatActivity {
     private int resultSet;
     private Toolbar toolbarREC;
 
+    TextView error_nom;
+    TextView error_prenom;
+    TextView error_wilaya;
+    TextView error_entreprise;
+    TextView error_email;
+    TextView error_email_incorrect;
+    TextView error_email_already;
+    TextView error_pass;
+    TextView error_pass_court;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +80,15 @@ public class CreateRECAccount extends AppCompatActivity {
         };
         //endregion wilayas
 
+        error_nom = findViewById(R.id.error_nomr);
+        error_prenom = findViewById(R.id.error_prenomr);
+        error_wilaya = findViewById(R.id.error_lieur);
+        error_entreprise = findViewById(R.id.error_entrepriser);
+        error_email = findViewById(R.id.error_emailr);
+        error_email_incorrect = findViewById(R.id.error_email_incorrectr);
+        error_email_already = findViewById(R.id.error_email_alreadyr);
+        error_pass = findViewById(R.id.error_passr);
+        error_pass_court = findViewById(R.id.error_pass_courtr);
 
 
 
@@ -131,37 +150,111 @@ public class CreateRECAccount extends AppCompatActivity {
             public void onClick(View view) {
                 switch (stateProgressBarrec.getCurrentStateNumber()) {
                     case 1:
-                        stateProgressBarrec.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
-                        informations.setVisibility(View.INVISIBLE);
-                        entreprise.setVisibility(View.VISIBLE);
+                        boolean allCorrect = true;
+                        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+                        if(nom.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_nom.setVisibility(View.VISIBLE);
+                        }
+                        if(prenom.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_prenom.setVisibility(View.VISIBLE);
+                        }
+                        if(email.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_email.setVisibility(View.VISIBLE);
+                        }else if (!email.getText().toString().matches(emailPattern)) {
+                            allCorrect = false;
+                        } else if (alreadyExists(email.getText().toString())) {
+                            allCorrect = false;
+                            error_email_incorrect.setVisibility(View.INVISIBLE);
+                            error_email_already.setVisibility(View.VISIBLE);
+                        }
+                        if(mdp.getText().toString().isEmpty()){
+                            allCorrect = false;
+                            error_pass.setVisibility(View.VISIBLE);
+                        } else if (mdp.getText().toString().length() < 8) {
+                            error_pass.setVisibility(View.INVISIBLE);
+                            error_pass_court.setVisibility(View.VISIBLE);
+                        }
+
+
+                        if(allCorrect) {
+                            stateProgressBarrec.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                            informations.setVisibility(View.INVISIBLE);
+                            entreprise.setVisibility(View.VISIBLE);
+                            break;
+                        }
 
                         break;
                     case 2:
-                        stateProgressBarrec.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
-                        entreprise.setVisibility(View.INVISIBLE);
-                        finalisation.setVisibility(View.VISIBLE);
+                        boolean allCorrect2 = true;
+                        String emailPattern2 = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-                        noma.setText(nom.getText().toString());
-                        prenoma.setText(prenom.getText().toString());
-                        nomentreprisea.setText(nomentreprise.getText().toString());
-                        secta.setText(sect.getText().toString());
-                        desca.setText(desc.getText().toString());
-                        wilayaa.setText(wilaya.getText().toString());
-                        numa.setText(num.getText().toString());
-                        emaila.setText(email.getText().toString());
-                        mdpa.setText(mdp.getText().toString());
+                        if(nomentreprise.getText().toString().isEmpty()){
+                            error_entreprise.setVisibility(View.VISIBLE);
+                            allCorrect2 = false;
+                        }
+                        if(wilaya.getText().toString().isEmpty()){
+                            error_wilaya.setVisibility(View.VISIBLE);
+                            allCorrect2 = false;
+                        }
 
-                        viewmdp.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                mdpa.setInputType(InputType.TYPE_CLASS_TEXT);
+                        if(allCorrect2){
+                            stateProgressBarrec.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                            entreprise.setVisibility(View.INVISIBLE);
+                            finalisation.setVisibility(View.VISIBLE);
+
+                            noma.setText(nom.getText().toString());
+                            prenoma.setText(prenom.getText().toString());
+                            nomentreprisea.setText(nomentreprise.getText().toString());
+                            secta.setText(sect.getText().toString());
+                            desca.setText(desc.getText().toString());
+                            wilayaa.setText(wilaya.getText().toString());
+                            numa.setText(num.getText().toString());
+                            emaila.setText(email.getText().toString());
+                            mdpa.setText(mdp.getText().toString());
+
+                            viewmdp.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    mdpa.setInputType(InputType.TYPE_CLASS_TEXT);
+                                }
+
+
+                            });
+
+                            continuer.setText("Confirmer");
+                            break;
+                        }
+                        else{
+
+                            if (email.getText().toString().isEmpty()) {
+                                error_email.setVisibility(View.VISIBLE);
+                                error_email_incorrect.setVisibility(View.INVISIBLE);
+                                error_email_already.setVisibility(View.INVISIBLE);
+                            } else if (!email.getText().toString().matches(emailPattern2)) {
+                                error_email.setVisibility(View.INVISIBLE);
+                                error_email_incorrect.setVisibility(View.VISIBLE);
+                                error_email_already.setVisibility(View.INVISIBLE);
+                            } else if (alreadyExists(email.getText().toString())) {
+                                error_email.setVisibility(View.INVISIBLE);
+                                error_email_incorrect.setVisibility(View.INVISIBLE);
+                                error_email_already.setVisibility(View.VISIBLE);
                             }
 
-
-                        });
-
-                        continuer.setText("Confirmer");
+                            if (mdp.getText().toString().isEmpty()) {
+                                error_pass.setVisibility(View.VISIBLE);
+                                error_pass_court.setVisibility(View.INVISIBLE);
+                            } else if (mdp.getText().toString().length() < 8) {
+                                error_pass.setVisibility(View.INVISIBLE);
+                                error_pass_court.setVisibility(View.VISIBLE);
+                            }
+                        }
                         break;
+
+
                     case 3:
                         stateProgressBarrec.setAllStatesCompleted(true);
                         Connection connection = new ___ConnectionClass().SQLServerConnection();
@@ -172,7 +265,7 @@ public class CreateRECAccount extends AppCompatActivity {
                                 byte[] byteArray = stream.toByteArray();
 
                                 // Insert data into database
-                                String SQLinsert = "INSERT INTO Recruteur (Nom, Prenom, Entreprise, Description_Entreprise, Wilaya_Entreprise, Secteur_Activite, Num_Tel, Email, Mot_de_passe, Logo_Entreprise) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" + nomentreprisea.getText() + "','" + desca.getText() + "','" + wilayaa.getText() + "','" + secta.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "', ?);";
+                                String SQLinsert = "INSERT INTO Recruteur (Nom, Prenom, Entreprise, Description_Entreprise, Wilaya_Entreprise, Secteur_Activite, Num_Tel, Email, Mot_de_passe, Logo_Entreprise, Statut_Compte) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" + nomentreprisea.getText() + "','" + desca.getText() + "','" + wilayaa.getText() + "','" + secta.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "', ?,0);";
                                 PreparedStatement statement = connection.prepareStatement(SQLinsert);
                                 statement.setBytes(1, byteArray);
                                 resultSet = statement.executeUpdate();
@@ -240,4 +333,23 @@ public class CreateRECAccount extends AppCompatActivity {
             }
         }
     }
+
+    public boolean alreadyExists(String email){
+        Connection connection = new ___ConnectionClass().SQLServerConnection();
+        if(connection!=null){
+            try{
+                String query = "SELECT Email FROM Recruteur WHERE Email = '"+email+"'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet1 = statement.executeQuery(query);
+
+                if(resultSet1.next()){
+                    return true;
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
 }

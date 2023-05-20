@@ -12,11 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
-import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHolder> {
     private String idc;
@@ -44,29 +46,30 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
         holder.textViewCompany.setText(jobOffer.getCompany());
         holder.textViewLocation.setText(jobOffer.getLocation());
         holder.textViewType.setText(jobOffer.getContract());
-        holder.textViewDate.setText(jobOffer.getDate());
+        String formattedTimeAgo = getFormattedTimeAgo(jobOffer.getDate());
+        holder.textViewDate.setText("il y a "+formattedTimeAgo);
         holder.imageViewLogo.setImageBitmap(jobOffer.getLogo());
+
+        __OffreEnregistree OffreEnregistee = new __OffreEnregistree();
+
+
+        boolean isJobOfferSaved = OffreEnregistee.isJobOfferSaved(jobOffer.getID(), JobOfferAdapter.this.idc);
+        holder.updateBookmarkIcon(isJobOfferSaved);
+
         holder.bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                __OffreEnregistree OffreEnregistee = new __OffreEnregistree();
 
                 String IDOffre = jobOffer.getID();
                 String IDCandidat = JobOfferAdapter.this.idc;
-                // Step 2: Perform a database query to check if the job offer is already saved
                 boolean isJobOfferSaved = OffreEnregistee.isJobOfferSaved(IDOffre, IDCandidat);
 
-                // Step 3: Delete or insert a record based on the query result
                 if (isJobOfferSaved) {
-                    // Job offer is already saved, delete the corresponding record
                     OffreEnregistee.deleteSavedJobOffer(IDOffre, IDCandidat);
-                    // Update the bookmark button's appearance (e.g., remove bookmark icon)
-                    holder.bookmark.setImageResource(R.drawable.ic_bookmark_empty);
+                    holder.updateBookmarkIcon(false);
                 } else {
-                    // Job offer is not saved, insert a new record
                     OffreEnregistee.insertSavedJobOffer(IDOffre, IDCandidat);
-                    // Update the bookmark button's appearance (e.g., set bookmark icon)
-                    holder.bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+                    holder.updateBookmarkIcon(true);
                 }
             }
         });
@@ -74,10 +77,9 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(view.getContext(), JobDetails.class);
-                intent.putExtra("ID_Offre",jobOffer.getID());
-                intent.putExtra("ID_Candidat",JobOfferAdapter.this.idc);
+                intent.putExtra("ID_Offre", jobOffer.getID());
+                intent.putExtra("ID_Candidat", JobOfferAdapter.this.idc);
                 Bitmap bitmap = jobOffer.getLogo();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -88,11 +90,13 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
                 intent.putExtra("company_location", jobOffer.getLocation());
                 intent.putExtra("type_contrat", jobOffer.getContract());
                 intent.putExtra("date_publication", jobOffer.getDate());
-                intent.putExtra("company_desc",jobOffer.getCompanyDesc());
+                intent.putExtra("company_desc", jobOffer.getCompanyDesc());
                 view.getContext().startActivity(intent);
             }
 
         });
+
+
     }
 
     @Override
@@ -119,11 +123,58 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
             imageViewLogo = itemView.findViewById(R.id.companyLogoo);
             bookmark = itemView.findViewById(R.id.saveIconOffer);
         }
+
+        public void updateBookmarkIcon(boolean isSaved) {
+            if (isSaved) {
+                bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+            } else {
+                bookmark.setImageResource(R.drawable.ic_bookmark_empty);
+            }
+        }
     }
     public void updateItems(List<JobOfferItem> items) {
         this.jobOffers = items;
         notifyDataSetChanged();
     }
+
+    private String getFormattedTimeAgo(String dateString) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        try {
+            Date jobDate = format.parse(dateString);
+            long currentTime = System.currentTimeMillis();
+            long jobTime = jobDate.getTime();
+            long timeDiff = currentTime - jobTime;
+
+            if (timeDiff < 0) {
+                return "Just now";
+            } else if (timeDiff < TimeUnit.HOURS.toMillis(1)) {
+                long minutes = TimeUnit.MILLISECONDS.toMinutes(timeDiff);
+                return minutes + (minutes == 1 ? " minute" : " minutes");
+            } else if (timeDiff < TimeUnit.DAYS.toMillis(1)) {
+                long hours = TimeUnit.MILLISECONDS.toHours(timeDiff);
+                return hours + (hours == 1 ? " heure" : " heures");
+            } else if (timeDiff < TimeUnit.DAYS.toMillis(7)) {
+                long days = TimeUnit.MILLISECONDS.toDays(timeDiff);
+                return days + (days == 1 ? " jour" : " jours");
+            } else if (timeDiff < TimeUnit.DAYS.toMillis(30)) {
+                long weeks = TimeUnit.MILLISECONDS.toDays(timeDiff) / 7;
+                return weeks + (weeks == 1 ? " semaine" : " semaines");
+            } else if (timeDiff < TimeUnit.DAYS.toMillis(365)) {
+                long months = TimeUnit.MILLISECONDS.toDays(timeDiff) / 30;
+                return months + (" mois");
+            } else {
+                long years = TimeUnit.MILLISECONDS.toDays(timeDiff) / 365;
+                return years + (years == 1 ? " an" : " ans");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return ""; // Return empty string if parsing fails
+    }
+
+
+
+
 }
 
 

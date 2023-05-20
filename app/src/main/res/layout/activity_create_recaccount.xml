@@ -66,6 +66,18 @@
             android:padding="10dp"
             android:textSize="16sp" />
 
+
+        <TextView
+            android:visibility="gone"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_nomr"
+            android:layout_below="@id/nameRECedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
         <TextView
             android:id="@+id/create_rec_prenom"
             android:layout_width="wrap_content"
@@ -92,13 +104,24 @@
             android:padding="10dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:visibility="gone"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_prenomr"
+            android:layout_below="@id/prenomRECedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
 
         <TextView
             android:id="@+id/create_rec_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Numéro de téléphone"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
             android:layout_below="@id/prenomRECedittext"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="5dp"
@@ -147,6 +170,37 @@
             android:padding="10dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_emailr"
+            android:layout_below="@id/emailRECedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
+        <TextView
+            android:visibility="gone"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_email_incorrectr"
+            android:layout_below="@id/emailRECedittext"
+            android:text="E-mail incorrect, veuillez entrer un adresse valide"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_email_alreadyr"
+            android:layout_below="@id/emailRECedittext"
+            android:text="Il existe déjà un compte avec cette adresse e-mail"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
 
         <TextView
             android:id="@+id/create_rec_mdp"
@@ -154,7 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/emailRECedittext"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
             android:layout_marginBottom="5dp"
             android:text="Mot de passe"
             android:textColor="@color/black"
@@ -174,6 +228,27 @@
             android:hint="Entrez votre mot de passe"
             android:padding="10dp"
             android:textSize="16sp" />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_passr"
+            android:layout_below="@id/mdpRECedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_pass_courtr"
+            android:layout_below="@id/mdpRECedittext"
+            android:text="Votre mot de passe doit contenir au moins 8 caractères"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
 
 
     </RelativeLayout>
@@ -211,6 +286,16 @@
             android:padding="10dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_entrepriser"
+            android:layout_below="@id/entrepriseRECedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
+
 
         <TextView
             android:id="@+id/create_rec_secteur_activite"
@@ -218,7 +303,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/entrepriseRECedittext"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
             android:layout_marginBottom="5dp"
             android:text="Secteur d'activité"
             android:textColor="@color/black"
@@ -261,6 +346,16 @@
             android:hint="Entrez la wilaya d'activité de votre entreprise"
             android:padding="10dp"
             android:textSize="14sp" />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_lieur"
+            android:layout_below="@id/lieuactiviteRECedittext"
+            android:text="Ce champ est obligatoire*"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"/>
 
         <TextView
             android:id="@+id/create_rec_logo"
@@ -593,15 +688,16 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/continueButtonREC"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/sign_button_background"
         android:backgroundTint="@color/light_green"
         android:text="Continuer"
+        android:textAllCaps="false"
+        android:textSize="16sp"
         android:textColor="@color/white" />
 
 
