@@ -13,89 +13,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d965c23e-74bd-4960-8922-f83152f31a33" name="Default Changelist" comment="Build 0.9">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CvThequeAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CvThequeItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/DescriptionEntrepriseDetailsFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/DescriptionPosteDetailsFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/InterfaceAcceuil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/PostezCV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/VoirProfilCV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_MesListesFragmentCand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/__CvThequeFragmentRec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_access_time_filled_24_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_bookmark_filled_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_close_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_collections_bookmark_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_collections_bookmark_24_white.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_home_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_location_on_24_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_notifications_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_person_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_person_search_24_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_work_24_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/mes_listes_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/outline_collections_bookmark_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/outline_collections_bookmark_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/outline_home_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/outline_notifications_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/outline_person_24_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_interface_acceuil.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_postez_cv.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_voir_profil_cv.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/cvtheque.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/description_entreprise_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/filters_dialog_rec.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cv_theque_rec.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_description_entreprise_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_description_poste_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mes_listes_cand.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/etudes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/interfaceacceuil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/jobzlogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/jobzlogof.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+    <list default="true" id="d965c23e-74bd-4960-8922-f83152f31a33" name="Default Changelist" comment="Build 0.95">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/AProposDeNous.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_apropos_de_nous.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CreateAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CreateAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CreateCANDAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CreateCANDAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CreateRECAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/CreateRECAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/HomeCand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/HomeCand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/HomeRec.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/HomeRec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/JobDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/JobDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/JobOfferAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/JobOfferAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/JobOfferItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/JobOfferItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/Postuler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/Postuler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/SavedJobOfferAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/SavedJobOfferAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_AcceuilFragmentCand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_AcceuilFragmentCand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_AlertesFragmentCand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_AlertesFragmentCand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_MesListesFragmentCand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_MesListesFragmentCand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_MesOffresFragmentCand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_MesOffresFragmentCand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_ProfileFragmentCand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/_ProfileFragmentCand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/__AcceuilFragmentRec.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/__AcceuilFragmentRec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/__OffreEnregistree.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/__OffreEnregistree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/___ConnectionClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pfe_jobz_recherche_emploi/___ConnectionClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/shape.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/shape.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/alertes_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/alertes_selector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/home_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/home_selector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_emails.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_emails.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_candaccount.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_candaccount.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_cand.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_cand.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_job_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_job_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_postuler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_postuler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_acceuil_cand.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_acceuil_cand.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_acceuil_rec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_acceuil_rec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_alertes_cand.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_alertes_cand.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_gerer_candidatures_rec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_gerer_candidatures_rec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_gerer_offre_rec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_gerer_offre_rec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mes_candidatures_cand.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mes_candidatures_cand.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mes_offres_cand.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mes_offres_cand.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_cand.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_cand.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/job_offer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/job_offer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/saved_job_offer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/saved_job_offer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_bar_bottom_navbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_bar_bottom_navbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_bar_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_bar_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/tool_bar_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/tool_bar_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/tool_bar_menu_rec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/tool_bar_menu_rec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +119,9 @@
       <recent name="com.example.pfe_jobz_recherche_emploi" />
     </key>
     <key name="android.template.-471216077">
+      <recent name="com.example.pfe_jobz_recherche_emploi" />
+    </key>
+    <key name="android.template.-1141869551">
       <recent name="com.example.pfe_jobz_recherche_emploi" />
     </key>
     <key name="android.template.-1552342767">
@@ -349,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684617367074</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Build 0.95">
+      <created>1685350485510</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685350485510</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -368,6 +315,7 @@
     <MESSAGE value="Build 0.5" />
     <MESSAGE value="Build 0.8" />
     <MESSAGE value="Build 0.9" />
-    <option name="LAST_COMMIT_MESSAGE" value="Build 0.9" />
+    <MESSAGE value="Build 0.95" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build 0.95" />
   </component>
 </project>

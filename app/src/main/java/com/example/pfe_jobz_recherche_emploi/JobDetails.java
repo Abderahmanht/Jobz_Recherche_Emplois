@@ -176,6 +176,7 @@ public class JobDetails extends AppCompatActivity {
                     intent.putExtra("Titre", title.getText().toString());
                     intent.putExtra("Entreprise", extras.getString("company_name"));
                     intent.putExtra("Lieu", extras.getString("company_location"));
+                    intent.putExtras(getIntent().getExtras());
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                 }

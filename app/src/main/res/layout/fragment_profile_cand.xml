@@ -22,6 +22,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:text="Name"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="16sp" />
 
         <TextView
@@ -30,7 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profil_nom_complet"
             android:layout_centerHorizontal="true"
-            android:text="Email@emailprovider.com" />
+            android:text="Email@emailprovider.com"
+            android:textColor="@color/black"
+            />
 
 
         <TextView
@@ -89,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="-2dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="-2dp"
             android:layout_below="@+id/deposer_cv_cand"
             android:drawableStart="@drawable/baseline_edit_24"
@@ -105,11 +109,12 @@
             android:layout_below="@id/modifier_profil_cand"
             android:drawableStart="@drawable/baseline_info_24"
             android:text="À propos de nous"
+            android:background="@android:color/transparent"
             android:layout_marginStart="-2dp"
             android:layout_marginEnd="-2dp"
             android:layout_marginTop="-2dp"
+
             android:padding="10dp"
-            android:background="@drawable/container_black"
             android:textAllCaps="false" />
 
         <Button

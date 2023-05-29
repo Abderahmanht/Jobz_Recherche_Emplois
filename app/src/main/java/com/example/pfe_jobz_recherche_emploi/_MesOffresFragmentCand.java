@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,17 +52,18 @@ public class _MesOffresFragmentCand extends Fragment {
         recyclerViewSavedJobOffers = view.findViewById(R.id.recyclerViewSavedJobs);
         recyclerViewSavedJobOffers.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        savedJobOffers = getSavedJobOffersFromDatabase();
-        savedJobOfferAdapter = new SavedJobOfferAdapter(savedJobOffers,getActivity(), getActivity().getIntent().getStringExtra("ID_Candidat"));
+        savedJobOffers = getSavedJobOffersFromDatabase(getActivity().getIntent().getStringExtra("ID_Candidat"));
+        String idc = getActivity().getIntent().getStringExtra("ID_Candidat");
+
+        savedJobOfferAdapter = new SavedJobOfferAdapter(savedJobOffers,getActivity(), idc);
         recyclerViewSavedJobOffers.setAdapter(savedJobOfferAdapter);
 
         return view;
     }
 
-    public List<JobOfferItem> getSavedJobOffersFromDatabase() {
+    public List<JobOfferItem> getSavedJobOffersFromDatabase(String IDc) {
         List<JobOfferItem> savedJobOffers = new ArrayList<>();
 
-        String IDCandidat =  getActivity().getIntent().getStringExtra("ID_Candidat");
 
         // Step 2: Establish a connection to your database
         Connection connection = new ___ConnectionClass().SQLServerConnection(); // Replace with your database connection code
@@ -77,7 +79,7 @@ public class _MesOffresFragmentCand extends Fragment {
 
                 // Step 4: Prepare the SQL statement
                 PreparedStatement statement = connection.prepareStatement(query);
-                statement.setString(1, IDCandidat);
+                statement.setString(1, IDc);
 
                 // Step 5: Execute the SQL query and retrieve the result set
                 ResultSet resultSet = statement.executeQuery();
@@ -112,11 +114,23 @@ public class _MesOffresFragmentCand extends Fragment {
         return savedJobOffers;
     }
 
-    public void updateSavedJobOffers(List<JobOfferItem> jobOffers) {
-        savedJobOffers.clear();
-        savedJobOffers.addAll(jobOffers);
-        savedJobOfferAdapter.notifyDataSetChanged();
+    public void updateSavedJobOffers(String idc) {
+        List<JobOfferItem> updatedJobOffers = getSavedJobOffersFromDatabase(idc);
+        savedJobOffers.clear();  // Clear the existing list
+        savedJobOffers.addAll(updatedJobOffers);  // Add the new job offers to the list
+        savedJobOfferAdapter.notifyDataSetChanged();  // Notify the adapter about the data change
+        recyclerViewSavedJobOffers.getLayoutManager();
+        recyclerViewSavedJobOffers.requestLayout();
+
     }
+
+    public void refreshFragment() {
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        transaction.detach(this).attach(this).commit();
+    }
+
+
+
 
 }
 

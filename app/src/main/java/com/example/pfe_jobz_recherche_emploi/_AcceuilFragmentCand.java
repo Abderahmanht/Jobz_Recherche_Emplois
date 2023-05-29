@@ -168,7 +168,7 @@ public class _AcceuilFragmentCand extends Fragment {
         recyclerViewJobs.setLayoutManager(new LinearLayoutManager(getContext()));
         SharedPreferences Preferences = requireActivity().getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
         jobOffers = getJobOffersFromDatabase();
-        jobOfferAdapter = new JobOfferAdapter(jobOffers, getActivity().getIntent().getStringExtra("ID_Candidat"));
+        jobOfferAdapter = new JobOfferAdapter(jobOffers, getActivity().getIntent().getStringExtra("ID_Candidat"),getActivity(),getActivity());
         recyclerViewJobs.setAdapter(jobOfferAdapter);
         shimmerFrameLayout = view.findViewById(R.id.shimmerView);
         shimmerFrameLayout.setVisibility(View.INVISIBLE);

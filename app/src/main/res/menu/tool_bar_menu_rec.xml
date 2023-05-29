@@ -19,12 +19,10 @@
                 />
             <item
                 android:title="À Propos de nous"
-                android:id="@+id/apropos"
-                android:icon="@drawable/baseline_info_24"/>
+                android:id="@+id/apropos"/>
             <item
                 android:title="Se Déconnecter"
-                android:id="@+id/sedeconnecter"
-                android:icon="@drawable/baseline_logout_24"/>
+                android:id="@+id/sedeconnecter"/>
         </menu>
     </item>
 

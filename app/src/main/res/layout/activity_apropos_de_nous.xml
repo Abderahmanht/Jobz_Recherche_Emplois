@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AProposDeNous">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/apropostoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_blue"
+            app:title="À propos de nous"
+            app:titleTextColor="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/aproposlogo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/jobzlogof"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/aporpostitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jobz : Recherche d'emploi"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/aproposlogo"
+            />
+
+        <TextView
+            android:id="@+id/aporpostexte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:gravity="center"
+            android:text="Jobz est une application mobile android de recherche d'emploi, réalisé par El HATHOUT Abderrahmane et OUADDAH Ilyes, en vue de l'obtention du diplôme Licence en informatique"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/aporpostitre"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Université des Sciences et de la Technologie d'Oran (USTO)\nFaculté de Mathématiques et d’Informatique\nDépartement d’informatique
+\nSystèmes Informatiques, 2022-2023\nDirigé et encadré par Mme F.Guerroudji, Magister, MA.A"
+            android:layout_below="@id/aporpostexte"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            />
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

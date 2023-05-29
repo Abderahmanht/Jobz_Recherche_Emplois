@@ -59,9 +59,8 @@ public class SavedJobOfferAdapter extends RecyclerView.Adapter<SavedJobOfferAdap
                         int resultSet = statement.executeUpdate(deleteSavedOfferSQL);
                         if (resultSet > 0) {
                             Toast.makeText(view.getContext(), "Offre supprimée", Toast.LENGTH_SHORT).show();
-                            _MesOffresFragmentCand mesOffresFragmentCand = (_MesOffresFragmentCand) activity.getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-                            mesOffresFragmentCand.getSavedJobOffersFromDatabase();
-                            mesOffresFragmentCand.updateSavedJobOffers(mesOffresFragmentCand.savedJobOffers);
+                            _MesOffresFragmentCand mesOffresFragmentCand = new _MesOffresFragmentCand();
+                            mesOffresFragmentCand.getSavedJobOffersFromDatabase(SavedJobOfferAdapter.this.idc);
                         }
 
 

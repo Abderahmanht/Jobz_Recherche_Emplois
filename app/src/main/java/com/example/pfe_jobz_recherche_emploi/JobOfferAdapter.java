@@ -1,5 +1,7 @@
 package com.example.pfe_jobz_recherche_emploi;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -23,11 +25,14 @@ import java.util.concurrent.TimeUnit;
 public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHolder> {
     private String idc;
     private List<JobOfferItem> jobOffers;
+    private Context context;
+    private Activity activity;
 
-    public JobOfferAdapter(List<JobOfferItem> jobOffers, String idc) {
+    public JobOfferAdapter(List<JobOfferItem> jobOffers, String idc, Context context, Activity activity) {
         this.jobOffers = jobOffers;
         this.idc = idc;
-
+        this.context = context;
+        this.activity = activity;
     }
 
     @NonNull
@@ -78,6 +83,7 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), JobDetails.class);
+                intent.putExtras(activity.getIntent().getExtras());
                 intent.putExtra("ID_Offre", jobOffer.getID());
                 intent.putExtra("ID_Candidat", JobOfferAdapter.this.idc);
                 Bitmap bitmap = jobOffer.getLogo();

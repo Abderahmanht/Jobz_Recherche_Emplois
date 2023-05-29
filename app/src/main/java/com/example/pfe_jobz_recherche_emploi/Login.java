@@ -29,7 +29,6 @@ public class Login extends AppCompatActivity {
     TextView signUp;
     EditText emailEdt;
     EditText passwordEdt;
-    TextView logrec;
     String email;
     String password;
 

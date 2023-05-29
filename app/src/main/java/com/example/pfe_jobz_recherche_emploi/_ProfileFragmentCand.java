@@ -25,16 +25,16 @@ import java.util.Objects;
 
 public class _ProfileFragmentCand extends Fragment {
 
-    private Button logoutBtn, modifierProfil;
+    private Button logoutBtn, modifierProfil, apropos;
     private RelativeLayout deposerCV;
     private ImageView imageView,delete;
-    private TextView textView,votreCV;
+    private TextView textView,votreCV, nomcomplet, email;
     private boolean available = true;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile_cand,container,false);
+        View view = inflater.inflate(R.layout.fragment_profile_cand, container, false);
 
         logoutBtn = view.findViewById(R.id.logout_button_cand);
         modifierProfil = view.findViewById(R.id.modifier_profil_cand);
@@ -43,16 +43,43 @@ public class _ProfileFragmentCand extends Fragment {
         delete = view.findViewById(R.id.supprimer_cv);
         textView = view.findViewById(R.id.cv_file_name_profil);
         votreCV = view.findViewById(R.id.profil_votre_cv_text);
+        apropos = view.findViewById(R.id.a_propos_profil);
+
+        nomcomplet = view.findViewById(R.id.profil_nom_complet);
+        email = view.findViewById(R.id.profil_email);
+
+        Connection con = new ___ConnectionClass().SQLServerConnection();
+        if(con!=null){
+            try {
+                String selectSQL = "SELECT Nom, Prenom, Email FROM Candidat WHERE ID_Candidat = "+getActivity().getIntent().getStringExtra("ID_Candidat")+";";
+                Statement statement = con.createStatement();
+                ResultSet resultSet = statement.executeQuery(selectSQL);
+                if(resultSet.next()){
+                    nomcomplet.setText(resultSet.getString("Nom")+" "+resultSet.getString("Prenom"));
+                    email.setText(resultSet.getString("Email"));
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        apropos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), AProposDeNous.class));
+            }
+        });
 
 
         // verifier si cv existe dans la base de donnees
         Connection connection = new ___ConnectionClass().SQLServerConnection();
-        if(connection!=null){
+        if (connection != null) {
             try {
-                String selectSQL = "SELECT CV_nom_fichier FROM CV WHERE ID_Candidat = "+getActivity().getIntent().getStringExtra("ID_Candidat")+";";
+                String selectSQL = "SELECT CV_nom_fichier FROM CV WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat") + ";";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(selectSQL);
-                if(resultSet.next() && resultSet.getString("CV_nom_fichier") != null){
+                if (resultSet.next() && resultSet.getString("CV_nom_fichier") != null) {
                     deposerCV.setBackgroundResource(R.drawable.container_black);
                     imageView.setVisibility(View.INVISIBLE);
                     delete.setVisibility(View.VISIBLE);
@@ -62,17 +89,17 @@ public class _ProfileFragmentCand extends Fragment {
                     available = false;
                 }
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(getContext(), PostezCV.class).putExtra("ID_Candidat",requireActivity().getIntent().getStringExtra("ID_Candidat")));
-                }
-            });
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), PostezCV.class).putExtra("ID_Candidat", requireActivity().getIntent().getStringExtra("ID_Candidat")));
+            }
+        });
 
 
         delete.setOnClickListener(new View.OnClickListener() {
@@ -86,13 +113,13 @@ public class _ProfileFragmentCand extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Connection connection = new ___ConnectionClass().SQLServerConnection();
 
-                        if(connection!=null){
+                        if (connection != null) {
                             try {
                                 String updateSQL = "DELETE FROM CV WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
                                 Statement statement = connection.createStatement();
                                 int resultSet = statement.executeUpdate(updateSQL);
-                                if(resultSet>0){
-                                    Toast.makeText(getContext(),"CV Supprimée",Toast.LENGTH_LONG).show();
+                                if (resultSet > 0) {
+                                    Toast.makeText(getContext(), "CV Supprimée", Toast.LENGTH_LONG).show();
                                     deposerCV.setBackgroundResource(R.color.light_blue);
                                     imageView.setVisibility(View.VISIBLE);
                                     delete.setVisibility(View.INVISIBLE);
@@ -100,7 +127,7 @@ public class _ProfileFragmentCand extends Fragment {
                                     textView.setText("Postez votre CV");
                                 }
 
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
@@ -116,7 +143,7 @@ public class _ProfileFragmentCand extends Fragment {
         modifierProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),ModifierProfilCand.class).putExtra("ID_Candidat",getActivity().getIntent().getStringExtra("ID_Candidat")));
+                startActivity(new Intent(getActivity(), ModifierProfilCand.class).putExtra("ID_Candidat", getActivity().getIntent().getStringExtra("ID_Candidat")));
             }
         });
 
@@ -147,8 +174,6 @@ public class _ProfileFragmentCand extends Fragment {
                 dialog.show();
             }
         });
-
-
 
 
         return view;

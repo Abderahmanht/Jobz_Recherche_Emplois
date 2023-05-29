@@ -58,7 +58,7 @@ public class _AlertesFragmentCand extends Fragment {
 
         recyclerViewalertes = view.findViewById(R.id.recycler_view_alertes_cand);
         recyclerViewalertes.setLayoutManager(new LinearLayoutManager(getActivity()));
-        alerteItemList = getAlertesFromDatabase();
+        alerteItemList = getAlertesFromDatabase(getActivity().getIntent().getStringExtra("ID_Candidat"));
         alerteAdapter = new AlerteAdapter(alerteItemList, getActivity().getIntent().getStringExtra("ID_Candidat"));
         recyclerViewalertes.setAdapter(alerteAdapter);
 
@@ -251,13 +251,13 @@ public class _AlertesFragmentCand extends Fragment {
         return view;
     }
 
-    public List<AlerteItem> getAlertesFromDatabase() {
+    public List<AlerteItem> getAlertesFromDatabase(String idc) {
         List<AlerteItem> alertes = new ArrayList<>();
 
         Connection connection = new ___ConnectionClass().SQLServerConnection();
         if(connection != null) {
             try {
-                String selectSQL = "SELECT ID_Alerte, Titre, Poste_Recherche, Lieu_Residence FROM Alerte_Emploi WHERE ID_Candidat = "+getActivity().getIntent().getStringExtra("ID_Candidat");
+                String selectSQL = "SELECT ID_Alerte, Titre, Poste_Recherche, Lieu_Residence FROM Alerte_Emploi WHERE ID_Candidat = "+idc;
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(selectSQL);
 
@@ -286,7 +286,12 @@ public class _AlertesFragmentCand extends Fragment {
     public Dialog getAlerteDialog(){
         return alerte_dialog;
     }
-
+    public void updateAlertes(String idc) {
+        List<AlerteItem> updatedAlerts = getAlertesFromDatabase(idc);
+        alerteItemList.clear();  // Clear the existing list
+        alerteItemList.addAll(updatedAlerts);  // Add the new job offers to the list
+        alerteAdapter.notifyDataSetChanged();  // Notify the adapter about the data change
+    }
 
 
 

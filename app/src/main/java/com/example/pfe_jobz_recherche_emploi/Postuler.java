@@ -159,7 +159,9 @@ public class Postuler extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 Intent intent = new Intent(Postuler.this, HomeCand.class);
+                                intent.putExtras(getIntent().getExtras());  // Use getIntent().getExtras() directly
                                 startActivity(intent);
+
                             }
                         });
                         snackbar.show();
