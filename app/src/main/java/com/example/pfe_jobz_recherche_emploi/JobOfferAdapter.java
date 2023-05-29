@@ -86,6 +86,7 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
                 byte[] byteArray = stream.toByteArray();
                 intent.putExtra("company_logo", byteArray);
                 intent.putExtra("company_name", jobOffer.getCompany());
+                intent.putExtra("secteur", jobOffer.getSecteur());
                 intent.putExtra("job_title", jobOffer.getTitle());
                 intent.putExtra("company_location", jobOffer.getLocation());
                 intent.putExtra("type_contrat", jobOffer.getContract());
@@ -126,9 +127,9 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
 
         public void updateBookmarkIcon(boolean isSaved) {
             if (isSaved) {
-                bookmark.setImageResource(R.drawable.ic_bookmark_filled);
+                bookmark.setImageResource(R.drawable.baseline_bookmark_filled_24_blue);
             } else {
-                bookmark.setImageResource(R.drawable.ic_bookmark_empty);
+                bookmark.setImageResource(R.drawable.ic_baseline_bookmark_border_24_blue);
             }
         }
     }
@@ -146,7 +147,7 @@ public class JobOfferAdapter extends RecyclerView.Adapter<JobOfferAdapter.ViewHo
             long timeDiff = currentTime - jobTime;
 
             if (timeDiff < 0) {
-                return "Just now";
+                return "à l'instant";
             } else if (timeDiff < TimeUnit.HOURS.toMillis(1)) {
                 long minutes = TimeUnit.MILLISECONDS.toMinutes(timeDiff);
                 return minutes + (minutes == 1 ? " minute" : " minutes");

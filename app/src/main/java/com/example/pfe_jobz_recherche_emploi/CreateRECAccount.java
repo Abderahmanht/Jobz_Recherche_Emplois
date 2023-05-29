@@ -265,7 +265,7 @@ public class CreateRECAccount extends AppCompatActivity {
                                 byte[] byteArray = stream.toByteArray();
 
                                 // Insert data into database
-                                String SQLinsert = "INSERT INTO Recruteur (Nom, Prenom, Entreprise, Description_Entreprise, Wilaya_Entreprise, Secteur_Activite, Num_Tel, Email, Mot_de_passe, Logo_Entreprise, Statut_Compte) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" + nomentreprisea.getText() + "','" + desca.getText() + "','" + wilayaa.getText() + "','" + secta.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "', ?,0);";
+                                String SQLinsert = "INSERT INTO Recruteur (Nom, Prenom, Entreprise, Description_Entreprise, Wilaya_Entreprise, Secteur_Activite, Num_Tel, Email, Mot_de_passe, Logo_Entreprise, Statut_Compte) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" + nomentreprisea.getText() + "','" + desca.getText().toString().replace("'", "''") + "','" + wilayaa.getText() + "','" + secta.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "', ?,0);";
                                 PreparedStatement statement = connection.prepareStatement(SQLinsert);
                                 statement.setBytes(1, byteArray);
                                 resultSet = statement.executeUpdate();

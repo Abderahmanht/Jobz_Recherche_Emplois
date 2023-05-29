@@ -51,9 +51,7 @@ public class __OffreEnregistree {
                 int rowsAffected = statement.executeUpdate(insertQuery);
 
                 if (rowsAffected > 0) {
-                    // Insertion successful
                 } else {
-                    // No rows inserted, handle accordingly
                 }
             } catch (Exception e) {
                 e.printStackTrace();

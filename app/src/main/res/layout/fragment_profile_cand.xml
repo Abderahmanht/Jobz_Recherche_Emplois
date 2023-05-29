@@ -4,18 +4,23 @@
     android:paddingTop="100dp"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/profil_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mon Compte"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+
 
         <TextView
             android:id="@+id/profil_nom_complet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="80dp"
             android:text="Name"
             android:textSize="16sp" />
 
@@ -27,56 +32,66 @@
             android:layout_centerHorizontal="true"
             android:text="Email@emailprovider.com" />
 
-        <Button
-            android:id="@+id/profil_alerte"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Votre CV"
+            android:id="@+id/profil_votre_cv_text"
             android:layout_below="@id/profil_email"
-            android:layout_marginStart="-2dp"
-            android:layout_marginEnd="-2dp"
-            android:layout_marginTop="60dp"
-            android:padding="10dp"
-            android:background="@drawable/container_black"
-            android:drawableStart="@drawable/baseline_notifications_24_gray"
-            android:text="Alertes"
-            android:textAllCaps="false" />
+            android:layout_marginTop="70dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginStart="20dp"/>
 
-        <Button
-            android:id="@+id/profil_candidatures"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="-2dp"
-            android:layout_marginEnd="-2dp"
-            android:padding="10dp"
-            android:layout_below="@id/profil_alerte"
-            android:layout_marginTop="-1dp"
-            android:background="@drawable/container_black"
-            android:drawableStart="@drawable/baseline_business_center_24"
-            android:text="Candidatures"
-            android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/profil_enregistrees"
+        <RelativeLayout
+            android:id="@+id/deposer_cv_cand"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profil_candidatures"
-            android:drawableStart="@drawable/baseline_collections_bookmark_24"
-            android:text="Enregistré"
-            android:padding="10dp"
+            android:layout_height="45dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:layout_marginTop="100dp"
             android:layout_marginStart="-2dp"
             android:layout_marginEnd="-2dp"
-            android:layout_marginTop="-1dp"
-            android:background="@drawable/container_black"
-            android:textAllCaps="false" />
+            android:layout_below="@+id/profil_email"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@color/light_blue"
+            android:textAllCaps="false">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/postez_cv_icon"
+                android:src="@drawable/baseline_add_circle_outline_24"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/supprimer_cv"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone"
+                android:src="@drawable/baseline_delete_24_gray"/>
+            <TextView
+                android:id="@+id/cv_file_name_profil"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:text="Postez votre CV"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/modifier_profil_cand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
             android:layout_marginStart="-2dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="-2dp"
-            android:layout_below="@+id/profil_enregistrees"
+            android:layout_below="@+id/deposer_cv_cand"
             android:drawableStart="@drawable/baseline_edit_24"
             android:text="Modifier profil"
             android:padding="10dp"
@@ -92,7 +107,7 @@
             android:text="À propos de nous"
             android:layout_marginStart="-2dp"
             android:layout_marginEnd="-2dp"
-            android:layout_marginTop="-1dp"
+            android:layout_marginTop="-2dp"
             android:padding="10dp"
             android:background="@drawable/container_black"
             android:textAllCaps="false" />
@@ -116,4 +131,3 @@
 
 
 
-</RelativeLayout>

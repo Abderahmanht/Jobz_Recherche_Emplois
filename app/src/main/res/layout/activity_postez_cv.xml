@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostezCV">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/postez_cv_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Poster CV"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Postuler rapidement"
+        android:textColor="@color/dark_green"
+        android:textStyle="bold"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt"
+        android:layout_marginStart="20dp"
+        android:text="En déposant votre CV, vous serez capable\nde postuler aux offres en un seul click."/>
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attirer les employeurs"
+        android:textColor="@color/dark_green"
+        android:textStyle="bold"
+        android:layout_below="@id/txt"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt2"
+        android:layout_marginStart="20dp"
+        android:text="Lorsque vous postez votre CV, les employeurs peuvent le trouver et le consulter grâce à notre base de données de CVs déposés."/>
+
+    <RelativeLayout
+        android:id="@+id/layout_cv_cand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt2"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:id="@+id/postez_cand_secteur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Secteur"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/postez_secteurCvCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/postez_cand_secteur"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Secteur, catégorie. ex : informatique"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/postez_etudes_cand_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Niveau d'études"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/postez_secteurCvCANDedittext"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/postez_etudesCvCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/postez_etudes_cand_cv"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Études"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/postez_experience_cand_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Experience"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/postez_etudesCvCANDedittext"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/postez_experienceCvCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/postez_experience_cand_cv"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Experience"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/postuler_cv_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/postez_experienceCvCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Votre CV"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/postuler_cv_t"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:text="( Le document doit être au format .DOC, .DOCX ou .PDF )" />
+
+        <Button
+            android:id="@+id/postez_cv_charger_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/postuler_cv_t"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableEnd="@drawable/ic_baseline_file_upload_24"
+            android:padding="10dp"
+            android:text="Télécharger le fichier\n (.doc, .docx, .pdf.)"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/postez_valider"
+        android:text="Valider"
+        android:textAllCaps="false"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/light_blue"
+        android:layout_marginHorizontal="30dp"
+        />
+
+
+
+</RelativeLayout>

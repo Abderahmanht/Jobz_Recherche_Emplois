@@ -11,34 +11,40 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
+        android:background="?android:attr/selectableItemBackground"
         android:orientation="vertical">
 
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/companyLogoo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
-
-        <TextView
-            android:id="@+id/companyName"
+        <LinearLayout
+            android:id="@+id/company"
             android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_marginStart="25dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/companyLogoo"
-            android:text="Company Name"
-             />
+            android:layout_marginStart="15dp"
+            android:orientation="vertical"
+            android:gravity="center">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/companyLogoo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/companyName"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/companyLogoo"
+                android:text="Company Name"
+                />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/jobTitle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/companyLogoo"
+            android:layout_toEndOf="@id/company"
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
             android:text="Ingenieur en genie mecanique"
@@ -52,8 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
             android:drawableStart="@drawable/baseline_location_on_24_gray"
             android:text="Oran, Algeria" />
 
@@ -61,12 +67,10 @@
             android:id="@+id/typeContrat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
             android:textColor="@color/dark_green"
-            android:layout_marginStart="30dp"
-            android:layout_toEndOf="@+id/companyLocation"
+            android:layout_centerHorizontal="true"
             android:text="Type-Contrat"
              />
 
@@ -82,12 +86,12 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_bookmark_empty" />
+            android:src="@drawable/ic_baseline_bookmark_border_24_blue" />
 
         <ImageButton
-            android:visibility="gone"
             android:id="@+id/more_horiz_job_offer"
             android:layout_width="wrap_content"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
@@ -104,7 +108,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:text="24h" />
 
     </RelativeLayout>

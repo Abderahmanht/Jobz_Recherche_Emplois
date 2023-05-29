@@ -27,14 +27,19 @@ public class __AcceuilFragmentRec extends Fragment {
 
     JobOfferAdapterRec jobOfferAdapterRec;
     CandidatureRecAdapter candidatureRecAdapter;
+    CvThequeAdapter cvThequeAdapter;
 
     List<JobOfferItemRec> jobOfferItemRecList;
     List<CandidatureItemRec> candidatureItemRecList;
-    TextView nombreCandidaturesText, nombreOffresText;
+
+    List<CvThequeItem> cvThequeItems;
+    TextView nombreCandidaturesText, nombreOffresText, nombreCVdeposesText;
     __GererOffreFragmentRec gererOffreFragmentRec = new __GererOffreFragmentRec();
     __GererCandidaturesFragmentRec gererCandidaturesFragmentRec = new __GererCandidaturesFragmentRec();
 
-    RelativeLayout canRecues,offresPub;
+    __CvThequeFragmentRec cvThequeFragmentRec = new __CvThequeFragmentRec();
+
+    RelativeLayout canRecues,offresPub,cvDepos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,13 +47,16 @@ public class __AcceuilFragmentRec extends Fragment {
 
         jobOfferItemRecList = gererOffreFragmentRec.getJobOffersRecFromDatabase(getActivity().getIntent().getStringExtra("ID_Recruteur"));
         candidatureItemRecList = gererCandidaturesFragmentRec.getCandidaturesRecFromDatabase(getActivity().getIntent().getStringExtra("ID_Recruteur"));
+        cvThequeItems = cvThequeFragmentRec.getCVsFromDatabase();
 
         jobOfferAdapterRec = new JobOfferAdapterRec(jobOfferItemRecList, getActivity().getIntent().getStringExtra("ID_Recruteur"));
         candidatureRecAdapter = new CandidatureRecAdapter(candidatureItemRecList, getActivity().getIntent().getStringExtra("ID_Recruteur"));
+        cvThequeAdapter = new CvThequeAdapter(cvThequeItems,getContext());
 
 
         int nombreOffres = jobOfferAdapterRec.getItemCount();
         int nombreCandidatures = candidatureRecAdapter.getItemCount();
+        int nombreCVs = cvThequeAdapter.getItemCount();
 
 
 
@@ -56,8 +64,10 @@ public class __AcceuilFragmentRec extends Fragment {
         fab = view.findViewById(R.id.publier_offre_fab);
         nombreCandidaturesText = view.findViewById(R.id.stats_nombre_candidatures);
         nombreOffresText = view.findViewById(R.id.stats_nombre_offres);
+        nombreCVdeposesText = view.findViewById(R.id.stats_nombre_cvs);
         canRecues = view.findViewById(R.id.candidatures_recue_layout);
         offresPub = view.findViewById(R.id.offres_publiees_layout);
+        cvDepos = view.findViewById(R.id.cv_deposees_layout);
 
         offresPub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +93,21 @@ public class __AcceuilFragmentRec extends Fragment {
             }
         });
 
+        cvDepos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment cvtheque = new __CvThequeFragmentRec();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container_rec, cvtheque);
+                fragmentTransaction.addToBackStack(null); // Optional: Add the transaction to the back stack
+                fragmentTransaction.commit();
+            }
+        });
+
         nombreCandidaturesText.setText(String.valueOf(nombreCandidatures));
         nombreOffresText.setText(String.valueOf(nombreOffres));
+        nombreCVdeposesText.setText(String.valueOf(nombreCVs));
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

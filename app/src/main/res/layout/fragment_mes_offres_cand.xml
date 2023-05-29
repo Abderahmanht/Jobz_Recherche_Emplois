@@ -6,22 +6,10 @@
     >
 
     <TextView
-        android:id="@+id/saved_offers_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Offres enregistrées"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="80dp"
-        android:textColor="@color/black"
-        android:layout_marginStart="20dp"
-        />
-    <TextView
         android:id="@+id/dsc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/saved_offers_title"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="Si vous souhaitez conserver la trace de certaines offres, vous pouvez les enregistrer. Pour sauvegarder une offre, appuyez sur l'icone de sauvegarde en haut ou bien dans les détails de l'offre"
         android:paddingHorizontal="20dp"
         />

@@ -40,8 +40,8 @@ import java.util.List;
 
 public class _MesOffresFragmentCand extends Fragment {
     private RecyclerView recyclerViewSavedJobOffers;
-    private SavedJobOfferAdapter savedJobOfferAdapter;
-    private List<JobOfferItem> savedJobOffers;
+    public SavedJobOfferAdapter savedJobOfferAdapter;
+    public List<JobOfferItem> savedJobOffers;
 
     @Nullable
     @Override
@@ -52,13 +52,13 @@ public class _MesOffresFragmentCand extends Fragment {
         recyclerViewSavedJobOffers.setLayoutManager(new LinearLayoutManager(getContext()));
 
         savedJobOffers = getSavedJobOffersFromDatabase();
-        savedJobOfferAdapter = new SavedJobOfferAdapter(savedJobOffers, getActivity().getIntent().getStringExtra("ID_Candidat"));
+        savedJobOfferAdapter = new SavedJobOfferAdapter(savedJobOffers,getActivity(), getActivity().getIntent().getStringExtra("ID_Candidat"));
         recyclerViewSavedJobOffers.setAdapter(savedJobOfferAdapter);
 
         return view;
     }
 
-    private List<JobOfferItem> getSavedJobOffersFromDatabase() {
+    public List<JobOfferItem> getSavedJobOffersFromDatabase() {
         List<JobOfferItem> savedJobOffers = new ArrayList<>();
 
         String IDCandidat =  getActivity().getIntent().getStringExtra("ID_Candidat");
@@ -95,7 +95,7 @@ public class _MesOffresFragmentCand extends Fragment {
                     Bitmap logo = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
 
                     // Step 7: Create a new JobOfferItem object and add it to the savedJobOffers list
-                    JobOfferItem jobOffer = new JobOfferItem(offerId, company, compDesc, title, contract, location, date, logo,"","");
+                    JobOfferItem jobOffer = new JobOfferItem(offerId, company, compDesc, title, contract, location, date, logo,"","","","");
                     savedJobOffers.add(jobOffer);
                 }
             } catch (SQLException e) {
@@ -110,6 +110,12 @@ public class _MesOffresFragmentCand extends Fragment {
         }
 
         return savedJobOffers;
+    }
+
+    public void updateSavedJobOffers(List<JobOfferItem> jobOffers) {
+        savedJobOffers.clear();
+        savedJobOffers.addAll(jobOffers);
+        savedJobOfferAdapter.notifyDataSetChanged();
     }
 
 }

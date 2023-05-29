@@ -8,21 +8,26 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.List;
 
 public class SavedJobOfferAdapter extends RecyclerView.Adapter<SavedJobOfferAdapter.ViewHolder> {
     private String idc;
     private List<JobOfferItem> jobOffers;
+    private FragmentActivity activity;
 
-    public SavedJobOfferAdapter(List<JobOfferItem> jobOffers, String idc) {
+    public SavedJobOfferAdapter(List<JobOfferItem> jobOffers, FragmentActivity activity, String idc) {
         this.jobOffers = jobOffers;
+        this.activity = activity;
         this.idc = idc;
-
     }
 
     @NonNull
@@ -43,6 +48,31 @@ public class SavedJobOfferAdapter extends RecyclerView.Adapter<SavedJobOfferAdap
         holder.textViewType.setText(jobOffer.getContract());
         holder.textViewDate.setText(jobOffer.getDate());
         holder.imageViewLogo.setImageBitmap(jobOffer.getLogo());
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Connection connection = new ___ConnectionClass().SQLServerConnection();
+                if(connection!=null){
+                    try{
+                        String deleteSavedOfferSQL = "DELETE FROM Offre_Enregistree WHERE ID_Candidat = "+SavedJobOfferAdapter.this.idc +" AND ID_Offre = "+jobOffer.getID();
+                        Statement statement = connection.createStatement();
+                        int resultSet = statement.executeUpdate(deleteSavedOfferSQL);
+                        if (resultSet > 0) {
+                            Toast.makeText(view.getContext(), "Offre supprimée", Toast.LENGTH_SHORT).show();
+                            _MesOffresFragmentCand mesOffresFragmentCand = (_MesOffresFragmentCand) activity.getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                            mesOffresFragmentCand.getSavedJobOffersFromDatabase();
+                            mesOffresFragmentCand.updateSavedJobOffers(mesOffresFragmentCand.savedJobOffers);
+                        }
+
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +111,7 @@ public class SavedJobOfferAdapter extends RecyclerView.Adapter<SavedJobOfferAdap
         public TextView textViewType;
         public TextView textViewDate;
         public ImageView imageViewLogo;
-        public ImageButton bookmark;
+        public ImageButton delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,9 +121,12 @@ public class SavedJobOfferAdapter extends RecyclerView.Adapter<SavedJobOfferAdap
             textViewType = itemView.findViewById(R.id.stypeContrat);
             textViewDate = itemView.findViewById(R.id.sdatePublication);
             imageViewLogo = itemView.findViewById(R.id.scompanyLogoo);
-            bookmark = itemView.findViewById(R.id.ssaveIconOffer);
+            delete = itemView.findViewById(R.id.delete_saved_offer);
         }
     }
+
+
+
 }
 
 

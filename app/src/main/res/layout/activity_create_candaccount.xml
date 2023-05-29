@@ -26,7 +26,7 @@
         app:spb_checkStateCompleted="true"
         app:spb_currentStateDescriptionColor="@color/light_green"
         app:spb_currentStateNumber="one"
-        app:spb_maxStateNumber="three"
+        app:spb_maxStateNumber="four"
         app:spb_stateBackgroundColor="#BDBDBD"
         app:spb_stateDescriptionColor="#808080"
         app:spb_stateForegroundColor="@color/light_green"
@@ -158,7 +158,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Wilaya actuelle"
+            android:text="Wilaya de résidence"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -228,6 +228,123 @@
 
     </RelativeLayout>
     <!-- 2eme etape !-->
+
+    <RelativeLayout
+        android:id="@+id/layout_cv_cand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+
+        >
+
+        <TextView
+            android:id="@+id/cand_secteur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Secteur"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/secteurCvCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/cand_secteur"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Secteur, catégorie. ex : informatique"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/etudes_cand_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Niveau d'études"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/secteurCvCANDedittext"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/etudesCvCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/etudes_cand_cv"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Études"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/experience_cand_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Experience"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/etudesCvCANDedittext"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/experienceCvCANDedittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/experience_cand_cv"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/edit_text_background"
+            android:drawablePadding="10dp"
+            android:hint="Experience"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/postuler_cv_tt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/experienceCvCANDedittext"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Votre CV"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/postuler_cv_tt"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:text="( Le document doit être au format .DOC, .DOCX ou .PDF )" />
+
+        <Button
+            android:id="@+id/cand_cv_charger_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/postuler_cv_tt"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableEnd="@drawable/ic_baseline_file_upload_24"
+            android:padding="10dp"
+            android:text="Télécharger le fichier\n (.doc, .docx, .pdf.)"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:visibility="gone"
@@ -564,15 +681,16 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/continueButtonCAND"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/sign_button_background"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rounded_corners"
         android:backgroundTint="@color/light_green"
         android:text="Continuer"
+        android:textAllCaps="false"
         android:textColor="@color/white" />
 
 

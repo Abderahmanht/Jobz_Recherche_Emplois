@@ -26,7 +26,7 @@ public class ___ConnectionClass {
     public Connection SQLServerConnection() {
         Connection con = null;
 
-        String ip = "192.168.107.47";
+        String ip = "192.168.70.47";
         int port = 1433;
         String username = "abderahman";
         String password = "admin";

@@ -31,6 +31,8 @@ public class HomeRec extends AppCompatActivity {
 
     __ModifierProfilFragmentRec modifierProfilFragmentRec = new __ModifierProfilFragmentRec();
 
+    __CvThequeFragmentRec cvThequeFragmentRec = new __CvThequeFragmentRec();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +67,13 @@ public class HomeRec extends AppCompatActivity {
                         break;
                     case R.id.candidatures:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_rec,gererCandidaturesFragmentRec).commit();
+                        break;
                     case R.id.modifierprofil:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_rec,modifierProfilFragmentRec).commit();
+                        break;
+                    case R.id.cvtheque:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_rec,cvThequeFragmentRec).commit();
+
 
                 }
 

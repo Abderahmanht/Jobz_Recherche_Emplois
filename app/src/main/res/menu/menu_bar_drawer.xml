@@ -9,7 +9,7 @@
                 <item
                 android:id="@+id/tableaudebord"
                 android:icon="@drawable/ic_baseline_dashboard_24"
-                android:title="Espace Employeur" />
+                android:title="Tableau de bord" />
                 <item
                     android:id="@+id/vosoffres"
                     android:icon="@drawable/ic_baseline_layers_24_black"
@@ -18,6 +18,11 @@
                     android:id="@+id/candidatures"
                     android:icon="@drawable/ic_baseline_groups_24"
                     android:title="Gérer candidatures"
+                    />
+                <item
+                    android:id="@+id/cvtheque"
+                    android:icon="@drawable/ic_baseline_person_search_24"
+                    android:title="CVthèque"
                     />
             </menu>
         </item>

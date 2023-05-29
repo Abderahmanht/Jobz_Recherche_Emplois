@@ -13,6 +13,7 @@ public class JobOfferItem {
     private String companyDesc;
     private String ID;
     private String experience;
+    private String competences, datel;
 
     public String getSecteur() {
         return secteur;
@@ -22,7 +23,7 @@ public class JobOfferItem {
         return experience;
     }
 
-    public JobOfferItem(String ID, String company, String companyDesc, String title, String contract, String location, String date, Bitmap logo, String secteur, String experience) {
+    public JobOfferItem(String ID, String company, String companyDesc, String title, String contract, String location, String date, Bitmap logo, String secteur, String experience, String competences, String datel) {
         this.company = company;
         this.title = title;
         this.contract = contract;
@@ -33,6 +34,8 @@ public class JobOfferItem {
         this.companyDesc = companyDesc;
         this.secteur = secteur;
         this.experience = experience;
+        this.competences = competences;
+        this.datel = datel;
     }
 
     public String getCompany() {

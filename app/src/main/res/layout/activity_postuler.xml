@@ -69,7 +69,7 @@
 
 
 
-    <Button
+    <RelativeLayout
         android:id="@+id/postuler_charger_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,10 +77,35 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="60dp"
         android:drawableEnd="@drawable/ic_baseline_file_upload_24"
-        android:text="Télécharger le fichier\n (.doc, .docx, .pdf.)"
         android:background="@drawable/edit_text_background"
         android:padding="10dp"
-        android:textAllCaps="false" />
+        >
+
+        <TextView
+            android:id="@+id/title_cv_or_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Télécharger le fichier\n (.doc, .docx, .pdf.)"
+            android:textColor="@color/black" />
+        <ImageButton
+            android:id="@+id/postuler_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_file_upload_24"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            />
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/postuler_enlever_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_close_24"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
 
     <Button

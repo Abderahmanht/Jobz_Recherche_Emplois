@@ -67,7 +67,7 @@
 
 
         <ImageButton
-            android:id="@+id/ssaveIconOffer"
+            android:id="@+id/delete_saved_offer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -77,7 +77,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_bookmark_filled" />
+            android:src="@drawable/baseline_delete_24_gray" />
 
         <TextView
             android:id="@+id/sdatePublication"

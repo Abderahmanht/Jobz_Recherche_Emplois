@@ -11,9 +11,9 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginTop="80dp"
-        android:layout_marginStart="20dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:textSize="18dp"
+        android:textSize="20dp"
         />
 
     <TextView
@@ -21,8 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/alertes_title"
         android:id="@+id/alertes_desc"
+        android:gravity="center"
         android:paddingHorizontal="20dp"
-        android:text="Les alertes de Jobz vous permettent d'être prévenu par email lors de la publication d'un nouveau poste correspondant à vos critères de sélection. Vous pouvez créer plusieurs alertres"/>
+        android:text="Les alertes de Jobz vous permettent d'être prévenu par email lors de la publication d'un nouveau poste correspondant à vos critères de sélection.\n Vous pouvez créer plusieurs alertres"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@id/alertes_desc"
@@ -46,7 +47,7 @@
         android:text="Nouvelle alerte"
         android:background="@drawable/rounded_corners"
         android:backgroundTint="@color/dark_blue"
-        android:paddingHorizontal="30dp"
+        android:paddingHorizontal="15dp"
         android:textSize="16sp"
         android:drawablePadding="10dp"
         android:layout_marginBottom="20dp"

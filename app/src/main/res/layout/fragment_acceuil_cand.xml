@@ -7,7 +7,6 @@
         android:background="@color/white"
         android:orientation="vertical"
         tools:context="._AcceuilFragmentCand"
-        android:paddingTop="50dp"
         >
 
 
@@ -15,14 +14,26 @@
             android:layout_marginTop="140dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             android:id="@+id/shimmerView">
             <include layout="@layout/item_placeholder"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Acceuil"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,12 +46,11 @@
 
                 <LinearLayout
                     android:id="@+id/search_filters_layout_emplois"
-                    android:layout_marginTop="30dp"
                     android:gravity="center"
+                    android:layout_marginTop="140dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="@drawable/rounded_corners"
                     >
 
                     <EditText
@@ -48,13 +58,14 @@
                         android:layout_width="wrap_content"
                         android:paddingStart="10dp"
                         android:paddingEnd="30dp"
-                        android:layout_height="45dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/rounded_corners"
                         android:backgroundTint="@color/component_gray"
-                        android:hint="Rechercher des offres"
+                        android:hint="Rechercher des emplois"
+                        android:textSize="16sp"
                         android:drawableStart="@drawable/ic_baseline_search_24"
                         android:drawablePadding="10dp"
-                        android:padding="10dp"
+                        android:paddingHorizontal="40dp"
                         android:inputType="text"
                         android:imeOptions="actionSearch"
                         />
@@ -62,7 +73,7 @@
                     <Button
                         android:id="@+id/button_filtres_recherche"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/rounded_corners"
                         android:backgroundTint="#038691"
                         android:clickable="true"
@@ -79,11 +90,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Offres récentes"
-                    android:layout_marginTop="30dp"
+                    android:text="Nouveaux emplois"
                     android:layout_marginBottom="10dp"
                     android:layout_marginStart="10dp"
                     android:textSize="16sp"
+                    android:layout_marginTop="30dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     />

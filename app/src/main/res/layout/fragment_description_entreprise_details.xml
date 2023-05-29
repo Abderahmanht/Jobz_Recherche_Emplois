@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".DescriptionEntrepriseDetailsFragment">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="40dp"
+    android:paddingEnd="20dp"
+    >
+    <TextView
+        android:id="@+id/details_secteur_activite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:text="Secteur d'actvité"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        />
+
+    <TextView
+        android:id="@+id/details_secteur_activite_vv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_secteur_activite"
+        android:text="text"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/details_descriptionn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_secteur_activite_vv"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        />
+
+    <TextView
+        android:id="@+id/details_descriptionn_vv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_descriptionn"
+        android:text="text"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+</RelativeLayout>
+
+
+
+
+</ScrollView>

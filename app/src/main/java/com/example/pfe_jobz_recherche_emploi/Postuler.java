@@ -19,6 +19,8 @@ import android.provider.OpenableColumns;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -29,6 +31,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -36,12 +40,15 @@ import java.util.Objects;
 
 public class Postuler extends AppCompatActivity {
 
-    private Button chargerCV, chargerLettre, valider;
-    private TextView cvFileName, lettreFileName, poste, entreprise, lieu;
+    private Button  valider;
+    private TextView cvorupload, lettreFileName, poste, entreprise, lieu;
     private Toolbar toolbar;
     private static final int PICKFILE_CV_RESULT_CODE= 1, PICKFILE_LETTRE_RESULT_CODE = 2;
     private int resultSet;
     private byte[] CVfileBytes, LETTREfileBytes;
+    private RelativeLayout chargerCV;
+    private ImageButton upload, close;
+    private boolean cvAlready = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +64,14 @@ public class Postuler extends AppCompatActivity {
 
         }
 
+        chargerCV = (RelativeLayout) findViewById(R.id.postuler_charger_cv);
 
-        chargerCV = findViewById(R.id.postuler_charger_cv);
         valider = findViewById(R.id.postuler_valider);
+
+        cvorupload = findViewById(R.id.title_cv_or_upload);
+
+        upload = findViewById(R.id.postuler_upload);
+        close = findViewById(R.id.postuler_enlever_cv);
 
         poste = findViewById(R.id.postuler_nom_poste);
         entreprise = findViewById(R.id.postuler_entreprise);
@@ -75,16 +87,54 @@ public class Postuler extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
 
-        chargerCV.setOnClickListener(new View.OnClickListener() {
+        Connection connection = new ___ConnectionClass().SQLServerConnection();
+        if(connection!=null){
+            try{
+                String checkIfCvPostedSQL = "SELECT ID_CV, CV_fichier, CV_nom_fichier FROM CV WHERE ID_Candidat = "+getIntent().getStringExtra("ID_Candidat")+";";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet1 = statement.executeQuery(checkIfCvPostedSQL);
+
+                if (resultSet1.next()){
+                    cvorupload.setEnabled(false);
+                    upload.setVisibility(View.INVISIBLE);
+                    close.setVisibility(View.VISIBLE);
+                    cvorupload.setText(resultSet1.getString("CV_nom_fichier"));
+                    CVfileBytes = resultSet1.getBytes("CV_fichier");
+                }
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cvAlready = false;
+                upload.setVisibility(View.VISIBLE);
+                close.setVisibility(View.GONE);
+                cvorupload.setEnabled(true);
+                cvorupload.setText("Télécharger le fichier \n (.doc, .docx, .pdf.)");
+                CVfileBytes = null;
+            }
+        });
+
+
+
+
+            cvorupload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("*/*");
                     startActivityForResult(intent, PICKFILE_CV_RESULT_CODE);
 
-            }
-        });
+                }
+            });
+
+
 
 
 
@@ -146,8 +196,8 @@ public class Postuler extends AppCompatActivity {
                 if (cursor != null && cursor.moveToFirst()) {
                     int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
                     fileName = cursor.getString(nameIndex);
-                    chargerCV.setText(fileName);
-                    chargerCV.setTextColor(Color.parseColor("#0CAA41"));
+                    cvorupload.setText(fileName);
+                    cvorupload.setTextColor(Color.parseColor("#0CAA41"));
                     cursor.close();
                 }
 

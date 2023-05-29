@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_1"
+        android:title="Niveau secondaire" />
+    <item
+        android:id="@+id/menu_item_2"
+        android:title="Niveau terminal"
+        />
+    <item
+        android:id="@+id/menu_item_3"
+        android:title="Formation professionnelle"
+        />
+    <item
+        android:id="@+id/menu_item_4"
+        android:title="Baccalauréat"
+        />
+
+    <item
+        android:id="@+id/menu_item_5"
+        android:title="Licence (LMD), Bac + 3"
+        />
+
+    <item
+        android:id="@+id/menu_item_6"
+        android:title="Master 1 (LMD), Bac + 4"
+        />
+
+
+    <item
+        android:id="@+id/menu_item_7"
+        android:title="Master 2 ,Ingéniorat Bac + 5"
+        />
+
+    <item
+        android:id="@+id/menu_item_8"
+        android:title="Doctorat"
+        />
+</menu>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:paddingEnd="20dp"
+        android:layout_width="wrap_content"
+        android:paddingBottom="40dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/details_secteur_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:text="Secteur du poste"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/details_secteur_vp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_secteur_p"
+            android:text="text"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/details_descriptionn_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_secteur_vp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:text="Description du poste"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/details_descriptionn_vp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_descriptionn_p"
+            android:text="text"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/details_competences_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_descriptionn_vp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:text="Compétences requises"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/details_competences_vp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_competences_p"
+            android:text="text"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/details_exp_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_competences_vp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:text="Niveau d'éxperience requis"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/details_exp_vp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_exp_p"
+            android:text="text"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/details_date_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_exp_vp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:text="Date d'expiration (Date limite pour candidater)"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/details_date_vp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_date_p"
+            android:text="text"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+</ScrollView>

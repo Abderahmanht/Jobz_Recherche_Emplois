@@ -4,25 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="._MesCandidaturesFragmentCand">
-    <TextView
-        android:id="@+id/candidatures_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Candidatures envoyées"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginTop="80dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="18dp"
-        />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/c_dsc"
         android:layout_marginHorizontal="20dp"
-        android:layout_below="@id/candidatures_title"
+        android:layout_marginTop="20dp"
         android:text="Vos candidatures Jobz envoyées à l'aide de la fonctionnalité postuler sont répetoriées ici."/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -31,7 +20,7 @@
         android:layout_height="match_parent"
         android:id="@+id/recycler_view_candidatures"
         android:background="@drawable/shape"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:backgroundTint="@color/lighter_gray"
         android:padding="20dp"
         />

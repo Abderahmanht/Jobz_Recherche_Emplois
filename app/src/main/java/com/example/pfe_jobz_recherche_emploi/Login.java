@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -39,8 +40,7 @@ public class Login extends AppCompatActivity {
         /* Getting ID's */
 
         loginBtn = findViewById(R.id.login_btn);
-        signUp = findViewById(R.id.sign_up);
-        logrec = findViewById(R.id.sign_in_rec);
+        signUp = findViewById(R.id.donthaveaccount);
         emailEdt = findViewById(R.id.emailEditText);
         passwordEdt = findViewById(R.id.passwordEditText);
 
@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity {
         String savedEmail = Preferences.getString("email", "");
         String savedPassword = Preferences.getString("password", "");
         String savedIDcandidat = Preferences.getString("ID_Candidat","");
+        String savedSecteur = Preferences.getString("Secteur","");
 
         if (!savedEmail.isEmpty() && !savedPassword.isEmpty()) {
             // Credentials are available, proceed to the home activity
@@ -61,56 +62,62 @@ public class Login extends AppCompatActivity {
                 Connection connection = new ___ConnectionClass().SQLServerConnection();
                 if (connection != null) {
                     try {
-
-
                         email = emailEdt.getText().toString();
                         password = passwordEdt.getText().toString();
 
-                        if(email.equals("admin@xyz.com")&&password.equals("admin")){
+                        if (email.equals("admin@xyz.com") && password.equals("admin")) {
                             startActivity(new Intent(Login.this, ADMIN.class));
                         } else {
+                            // Prepare the SQL query with placeholders for the email and password parameters
+                            String candidateLoginQuery = "SELECT ID_Candidat FROM Candidat WHERE Email = '"+email+"' AND Mot_De_Passe = '"+password+"';";
+                            String recruiterLoginQuery = "SELECT ID_Recruteur FROM Recruteur WHERE Email = '"+email+"' AND Mot_De_Passe = '"+password+"';";
 
-                        // Prepare the SQL query with placeholders for the email and password parameters
-                        String loginQuery = "SELECT ID_Candidat FROM Candidat WHERE Email = '"+email+"'AND Mot_De_Passe = '"+password+"';";
+                            // Create a prepared statement for the login query
+                            Statement statement = connection.createStatement();
 
-                        // Create a prepared statement for the login query
-                        Statement statement = connection.createStatement();
+                            // Execute the candidate login query and retrieve the results
+                            ResultSet candidateRs = statement.executeQuery(candidateLoginQuery);
 
-                        // Set the parameter values for the email and password
-
-
-                        // Execute the query and retrieve the results
-                        ResultSet rs = statement.executeQuery(loginQuery);
-
-                        if(rs.next()) {
-
-                                String idCandidat = rs.getString("ID_Candidat");
+                            if (candidateRs.next()) {
+                                String idCandidat = candidateRs.getString("ID_Candidat");
 
                                 SharedPreferences sharedPreferences2 = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences2.edit();
                                 editor.putString("email", email);
                                 editor.putString("password", password);
                                 editor.putString("ID_Candidat", idCandidat);
+                                editor.putString("Secteur", getIntent().getStringExtra("Secteur"));
                                 editor.apply();
                                 Intent intent = new Intent(Login.this, HomeCand.class);
                                 intent.putExtra("ID_Candidat", idCandidat);
+                                intent.putExtra("Secteur", savedSecteur);
                                 startActivity(intent);
+                            } else {
+                                // Execute the recruiter login query and retrieve the results
+                                ResultSet recruiterRs = statement.executeQuery(recruiterLoginQuery);
 
-                        }}
-
+                                if (recruiterRs.next()) {
+                                    String idRecruteur = recruiterRs.getString("ID_Recruteur");
+                                    Intent intent = new Intent(Login.this, HomeRec.class);
+                                    intent.putExtra("ID_Recruteur", idRecruteur);
+                                    startActivity(intent);
+                                } else {
+                                    // Handle the case when neither candidate nor recruiter login is successful
+                                    // For example, show an error message
+                                    Toast.makeText(Login.this, "Email ou mot de passe invalide", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
-                }
-                else{
+                } else {
                     Exception exception = new Exception();
                     exception.printStackTrace();
                 }
             }
-
-
-
         });
+
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,13 +128,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        logrec.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Login.this, SignInRec.class));
-
-            }
-        });
 
 
     }

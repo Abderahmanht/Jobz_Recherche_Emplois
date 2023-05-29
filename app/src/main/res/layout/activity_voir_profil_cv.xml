@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VoirProfilCV">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/voir_info_toolbar_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:title="Voir profil et CV Candidat"
+        app:titleTextColor="@color/dark_green"
+        android:theme="?attr/actionBarTheme">
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    <RelativeLayout
+        android:paddingBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/lighter_gray"
+        android:layout_marginTop="100dp"
+        >
+        <TextView
+            android:id="@+id/voir_info_candidature_nom_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Nom complet"/>
+
+        <TextView
+            android:id="@+id/voir_info_candidature_nom_v_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El Hathout"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/voir_info_candidature_nom_cv"
+            android:layout_alignBaseline="@id/voir_info_candidature_nom_cv"/>
+
+        <TextView
+            android:id="@+id/voir_info_candidature_secteur_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_below="@id/voir_info_candidature_nom_cv"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Secteur"/>
+
+        <TextView
+            android:id="@+id/voir_info_candidature_secteur_v_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El Hathout"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/voir_info_candidature_nom_cv"
+            android:layout_alignBaseline="@id/voir_info_candidature_secteur_cv"/>
+
+        <TextView
+            android:id="@+id/voir_info_candidature_etudes_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_below="@id/voir_info_candidature_secteur_cv"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Niveau d'études"/>
+
+        <TextView
+            android:id="@+id/voir_info_candidature_etudes_v_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El Hathout"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/voir_info_candidature_nom_cv"
+            android:layout_alignBaseline="@id/voir_info_candidature_etudes_cv"/>
+
+        <TextView
+            android:id="@+id/voir_info_candidature_experience_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_below="@id/voir_info_candidature_etudes_cv"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Éxperience"/>
+
+        <TextView
+            android:id="@+id/voir_info_candidature_experience_v_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El Hathout"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/voir_info_candidature_nom_cv"
+            android:layout_alignBaseline="@id/voir_info_candidature_experience_cv"/>
+
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/voir_info_candidature_cv_t_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CV"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_below="@id/voir_info_candidature_experience_cv"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+        <Button
+            android:id="@+id/voir_info_telecharger_cv_button_cv"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="50dp"
+            android:drawableEnd="@drawable/baseline_download_24_"
+            android:text="Télécharger CV"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textColor="@color/dark_blue"
+            android:background="@drawable/edit_text_background"
+            android:padding="10dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/voir_info_candidature_cv_t_cv"
+            />
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/lighter_gray"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:text="Contact"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/voir_info_envoyer_email_btn_cv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Envoyer E-mail"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/dark_blue"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginTop="60dp"
+            android:layout_marginHorizontal="50dp"
+            android:padding="10dp"
+            android:drawableEnd="@drawable/baseline_email_24"
+            />
+        <Button
+            android:id="@+id/voir_info_envoyer_sms_btn_cv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Envoyer SMS"
+            android:layout_below="@id/voir_info_envoyer_email_btn_cv"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/light_blue"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="50dp"
+            android:padding="10dp"
+            android:drawableEnd="@drawable/baseline_sms_24"
+            />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

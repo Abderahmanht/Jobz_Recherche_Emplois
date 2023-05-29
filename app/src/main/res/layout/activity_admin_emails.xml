@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/spinner_recipient_type"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="Compose your email subject" />
+        android:hint="Objet" />
 
     <EditText
         android:id="@+id/edit_text_content"
@@ -34,7 +34,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="Compose your email content" />
+        android:hint="Contenu de l'e-mail" />
 
     <Button
         android:id="@+id/button_send_email"
@@ -43,6 +43,6 @@
         android:layout_below="@id/edit_text_content"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
-        android:text="Send Email" />
+        android:text="envoyer" />
 
 </RelativeLayout>

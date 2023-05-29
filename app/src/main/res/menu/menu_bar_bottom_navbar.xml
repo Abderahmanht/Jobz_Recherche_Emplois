@@ -7,10 +7,10 @@
         android:title="Acceuil"
         />
     <item
-        android:id="@+id/mes_offres"
-        android:icon="@drawable/mesoffres_selector"
-        android:title="Enregistré"
-        />
+        android:id="@+id/meslistes"
+        android:icon="@drawable/mes_listes_selector"
+        android:title="Mes Listes"/>
+
 
     <item
         android:id="@+id/alertes"
@@ -18,14 +18,11 @@
         android:title="Alertes"
         />
 
-    <item
-        android:id="@+id/mes_candidatures"
-        android:icon="@drawable/mescandidatures_selector"
-        android:title="Candidatures"/>
+
     <item
         android:id="@+id/profil_cand"
         android:icon="@drawable/profil_selector"
-        android:title="Profil"
+        android:title="Mon Compte"
         />
 
 </menu>

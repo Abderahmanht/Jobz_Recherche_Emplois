@@ -1,5 +1,7 @@
 package com.example.pfe_jobz_recherche_emploi;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -53,6 +55,7 @@ public class _AcceuilFragmentCand extends Fragment {
     private TextView filtersExperience;
     private TextView filtersWilaya;
     private TextView effacerTout;
+    private String savedSecteur;
 
 
     @Nullable
@@ -163,6 +166,7 @@ public class _AcceuilFragmentCand extends Fragment {
 
         recyclerViewJobs = view.findViewById(R.id.recyclerViewJobs);
         recyclerViewJobs.setLayoutManager(new LinearLayoutManager(getContext()));
+        SharedPreferences Preferences = requireActivity().getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
         jobOffers = getJobOffersFromDatabase();
         jobOfferAdapter = new JobOfferAdapter(jobOffers, getActivity().getIntent().getStringExtra("ID_Candidat"));
         recyclerViewJobs.setAdapter(jobOfferAdapter);
@@ -186,6 +190,11 @@ public class _AcceuilFragmentCand extends Fragment {
         filtersWilaya = filters_dialog.findViewById(R.id.filters_wilaya);
         effacerTout = filters_dialog.findViewById(R.id.effacer_tout_filters);
 
+        filtersSecteur.setText("Tout");
+        filtersTypeContrat.setText("Tout");
+        filtersExperience.setText("Tout");
+        filtersWilaya.setText("Tout");
+
         effacerTout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,6 +204,30 @@ public class _AcceuilFragmentCand extends Fragment {
                 filtersWilaya.setText("Tout");
             }
         });
+
+
+
+        Connection connection = new ___ConnectionClass().SQLServerConnection();
+        if(connection != null) {
+            try {
+
+                String secteurCandSQL = "SELECT Secteur FROM Candidat WHERE ID_Candidat=" + requireActivity().getIntent().getStringExtra("ID_Candidat") + ";";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(secteurCandSQL);
+                if (rs.next()) {
+                    filtersSecteur.setText(rs.getString("Secteur"));
+                    String secteur = filtersSecteur.getText().toString();
+                    String contrat = filtersTypeContrat.getText().toString();
+                    String experience = filtersExperience.getText().toString();
+                    String wilaya = filtersWilaya.getText().toString();
+                    performFilter(secteur,contrat,experience,wilaya);
+                    appliquer.performClick();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
 
 
         filtersSecteur.setOnClickListener(new View.OnClickListener() {
@@ -368,11 +401,22 @@ public class _AcceuilFragmentCand extends Fragment {
     }
     private List<JobOfferItem> getJobOffersFromDatabase() {
         List<JobOfferItem> jobOffers = new ArrayList<>();
+        String secteur="";
 
         Connection connection = new ___ConnectionClass().SQLServerConnection();
         if(connection != null) {
             try {
-                String selectSQL = "SELECT ID_Offre, Titre_Poste, Type_Contrat, Date_Publication,Niveau_Experience,Discipline_Metier  FROM Offre";
+
+                String secteurCandSQL = "SELECT Secteur FROM Candidat WHERE ID_Candidat="+requireActivity().getIntent().getStringExtra("ID_Candidat")+";";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(secteurCandSQL);
+                if(rs.next()){
+                    secteur = rs.getString("Secteur");
+                }
+
+
+
+                String selectSQL = "SELECT ID_Offre, Titre_Poste, Type_Contrat, Date_Publication,Niveau_Experience,Discipline_Metier, Competences, Date_Limite FROM Offre;";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(selectSQL);
 
@@ -381,8 +425,10 @@ public class _AcceuilFragmentCand extends Fragment {
                         String title = resultSet.getString("Titre_Poste");
                         String contract = resultSet.getString("Type_Contrat");
                         String date = resultSet.getString("Date_Publication");
+                        String comp = resultSet.getString("Competences");
                         String experience = resultSet.getString("Niveau_Experience");
                         String discipline = resultSet.getString("Discipline_Metier");
+                        String datel = resultSet.getString("Date_Limite");
 
                         String RecSelectSQL = "SELECT rec.Entreprise, rec.Wilaya_Entreprise, rec.Logo_Entreprise, rec.Description_Entreprise " +
                                 "FROM Recruteur rec " +
@@ -398,10 +444,15 @@ public class _AcceuilFragmentCand extends Fragment {
                             byte[] imageData = resultSet2.getBytes("Logo_Entreprise");
                             bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
                         }
-
-                        JobOfferItem jobOffer = new JobOfferItem(offerId,company,comp_desc,title,contract,location,date,bitmap,discipline,experience);
+                        JobOfferItem jobOffer = new JobOfferItem(offerId,company,comp_desc,title,contract,location,date,bitmap,discipline,experience,comp,datel);
                         jobOffers.add(jobOffer);
+
+
+
+
                     }
+
+
 
             } catch (SQLException e) {
                 e.printStackTrace();

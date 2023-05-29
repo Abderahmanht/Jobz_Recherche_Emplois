@@ -13,7 +13,7 @@
         android:paddingStart="-50dp"
         android:paddingEnd="-50dp"
         android:layout_height="160dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_toEndOf="@+id/welcomeLoginText"
         android:src="@mipmap/login" />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         android:text="@string/welcome_back"
         android:textColor="@color/black"
         android:textSize="40sp"
@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_alignStart="@+id/emailEditText"
         android:layout_marginStart="10dp"
         android:layout_below="@id/topHorLine"
@@ -107,44 +107,34 @@
         android:padding="10dp"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/forgor_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordEditText"
+        android:layout_marginTop="10dp"
+        android:layout_alignEnd="@id/passwordEditText"
+        android:text="Mot de passe oublié ? "
+        android:textColor="@color/light_blue"/>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/passwordEditText"
+        android:layout_below="@id/forgor_password"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="38dp"
         android:clickable="true"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/sign_button_background"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/dark_blue"
         android:padding="15dp"
         android:text="@string/sign_in"
         android:textColor="@color/white" />
 
 
-    <TextView
-        android:id="@+id/dont_have_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:text="Vous avez un compte d'employeur ?" />
 
-    <TextView
-        android:id="@+id/sign_in_rec"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="-10dp"
-        android:layout_marginBottom="30dp"
-        android:layout_toEndOf="@+id/dont_have_account"
-        android:includeFontPadding="false"
-        android:text="Se connecter"
-        android:textAllCaps="false"
-        android:textColor="@color/dark_green" />
 
 
     <LinearLayout
@@ -152,29 +142,34 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_below="@+id/login_btn"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:background="@color/dark_blue"
         android:orientation="horizontal" />
 
-    <TextView
-        android:id="@+id/textEmployeur"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@id/login_btn"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
-        android:paddingHorizontal="5dp"
-        android:text="Vous n'avez pas de compte ?"
-        android:textAllCaps="false" />
-    <TextView
-        android:id="@+id/sign_up"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/textEmployeur"
-        android:layout_alignBaseline="@id/textEmployeur"
-        android:text="Créer un compte"
-        android:textColor="@color/light_blue"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vous n'avez pas de compte ?"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/donthaveaccount"
+            android:text="Créer un compte"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/light_blue"
+            />
+    </LinearLayout>
+
+
 
 
 

@@ -26,9 +26,11 @@
     <RelativeLayout
         android:id="@+id/details_top"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/inverted_shape"
+        android:background="@drawable/container_black"
+        android:layout_marginStart="-2dp"
+        android:layout_marginEnd="-2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -38,8 +40,8 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="Job Title"
-            android:layout_marginTop="40dp"
-            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/dark_blue"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -51,7 +53,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:text="Company"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/details_location"
@@ -62,9 +64,9 @@
             android:layout_marginBottom="20dp"
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
-            android:drawableStart="@drawable/baseline_location_on_24"
+            android:drawableStart="@drawable/baseline_location_on_24_black"
             android:text="Oran, Algeria"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
 
 
@@ -75,10 +77,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:drawableStart="@drawable/ic_baseline_work_24_white"
+            android:drawableStart="@drawable/baseline_work_24_black"
             android:drawablePadding="5dp"
             android:text="Type-Contrat"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/details_date"
@@ -88,105 +90,45 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:drawableStart="@drawable/ic_baseline_access_time_24_white"
+            android:drawableStart="@drawable/baseline_access_time_filled_24_black"
             android:drawablePadding="5dp"
             android:text="2j"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/details_logo"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp" />
     </RelativeLayout>
 
-
-    <ScrollView
-        android:id="@+id/details_center"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/details_top">
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/component_gray"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/light_blue"
+        android:layout_below="@id/details_top"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/details_company_description_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="30dp"
-                android:text="Description de l'entreprise :"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/details_company_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="hello" />
-
-            <TextView
-                android:id="@+id/details_job_description_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
-                android:text="Description du poste :"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/details_job_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="hello" />
-
-            <TextView
-                android:id="@+id/details_required_skills_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:text="Compétences requises"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:layout_below="@id/tab_layout_details" />
 
 
-            <TextView
-                android:id="@+id/details_required_skills"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="hello" />
-
-            <TextView
-                android:id="@+id/details_experience_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:text="Niveau d'éxperience"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/details_experience"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="hello" />
 
 
-        </LinearLayout>
 
 
-    </ScrollView>
+
+
+
     <RelativeLayout
         android:background="#E4E4E4"
         android:gravity="center"

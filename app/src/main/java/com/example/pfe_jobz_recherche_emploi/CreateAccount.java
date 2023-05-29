@@ -32,8 +32,7 @@ public class CreateAccount extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                overridePendingTransition(0,0);
+                startActivity(new Intent(CreateAccount.this, Login.class));
             }
         });
 

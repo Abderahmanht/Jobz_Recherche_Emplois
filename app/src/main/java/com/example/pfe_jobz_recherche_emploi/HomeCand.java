@@ -16,10 +16,10 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeCand extends AppCompatActivity {
     _AcceuilFragmentCand acceuilFragment = new _AcceuilFragmentCand();
-    _MesCandidaturesFragmentCand mesCandidaturesFragment = new _MesCandidaturesFragmentCand();
     _AlertesFragmentCand alertesFragment = new _AlertesFragmentCand();
-    _MesOffresFragmentCand mesoffresFragment = new _MesOffresFragmentCand();
     _ProfileFragmentCand profileFragment = new _ProfileFragmentCand();
+
+    _MesListesFragmentCand mesListesFragment = new _MesListesFragmentCand();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +38,11 @@ public class HomeCand extends AppCompatActivity {
                     case R.id.acceuil:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,acceuilFragment).commit();
                         break;
-                    case R.id.mes_candidatures:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mesCandidaturesFragment).commit();
+                    case R.id.meslistes:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mesListesFragment).commit();
                         break;
                     case R.id.alertes:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,alertesFragment).commit();
-                        break;
-                    case R.id.mes_offres:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,mesoffresFragment).commit();
                         break;
                     case R.id.profil_cand:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,profileFragment).commit();
