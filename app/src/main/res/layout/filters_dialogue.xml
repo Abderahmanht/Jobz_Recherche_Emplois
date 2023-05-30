@@ -64,6 +64,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Études"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Wilaya"
             android:textStyle="bold"
             android:layout_marginTop="30dp"
@@ -101,6 +109,15 @@
 
         <TextView
             android:id="@+id/filters_experience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tout"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/filters_etudes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tout"

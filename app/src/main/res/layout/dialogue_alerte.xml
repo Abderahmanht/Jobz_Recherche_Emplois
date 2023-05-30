@@ -76,15 +76,29 @@
         android:textSize="16sp"
         android:layout_marginTop="15dp"
         />
+
+    <TextView
+        android:id="@+id/etudes_alerte"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Études"
+        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+        android:padding="10dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_below="@id/experience_demande_alerte"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        />
     <AutoCompleteTextView
         android:id="@+id/discipline_alerte"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="10dp"
-        android:hint="Discipline"
+        android:hint="Secteur"
         android:padding="10dp"
         android:background="@drawable/edit_text_background"
-        android:layout_below="@id/experience_demande_alerte"
+        android:layout_below="@id/etudes_alerte"
         android:textSize="16sp"
         android:layout_marginTop="15dp"
         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"

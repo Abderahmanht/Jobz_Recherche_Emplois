@@ -53,7 +53,7 @@ public class _AcceuilFragmentCand extends Fragment {
     private TextView filtersSecteur;
     private TextView filtersTypeContrat;
     private TextView filtersExperience;
-    private TextView filtersWilaya;
+    private TextView filtersWilaya, filtersEtudes;
     private TextView effacerTout;
     private String savedSecteur;
 
@@ -188,6 +188,7 @@ public class _AcceuilFragmentCand extends Fragment {
         filtersTypeContrat = filters_dialog.findViewById(R.id.filters_type_contrat);
         filtersExperience = filters_dialog.findViewById(R.id.filters_experience);
         filtersWilaya = filters_dialog.findViewById(R.id.filters_wilaya);
+        filtersEtudes = filters_dialog.findViewById(R.id.filters_etudes);
         effacerTout = filters_dialog.findViewById(R.id.effacer_tout_filters);
 
         filtersSecteur.setText("Tout");
@@ -202,6 +203,7 @@ public class _AcceuilFragmentCand extends Fragment {
                 filtersTypeContrat.setText("Tout");
                 filtersExperience.setText("Tout");
                 filtersWilaya.setText("Tout");
+                filtersEtudes.setText("Tout");
             }
         });
 
@@ -211,7 +213,7 @@ public class _AcceuilFragmentCand extends Fragment {
         if(connection != null) {
             try {
 
-                String secteurCandSQL = "SELECT Secteur FROM Candidat WHERE ID_Candidat=" + requireActivity().getIntent().getStringExtra("ID_Candidat") + ";";
+                String secteurCandSQL = "SELECT Secteur FROM CV WHERE ID_Candidat=" + requireActivity().getIntent().getStringExtra("ID_Candidat") + ";";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(secteurCandSQL);
                 if (rs.next()) {
@@ -219,8 +221,9 @@ public class _AcceuilFragmentCand extends Fragment {
                     String secteur = filtersSecteur.getText().toString();
                     String contrat = filtersTypeContrat.getText().toString();
                     String experience = filtersExperience.getText().toString();
+                    String etudes = filtersEtudes.getText().toString();
                     String wilaya = filtersWilaya.getText().toString();
-                    performFilter(secteur,contrat,experience,wilaya);
+                    performFilter(secteur,contrat,experience,etudes,wilaya);
                     appliquer.performClick();
                 }
             } catch (Exception e) {
@@ -297,6 +300,25 @@ public class _AcceuilFragmentCand extends Fragment {
             }
         });
 
+        filtersEtudes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(view.getContext(), filtersEtudes);
+                popupMenu.getMenuInflater().inflate(R.menu.etudes, popupMenu.getMenu());
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        filtersEtudes.setText(menuItem.getTitle());
+                        return true;
+                    }
+                });
+
+                // Show the popup menu
+                popupMenu.show();
+            }
+        });
+
         filtersWilaya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -339,7 +361,8 @@ public class _AcceuilFragmentCand extends Fragment {
                 String contrat = filtersTypeContrat.getText().toString();
                 String experience = filtersExperience.getText().toString();
                 String wilaya = filtersWilaya.getText().toString();
-                performFilter(secteur,contrat,experience,wilaya);
+                String etudes = filtersEtudes.getText().toString();
+                performFilter(secteur,contrat,experience,etudes,wilaya);
                 filters_dialog.dismiss();
             }
         });
@@ -416,7 +439,7 @@ public class _AcceuilFragmentCand extends Fragment {
 
 
 
-                String selectSQL = "SELECT ID_Offre, Titre_Poste, Type_Contrat, Date_Publication,Niveau_Experience,Discipline_Metier, Competences, Date_Limite FROM Offre;";
+                String selectSQL = "SELECT ID_Offre, Titre_Poste, Type_Contrat, Date_Publication,Niveau_Experience,Etudes, Discipline_Metier, Competences, Date_Limite FROM Offre;";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(selectSQL);
 
@@ -427,6 +450,7 @@ public class _AcceuilFragmentCand extends Fragment {
                         String date = resultSet.getString("Date_Publication");
                         String comp = resultSet.getString("Competences");
                         String experience = resultSet.getString("Niveau_Experience");
+                        String etudes = resultSet.getString("Etudes");
                         String discipline = resultSet.getString("Discipline_Metier");
                         String datel = resultSet.getString("Date_Limite");
 
@@ -444,8 +468,17 @@ public class _AcceuilFragmentCand extends Fragment {
                             byte[] imageData = resultSet2.getBytes("Logo_Entreprise");
                             bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
                         }
-                        JobOfferItem jobOffer = new JobOfferItem(offerId,company,comp_desc,title,contract,location,date,bitmap,discipline,experience,comp,datel);
-                        jobOffers.add(jobOffer);
+
+                        if(etudes!=null) {
+                            JobOfferItem jobOffer = new JobOfferItem(offerId, company, comp_desc, title, contract, location, date, bitmap, discipline, experience, etudes, comp, datel);
+
+                            jobOffers.add(jobOffer);
+                        }
+                        else{
+                            JobOfferItem jobOffer = new JobOfferItem(offerId, company, comp_desc, title, contract, location, date, bitmap, discipline, experience, "", comp, datel);
+
+                            jobOffers.add(jobOffer);
+                        }
 
 
 
@@ -479,7 +512,7 @@ public class _AcceuilFragmentCand extends Fragment {
         jobOfferAdapter.updateItems(searchResultItems);
     }
 
-    private void performFilter(String secteur, String typeContrat, String niveauExperience, String wilaya){
+    private void performFilter(String secteur, String typeContrat, String niveauExperience,String etudes, String wilaya){
         List<JobOfferItem> filteredItems = new ArrayList<>();
         for(JobOfferItem item : jobOffers){
             if(secteur.equals("Tout")){
@@ -491,10 +524,15 @@ public class _AcceuilFragmentCand extends Fragment {
             if(niveauExperience.equals("Tout")){
                 niveauExperience = "";
             }
+
+            if(etudes.equals("Tout")){
+                etudes = "";
+            }
+
             if(wilaya.equals("Tout")){
                 wilaya = "";
             }
-            if(item.getSecteur().toLowerCase().contains(secteur.toLowerCase()) && item.getContract().toLowerCase().contains(typeContrat.toLowerCase()) && item.getExperience().toLowerCase().contains(niveauExperience.toLowerCase()) && item.getLocation().toLowerCase().contains(wilaya.toLowerCase()) ){
+            if(item.getSecteur().toLowerCase().contains(secteur.toLowerCase()) && item.getContract().toLowerCase().contains(typeContrat.toLowerCase()) && item.getExperience().toLowerCase().contains(niveauExperience.toLowerCase()) && item.getEtudes().toLowerCase().contains(etudes.toLowerCase()) && item.getLocation().toLowerCase().contains(wilaya.toLowerCase()) ){
                 filteredItems.add(item);
             }
         }

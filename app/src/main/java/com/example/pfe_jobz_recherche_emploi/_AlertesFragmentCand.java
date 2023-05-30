@@ -41,7 +41,7 @@ public class _AlertesFragmentCand extends Fragment {
     private SwitchCompat alerteSwitch;
     private int accepteEmails = 0;
     private EditText titre, poste;
-    private TextView experience;
+    private TextView experience,etudes;
     private AutoCompleteTextView lieu,discipline;
     private ImageButton gerer_alertes;
 
@@ -72,6 +72,7 @@ public class _AlertesFragmentCand extends Fragment {
         titre = alerte_dialog.findViewById(R.id.titre_alerte);
         poste = alerte_dialog.findViewById(R.id.poste_alerte);
         experience = alerte_dialog.findViewById(R.id.experience_demande_alerte);
+        etudes = alerte_dialog.findViewById(R.id.etudes_alerte);
         discipline = alerte_dialog.findViewById(R.id.discipline_alerte);
         lieu = alerte_dialog.findViewById(R.id.lieu_residence_alerte);
         alerteSwitch = alerte_dialog.findViewById(R.id.alerte_switch);
@@ -204,7 +205,22 @@ public class _AlertesFragmentCand extends Fragment {
 
         });
 
+        etudes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(getContext(), etudes);
+                popupMenu.getMenuInflater().inflate(R.menu.etudes, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        etudes.setText(item.getTitle());
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
 
+        });
 
 
         creerAlerte.setOnClickListener(new View.OnClickListener() {
@@ -230,7 +246,7 @@ public class _AlertesFragmentCand extends Fragment {
                         if(alerteSwitch.isChecked()){
                             accepteEmails = 1;
                         }
-                        String insertSQL = "INSERT INTO Alerte_Emploi(ID_Candidat, Titre, Poste_Recherche, Lieu_Residence, Experience, Discipline, Accepte_Emails) VALUES ('"+getActivity().getIntent().getStringExtra("ID_Candidat")+"','"+titre.getText()+"','"+poste.getText()+"','"+lieu.getText()+"','"+experience.getText()+"','"+discipline.getText()+ "','"+ String.valueOf(accepteEmails)+"');";
+                        String insertSQL = "INSERT INTO Alerte_Emploi(ID_Candidat, Titre, Poste_Recherche, Lieu_Residence, Experience,Etudes, Discipline, Accepte_Emails) VALUES ('"+getActivity().getIntent().getStringExtra("ID_Candidat")+"','"+titre.getText()+"','"+poste.getText()+"','"+lieu.getText()+"','"+experience.getText()+"','"+etudes.getText().toString()+"','"+discipline.getText()+ "','"+ String.valueOf(accepteEmails)+"');";
                         Statement statement = connection.createStatement();
                         resultSet = statement.executeUpdate(insertSQL);
 

@@ -97,7 +97,7 @@ public class _MesOffresFragmentCand extends Fragment {
                     Bitmap logo = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
 
                     // Step 7: Create a new JobOfferItem object and add it to the savedJobOffers list
-                    JobOfferItem jobOffer = new JobOfferItem(offerId, company, compDesc, title, contract, location, date, logo,"","","","");
+                    JobOfferItem jobOffer = new JobOfferItem(offerId, company, compDesc, title, contract, location, date, logo,"","","","","");
                     savedJobOffers.add(jobOffer);
                 }
             } catch (SQLException e) {

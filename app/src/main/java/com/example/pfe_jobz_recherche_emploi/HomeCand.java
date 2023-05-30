@@ -3,7 +3,6 @@ package com.example.pfe_jobz_recherche_emploi;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentTransaction;
 
 
 import android.app.AlertDialog;
@@ -15,11 +14,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 
 public class HomeCand extends AppCompatActivity {
@@ -31,71 +34,104 @@ public class HomeCand extends AppCompatActivity {
     private _MesOffresFragmentCand mesOffresFragment;
     BottomNavigationView navbar;
     private String currentFragmentTag = null;
+    Connection connection = new ___ConnectionClass().SQLServerConnection();
+    int statut;
+    Button retour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_cand);
-        Toolbar toolbar = findViewById(R.id.maintoolbar);
-        setSupportActionBar(toolbar);
-
-        navbar = findViewById(R.id.navbar);
-
-        if (getIntent().hasExtra("CURRENT_FRAGMENT_TAG")) {
-            currentFragmentTag = getIntent().getStringExtra("CURRENT_FRAGMENT_TAG");
-        }
-        if (currentFragmentTag != null) {
-            switch (currentFragmentTag) {
-                case "acceuilFragment":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, acceuilFragment).commit();
-                    break;
-                case "mesListesFragment":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mesListesFragment).commit();
-                    break;
-                case "alertesFragment":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, alertesFragment).commit();
-                    break;
-                case "profilFragment":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
-                    break;
-                default:
-                    // Handle unknown fragment tag
-                    break;
-            }
-            updateSelectedNavItem(currentFragmentTag);
-        }else{
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, acceuilFragment).commit();
-        }
 
 
 
-        navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.acceuil:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, acceuilFragment).commit();
-                        currentFragmentTag = "acceuilFragment";
-                        break;
-                    case R.id.meslistes:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mesListesFragment).commit();
-                        currentFragmentTag = "mesListesFragment";
-                        break;
-                    case R.id.alertes:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, alertesFragment).commit();
-                        currentFragmentTag = "alertesFragment";
-                        break;
-                    case R.id.profil_cand:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
-                        currentFragmentTag = "profileFragment";
-                        break;
+        if (connection!=null){
+            try{
+                String checkAccount = "SELECT Statut_Compte FROM Candidat WHERE ID_Candidat = "+getIntent().getStringExtra("ID_Candidat")+";";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(checkAccount);
+
+                if (resultSet.next()){
+                    statut = Integer.parseInt(resultSet.getString("Statut_Compte").trim().replace(" ",""));
+                    if(statut==0){
+                        setContentView(R.layout.compte_attente);
+                        retour = findViewById(R.id.compte_retour);
+                        retour.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finish();
+                            }
+                        });
+                    }
+                    else{
+                        setContentView(R.layout.activity_home_cand);
+                        Toolbar toolbar = findViewById(R.id.maintoolbar);
+                        setSupportActionBar(toolbar);
+
+                        navbar = findViewById(R.id.navbar);
+
+                        if (getIntent().hasExtra("CURRENT_FRAGMENT_TAG")) {
+                            currentFragmentTag = getIntent().getStringExtra("CURRENT_FRAGMENT_TAG");
+                        }
+                        if (currentFragmentTag != null) {
+                            switch (currentFragmentTag) {
+                                case "acceuilFragment":
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, acceuilFragment).commit();
+                                    break;
+                                case "mesListesFragment":
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mesListesFragment).commit();
+                                    break;
+                                case "alertesFragment":
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, alertesFragment).commit();
+                                    break;
+                                case "profilFragment":
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
+                                    break;
+                                default:
+                                    // Handle unknown fragment tag
+                                    break;
+                            }
+                            updateSelectedNavItem(currentFragmentTag);
+                        }else{
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, acceuilFragment).commit();
+                        }
+
+
+
+                        navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                            @Override
+                            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                                switch (item.getItemId()) {
+                                    case R.id.acceuil:
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, acceuilFragment).commit();
+                                        currentFragmentTag = "acceuilFragment";
+                                        break;
+                                    case R.id.meslistes:
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mesListesFragment).commit();
+                                        currentFragmentTag = "mesListesFragment";
+                                        break;
+                                    case R.id.alertes:
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, alertesFragment).commit();
+                                        currentFragmentTag = "alertesFragment";
+                                        break;
+                                    case R.id.profil_cand:
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
+                                        currentFragmentTag = "profileFragment";
+                                        break;
+                                }
+
+                                updateSelectedNavItem(currentFragmentTag); // Update the selected item
+
+                                return true;
+                            }
+                        });
+
+                    }
                 }
-
-                updateSelectedNavItem(currentFragmentTag); // Update the selected item
-
-                return true;
+            }catch (Exception e){
+                e.printStackTrace();
             }
-        });
+        }
+
 
 
     }

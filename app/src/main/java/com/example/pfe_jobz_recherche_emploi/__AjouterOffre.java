@@ -55,7 +55,7 @@ public class __AjouterOffre extends AppCompatActivity {
     private AutoCompleteTextView secteur;
     private EditText titre;
     private TextView contrat,date,sec_a,titre_a,type_a,desc_a,comp_a,exp_a,data_a;
-    private EditText description,comp; TextView exp;
+    private EditText description,comp; TextView exp,etudes;
     private StateProgressBar stateProgressBar;
     private Toolbar toolbar;
     private Button btn;
@@ -89,6 +89,7 @@ public class __AjouterOffre extends AppCompatActivity {
         stateProgressBar = findViewById(R.id.state_progress_bar_ajout);
         comp = findViewById(R.id.ajout_competences);
         exp = findViewById(R.id.ajout_offre_experience_requis);
+        etudes = findViewById(R.id.ajout_offre_etudes);
         date = findViewById(R.id.ajout_offre_date_expiration);
         sec_a = findViewById(R.id.ajout_offre_apercu_secteur);
         titre_a = findViewById(R.id.ajout_offre_apercu_titre);
@@ -190,6 +191,23 @@ public class __AjouterOffre extends AppCompatActivity {
         ArrayAdapter<String> adapter_dis = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrWithoutDuplicates);
         secteur.setAdapter(adapter_dis);
 
+
+        etudes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(__AjouterOffre.this, etudes);
+                popupMenu.getMenuInflater().inflate(R.menu.etudes, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        etudes.setText(item.getTitle());
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+
+        });
         contrat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -287,7 +305,7 @@ public class __AjouterOffre extends AppCompatActivity {
                         if (connection != null) {
                             try {
                                 String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                                String SQLinsert = "INSERT INTO Offre (Discipline_Metier, Titre_Poste, Type_Contrat, Description_Offre, Competences, Niveau_Experience, Date_Publication, Date_Limite, ID_Recruteur) VALUES('" + sec_a.getText() + "','" + titre_a.getText().toString().replace("'", "''") + "','" + type_a.getText().toString().replace("'", "''")+"','"+ desc_a.getText().toString().replace("'", "''") + "','" + comp_a.getText().toString().replace("'", "''") + "','" + exp_a.getText().toString().replace("'", "''") + "','" + currentDate + "','" + data_a.getText() +"',"+getIntent().getStringExtra("ID_Recruteur") +");";
+                                String SQLinsert = "INSERT INTO Offre (Discipline_Metier, Titre_Poste, Type_Contrat, Description_Offre, Competences, Niveau_Experience, Etudes, Date_Publication, Date_Limite, ID_Recruteur) VALUES('" + sec_a.getText() + "','" + titre_a.getText().toString().replace("'", "''") + "','" + type_a.getText().toString().replace("'", "''")+"','"+ desc_a.getText().toString().replace("'", "''") + "','" + comp_a.getText().toString().replace("'", "''") + "','" + exp_a.getText().toString().replace("'", "''") + "','" +etudes.getText().toString()+ "','" + currentDate + "','" + data_a.getText() +"',"+getIntent().getStringExtra("ID_Recruteur") +");";
                                 Statement statement = connection.createStatement();
                                 resultSet = statement.executeUpdate(SQLinsert);
 
@@ -310,12 +328,11 @@ public class __AjouterOffre extends AppCompatActivity {
 
 
                             Snackbar snackbar = Snackbar.make(view, "Offre Ajoutée aves succès", Snackbar.LENGTH_INDEFINITE);
-                            matchingAlgorithm(wilaya,exp_a.getText().toString(), sec_a.getText().toString(), titre_a.getText().toString());
+                            matchingAlgorithm(wilaya,exp_a.getText().toString(),etudes.getText().toString(), sec_a.getText().toString(), titre_a.getText().toString());
                             snackbar.setAction("OK", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent intent = new Intent(__AjouterOffre.this, HomeRec.class);
-                                    startActivity(intent);
+                                    finish();
                                 }
                             });
                             snackbar.show();
@@ -333,11 +350,11 @@ public class __AjouterOffre extends AppCompatActivity {
 
     }
 
-    public void matchingAlgorithm(String lieu, String exp, String dis, String poste){
+    public void matchingAlgorithm(String lieu, String exp,String etds, String dis, String poste){
         Connection connection = new ___ConnectionClass().SQLServerConnection();
         if(connection!=null){
             try {
-                String selectAlertesSQL = "SELECT a.Poste_Recherche, a.Lieu_Residence, a.Titre, a.Experience, a.Discipline, c.Email, c.Nom, c.Prenom FROM Alerte_Emploi a JOIN Candidat c ON c.ID_Candidat = a.ID_Candidat";
+                String selectAlertesSQL = "SELECT a.Poste_Recherche, a.Lieu_Residence, a.Titre, a.Experience, a.Etudes, a.Discipline, c.Email, c.Nom, c.Prenom FROM Alerte_Emploi a JOIN Candidat c ON c.ID_Candidat = a.ID_Candidat";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(selectAlertesSQL);
 
@@ -346,7 +363,8 @@ public class __AjouterOffre extends AppCompatActivity {
                         if(lieu.toLowerCase().contains(resultSet.getString("Lieu_Residence").toLowerCase()) &&
                                 exp.toLowerCase().contains(resultSet.getString("Experience").toLowerCase()) &&
                                 dis.toLowerCase().contains(resultSet.getString("Discipline").toLowerCase()) &&
-                                poste.toLowerCase().contains(resultSet.getString("Poste_Recherche").toLowerCase())
+                                poste.toLowerCase().contains(resultSet.getString("Poste_Recherche").toLowerCase()) &&
+                                etds.toLowerCase().contains(resultSet.getString("Etudes").toLowerCase())
                         ){
                             envoyerAlerteEmail(resultSet.getString("Email"),resultSet.getString("Nom")+" "+resultSet.getString("Prenom"));
                         }

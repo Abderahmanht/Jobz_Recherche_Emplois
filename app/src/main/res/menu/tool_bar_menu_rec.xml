@@ -14,10 +14,6 @@
                 app:showAsAction="never"
                 />
             <item
-                android:title="Donner mon avis"
-                android:id="@+id/avis"
-                />
-            <item
                 android:title="À Propos de nous"
                 android:id="@+id/apropos"/>
             <item

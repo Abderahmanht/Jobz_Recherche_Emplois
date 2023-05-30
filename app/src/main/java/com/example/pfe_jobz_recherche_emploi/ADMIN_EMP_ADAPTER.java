@@ -18,6 +18,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class ADMIN_EMP_ADAPTER extends RecyclerView.Adapter<ADMIN_EMP_ADAPTER.CardViewHolder> {
 
@@ -99,8 +109,8 @@ public class ADMIN_EMP_ADAPTER extends RecyclerView.Adapter<ADMIN_EMP_ADAPTER.Ca
                                 }else {desactiveStatusTextView.setVisibility(View.VISIBLE);activeStatusTextView.setVisibility(View.INVISIBLE);}
 
                                 Toast.makeText(context,"Statut de compte modifié avec succès",Toast.LENGTH_LONG).show();
-                            }else{
-
+                                if (newStatus==1)
+                                    sendEmail(email);
                             }
 
                         }catch (Exception e){
@@ -110,6 +120,35 @@ public class ADMIN_EMP_ADAPTER extends RecyclerView.Adapter<ADMIN_EMP_ADAPTER.Ca
 
                 }
             });
+        }
+    }
+
+    private void sendEmail(String emailAddress) {
+        final String username = "jobzrechercheemplois@gmail.com";
+        final String password = "uynpnrhwrqzaekls";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress));
+            message.setSubject("Compte activé!");
+            message.setText("Bonjour"+ ",\n\nVotre compte a été activé avec succès\nVous pouvez desormais publier vos offres, consulter les candidatures et voir les CVs déposés");
+            Transport.send(message);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
     }
 }
