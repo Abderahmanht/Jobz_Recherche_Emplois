@@ -19,6 +19,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,6 +50,9 @@ public class HomeRec extends AppCompatActivity {
 
     int statut;
     Button retour;
+    TextView entrepriseTextView;
+    TextView nomCompletTextView;
+    TextView emailTextView;
 
 
     @Override
@@ -56,7 +62,7 @@ public class HomeRec extends AppCompatActivity {
 
         if (connection != null) {
             try {
-                String checkAccount = "SELECT Statut_Compte FROM Recruteur WHERE ID_Recruteur = " + getIntent().getStringExtra("ID_Recruteur") + ";";
+                String checkAccount = "SELECT Nom, Prenom, Entreprise,Email, Statut_Compte FROM Recruteur WHERE ID_Recruteur = " + getIntent().getStringExtra("ID_Recruteur") + ";";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(checkAccount);
 
@@ -77,11 +83,29 @@ public class HomeRec extends AppCompatActivity {
                         setSupportActionBar(toolbar);
 
 
+                        NavigationView navigationView = findViewById(R.id.navigation_view_rec);
+
+                        View headerView = navigationView.getHeaderView(0);
+
+                        entrepriseTextView = headerView.findViewById(R.id.entrepriseemployeur_header);
+                        nomCompletTextView = headerView.findViewById(R.id.nomcomplet_employeur);
+                        emailTextView = headerView.findViewById(R.id.email_employeur_header);
+
+                        entrepriseTextView.setText(resultSet.getString("Entreprise"));
+                        nomCompletTextView.setText(resultSet.getString("Nom") + " " + resultSet.getString("Prenom"));
+                        emailTextView.setText(resultSet.getString("Email"));
+
+
+
                         drawerLayout = findViewById(R.id.drawer);
                         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
                         drawerLayout.addDrawerListener(toggle);
                         toggle.syncState();
                         toggle.getDrawerArrowDrawable().setColor(getColor(R.color.dark_green));
+
+
+
+
                         navigationView = findViewById(R.id.navigation_view_rec);
                         if (getIntent().hasExtra("CURRENT_FRAGMENT_TAG")) {
                             currentFragmentTag = getIntent().getStringExtra("CURRENT_FRAGMENT_TAG");
@@ -99,7 +123,7 @@ public class HomeRec extends AppCompatActivity {
                                     break;
                                 case "modifierProfilFragment":
                                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_rec, modifierProfilFragmentRec).commit();
-
+                                    break;
                                 case "cvthequeFragment":
                                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_rec, cvThequeFragmentRec).commit();
                                     break;
@@ -138,14 +162,97 @@ public class HomeRec extends AppCompatActivity {
                                     case R.id.cvtheque:
                                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_rec, cvThequeFragmentRec).commit();
                                         currentFragmentTag = "cvthequeFragment";
+                                        break;
+                                    case R.id.sedeconnecterrec:
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(HomeRec.this);
+                                        builder.setTitle("Se déconnecter");
+                                        builder.setMessage("Êtes-vous sûr de vouloir vous déconnecter ?");
+                                        builder.setPositiveButton("Se déconnecter", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                // Delete the saved credentials from SharedPreferences
+                                                SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
+                                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                editor.remove("email");
+                                                editor.remove("password");
+                                                editor.apply();
 
+                                                // Start the Login activity
+                                                Intent intent = new Intent(HomeRec.this, Login.class);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                        builder.setNegativeButton("Annuler", null);
+
+                                        AlertDialog dialog = builder.create();
+                                        dialog.show();
+                                        break;
+
+                                    case R.id.supprimercompterec:
+                                        AlertDialog.Builder builders = new AlertDialog.Builder(HomeRec.this);
+                                        builders.setTitle("Supprimer Compte ?");
+                                        builders.setMessage("Êtes-vous sûr de vouloir supprimer votre compte ?");
+                                        builders.setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                //another builder
+
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(HomeRec.this);
+                                                builder.setTitle("Confirmer");
+                                                builder.setMessage("Cette action est irréversible\nVotre compte, vos offres, les candidatures à vos offres... seront supprimées définitivement");
+                                                builder.setPositiveButton("Confirmer suppression", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                        if(connection!=null){
+                                                            try{
+                                                                String deleteRecAccountSQL = "DELETE FROM Recruteur WHERE ID_Recruteur = "+getIntent().getStringExtra("ID_Recruteur");
+                                                                String deleteOffre = "DELETE FROM Offre WHERE ID_Recruteur = "+getIntent().getStringExtra("ID_Recruteur");
+                                                                Statement statement1 = connection.createStatement();
+                                                                Statement statement2 = connection.createStatement();
+                                                                int resultSet = statement1.executeUpdate(deleteRecAccountSQL);
+
+                                                                String checkExists = "SELECT 1 FROM Alerte_Emploi WHERE ID_Candidat = " + getIntent().getStringExtra("ID_Candidat");
+                                                                ResultSet resultSetoffre = statement2.executeQuery(checkExists);
+                                                                boolean alerteExists = resultSetoffre.next();
+
+                                                                if(alerteExists) {
+                                                                    statement2.executeUpdate(deleteOffre);
+                                                                }
+                                                                if(resultSet>0){
+                                                                    Toast.makeText(HomeRec.this,"Compte supprimé",Toast.LENGTH_LONG).show();
+                                                                    SharedPreferences sharedPreferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
+                                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                                    editor.remove("email");
+                                                                    editor.remove("password");
+                                                                    editor.apply();
+
+                                                                    Intent intent = new Intent(HomeRec.this, Login.class);
+                                                                    startActivity(intent);
+                                                                }
+                                                            }catch (Exception e){
+                                                                e.printStackTrace();
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                                builder.setNegativeButton("Annuler", null);
+
+                                                AlertDialog dialog = builder.create();
+                                                dialog.show();
+
+                                                //end another builder
+                                            }
+                                        });
+                                        builders.setNegativeButton("Annuler", null);
+
+                                        AlertDialog dialogs = builders.create();
+                                        dialogs.show();
+                                        break;
 
                                 }
 
-                                // Close the drawer after handling the item click
                                 drawerLayout.closeDrawer(GravityCompat.START);
-
-                                // Return true to indicate that the item click has been handled
                                 return true;
                             }
                         });

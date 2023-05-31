@@ -256,14 +256,16 @@ public class CreateRECAccount extends AppCompatActivity {
 
 
                     case 3:
+                        byte[] byteArray = null;
                         stateProgressBarrec.setAllStatesCompleted(true);
                         Connection connection = new ___ConnectionClass().SQLServerConnection();
                         if (connection != null) {
                             try {
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                imageToStore.compress(Bitmap.CompressFormat.PNG, 0, stream);
-                                byte[] byteArray = stream.toByteArray();
-
+                                if(imageToStore!=null) {
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    imageToStore.compress(Bitmap.CompressFormat.PNG, 0, stream);
+                                    byteArray = stream.toByteArray();
+                                }
                                 // Insert data into database
                                 String SQLinsert = "INSERT INTO Recruteur (Nom, Prenom, Entreprise, Description_Entreprise, Wilaya_Entreprise, Secteur_Activite, Num_Tel, Email, Mot_de_passe, Logo_Entreprise, Statut_Compte) VALUES('" + noma.getText() + "','" + prenoma.getText() + "','" + nomentreprisea.getText() + "','" + desca.getText().toString().replace("'", "''") + "','" + wilayaa.getText() + "','" + secta.getText() + "','" + numa.getText() + "','" + emaila.getText() + "','" + mdpa.getText() + "', ?,0);";
                                 PreparedStatement statement = connection.prepareStatement(SQLinsert);

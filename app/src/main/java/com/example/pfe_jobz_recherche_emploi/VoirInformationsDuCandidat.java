@@ -57,7 +57,7 @@ public class VoirInformationsDuCandidat extends AppCompatActivity {
         toolbar = findViewById(R.id.voir_info_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24);
 
         poste = findViewById(R.id.voir_info_candidature_poste_v);
         nom = findViewById(R.id.voir_info_candidature_nom_v);

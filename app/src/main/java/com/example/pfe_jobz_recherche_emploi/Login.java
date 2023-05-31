@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
     EditText passwordEdt;
     String email;
     String password;
+    TextView forgor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,14 @@ public class Login extends AppCompatActivity {
         signUp = findViewById(R.id.donthaveaccount);
         emailEdt = findViewById(R.id.emailEditText);
         passwordEdt = findViewById(R.id.passwordEditText);
+        forgor = findViewById(R.id.forgor_password);
+
+        forgor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    startActivity(new Intent(Login.this, ForgorPassword.class));
+            }
+        });
 
         SharedPreferences Preferences = getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
         String savedEmail = Preferences.getString("email", "");

@@ -116,21 +116,34 @@
 
             android:padding="10dp"
             android:textAllCaps="false" />
+    <Button
+        android:id="@+id/logout_button_cand"
+        android:layout_width="match_parent"
+        android:background="@drawable/container_black"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a_propos_profil"
+        android:drawableStart="@drawable/baseline_logout_24_gray"
+        android:text="Se déconnecter"
+        android:padding="10dp"
+        android:layout_marginStart="-2dp"
+        android:layout_marginEnd="-2dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="-1dp" />
 
         <Button
-            android:id="@+id/logout_button_cand"
+            android:id="@+id/delete_button_cand"
             android:layout_width="match_parent"
             android:background="@drawable/container_black"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/a_propos_profil"
-            android:drawableStart="@drawable/baseline_logout_24"
-            android:text="Se déconnecter"
+            android:layout_below="@+id/logout_button_cand"
+            android:drawableStart="@drawable/baseline_delete_24_red"
+            android:text="Supprimer votre compte"
             android:padding="10dp"
             android:layout_marginStart="-2dp"
             android:layout_marginEnd="-2dp"
             android:textAllCaps="false"
-            android:layout_marginTop="-1dp"
-            android:textColor="#D11A1A" />
+            android:layout_marginTop="60dp"
+            android:textColor="@color/dark_red" />
 
     </RelativeLayout>
 

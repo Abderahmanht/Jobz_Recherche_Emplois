@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ForgorPassword"
+            android:exported="false" />
+        <activity
             android:name=".AProposDeNous"
             android:exported="false" />
         <activity

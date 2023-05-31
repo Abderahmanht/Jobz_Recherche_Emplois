@@ -41,7 +41,7 @@ public class _AlertesFragmentCand extends Fragment {
     private SwitchCompat alerteSwitch;
     private int accepteEmails = 0;
     private EditText titre, poste;
-    private TextView experience,etudes;
+    private TextView experience,etudes,email;
     private AutoCompleteTextView lieu,discipline;
     private ImageButton gerer_alertes;
 
@@ -76,6 +76,22 @@ public class _AlertesFragmentCand extends Fragment {
         discipline = alerte_dialog.findViewById(R.id.discipline_alerte);
         lieu = alerte_dialog.findViewById(R.id.lieu_residence_alerte);
         alerteSwitch = alerte_dialog.findViewById(R.id.alerte_switch);
+        email = alerte_dialog.findViewById(R.id.votre_adresse_email);
+
+        Connection con = new ___ConnectionClass().SQLServerConnection();
+        if(con!=null){
+            try{
+                String getEmailSQL = "SELECT Email FROM Candidat WHERE ID_Candidat = "+getActivity().getIntent().getStringExtra("ID_Candidat");
+                Statement statement = con.createStatement();
+                ResultSet resultSet1 = statement.executeQuery(getEmailSQL);
+
+                if(resultSet1.next()){
+                    email.setText("Votre e-mail : "+resultSet1.getString("Email"));
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
 
 
         //region disciciplines

@@ -22,10 +22,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class _ProfileFragmentCand extends Fragment {
 
-    private Button logoutBtn, modifierProfil, apropos;
+    private Button logoutBtn, modifierProfil, apropos,deleteaccount;
     private RelativeLayout deposerCV;
     private ImageView imageView,delete;
     private TextView textView,votreCV, nomcomplet, email;
@@ -44,6 +45,7 @@ public class _ProfileFragmentCand extends Fragment {
         textView = view.findViewById(R.id.cv_file_name_profil);
         votreCV = view.findViewById(R.id.profil_votre_cv_text);
         apropos = view.findViewById(R.id.a_propos_profil);
+        deleteaccount = view.findViewById(R.id.delete_button_cand);
 
         nomcomplet = view.findViewById(R.id.profil_nom_complet);
         email = view.findViewById(R.id.profil_email);
@@ -63,6 +65,115 @@ public class _ProfileFragmentCand extends Fragment {
                 e.printStackTrace();
             }
         }
+        deleteaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builders = new AlertDialog.Builder(getContext());
+                builders.setTitle("Supprimer Compte ?");
+                builders.setMessage("Êtes-vous sûr de vouloir supprimer votre compte ?");
+                builders.setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // another builder
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle("Confirmer");
+                        builder.setMessage("Cette action est irréversible\nVotre compte sera supprimé définitivement");
+                        builder.setPositiveButton("Confirmer suppression", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if (con != null) {
+                                    try {
+                                        String deleteRecAccountSQL = "DELETE FROM Candidat WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                        String deleteCandidature = "DELETE FROM Candidature WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                        String deleteCV = "DELETE FROM CV WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                        String deleteOffree = "DELETE FROM Offre_Enregistree WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                        String deleteAlerte = "DELETE FROM Alerte_Emploi WHERE ID_Candidat = "+getActivity().getIntent().getStringExtra("ID_Candidat");
+
+                                        try {
+                                            Statement statement1 = con.createStatement();
+                                            Statement statement2 = con.createStatement();
+                                            Statement statement3 = con.createStatement();
+                                            Statement statement4 = con.createStatement();
+                                            Statement statement5 = con.createStatement();
+
+                                            // Check if the Candidature exists for the Candidat
+                                            String checkCandidatureExists = "SELECT 1 FROM Candidature WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                            ResultSet resultSetCandidature = statement2.executeQuery(checkCandidatureExists);
+                                            boolean candidatureExists = resultSetCandidature.next();
+
+                                            // Check if the CV exists for the Candidat
+                                            String checkCVExists = "SELECT 1 FROM CV WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                            ResultSet resultSetCV = statement3.executeQuery(checkCVExists);
+                                            boolean cvExists = resultSetCV.next();
+
+                                            // Check if the Offre_Enregistree exists for the Candidat
+                                            String checkOffreeExists = "SELECT 1 FROM Offre_Enregistree WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                            ResultSet resultSetOffree = statement4.executeQuery(checkOffreeExists);
+                                            boolean offreeExists = resultSetOffree.next();
+
+                                            String checkAlerteExists = "SELECT 1 FROM Alerte_Emploi WHERE ID_Candidat = " + getActivity().getIntent().getStringExtra("ID_Candidat");
+                                            ResultSet resultSetAlerte = statement5.executeQuery(checkAlerteExists);
+                                            boolean alerteExists = resultSetAlerte.next();
+
+
+                                            if(candidatureExists){
+                                                statement2.executeUpdate(deleteCandidature);
+                                            }
+                                            if(cvExists){
+                                                statement3.executeUpdate(deleteCV);
+                                            }
+                                            if(offreeExists){
+                                                statement4.executeUpdate(deleteOffree);
+                                            }
+                                            if(alerteExists){
+                                                statement5.executeUpdate(deleteAlerte);
+                                            }
+
+                                                int resultSet1 = statement1.executeUpdate(deleteRecAccountSQL);
+
+                                                if (resultSet1 > 0) {
+                                                    Toast.makeText(getContext(), "Compte supprimé", Toast.LENGTH_LONG).show();
+                                                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_credentials", Context.MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                    editor.remove("email");
+                                                    editor.remove("password");
+                                                    editor.apply();
+
+                                                    Intent intent = new Intent(getContext(), Login.class);
+                                                    startActivity(intent);
+                                                }
+
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+
+                            // End of the second builder
+
+                    });
+
+                builder.setNegativeButton("Annuler", null);
+
+                    AlertDialog dialog = builder.create();
+                dialog.show();
+
+                    // End of the first builder
+                }
+            });
+
+        builders.setNegativeButton("Annuler", null);
+
+            AlertDialog dialogs = builders.create();
+        dialogs.show();
+        }
+    });
+
+
 
         apropos.setOnClickListener(new View.OnClickListener() {
             @Override

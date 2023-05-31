@@ -37,6 +37,10 @@
                 android:id="@+id/sedeconnecterrec"
                 android:icon="@drawable/ic_baseline_exit_to_app_24_black"
                 android:title="Se déconnecter" />
+            <item
+                android:id="@+id/supprimercompterec"
+                android:icon="@drawable/baseline_delete_24_gray"
+                android:title="Supprimer votre compte"/>
 
         </menu>
     </item>
@@ -46,11 +50,8 @@
             <item
                 android:id="@+id/donneravis"
                 android:icon="@drawable/ic_baseline_comment_24_black"
-                android:title="Donner votre avis" />
-            <item
-                android:id="@+id/signalerprobleme"
-                android:icon="@drawable/ic_baseline_report_problem_24_black"
-                android:title="Signaler un problème" />
+                android:title="À propos de nous" />
+
 
 
 
